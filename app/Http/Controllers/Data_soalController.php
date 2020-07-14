@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Data_soal;
+
 use Illuminate\Http\Request;
+
 
 class Data_soalController extends Controller
 {

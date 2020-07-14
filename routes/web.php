@@ -32,6 +32,20 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/customer/{id}/delete', 'CustomerController@delete')->name('customer.delete');
 
 
+    //modul 
+    Route::get('/nilai', 'UserController@nilai');
+
+
+    //praktikum
+    Route::get('/praktikum', 'NilaiController@praktikum');
+
+    Route::post('/praktikum/create', 'NilaiController@create');
+    Route::get('/praktikum/{id}/edit', 'NilaiController@edit')->name('praktikum.edit');
+    Route::post('/praktikum/{id}/update', 'NilaiController@update');
+    Route::get('/praktikum/{id}/delete', 'NilaiController@delete')->name('praktikum.delete');
+
+
+
     //data soal
     Route::get('/data_soal', 'Data_soalController@index');
     Route::post('/data_soal/create', 'Data_soalController@create');
@@ -39,6 +53,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::post('/data_soal/{id}/update', 'Data_soalController@update');
     Route::get('/data_soal/{id}/delete', 'Data_soalController@delete')->name('data_soal.delete');
 
+    //soal
 
 
 
@@ -48,6 +63,10 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/user/{id}/edit', 'UserController@edit')->name('user.edit');
     Route::post('/user/{id}/update', 'UserController@update');
     Route::get('/user/{id}/delete', 'UserController@delete')->name('user.delete');
+
+
+
+
 
     //data mahasiswa
     Route::get('/mahasiswa', 'MahasiswaController@index');
@@ -65,8 +84,15 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 Route::group(['middleware' => ['auth', 'checkRole:mahasiswa,admin']], function () {
     Route::get('/dashboard', 'DashboardController@index');
 
+
     // soal
     Route::get('/soal', 'SoalController@getSoal');
+    // Route::get('/soal', 'SoalController@praktikum');
+    // Route::get('/modul', 'NilaiController@modul');
+
     Route::get('/jawaban', 'SoalController@getjawaban');
     Route::post('submit-jawab', 'SubmitJawabController@store')->name('jawab.store');
+
+    //profile
+    Route::get('/user/{id}/profile', 'UserController@profile');
 });

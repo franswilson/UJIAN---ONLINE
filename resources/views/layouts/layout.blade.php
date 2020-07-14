@@ -20,6 +20,8 @@
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
 	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('admin/assets/img/favicon.png')}}">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+
 </head>
 
 <body>
@@ -47,7 +49,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('admin/assets/img/user.png')}}" class="img-circle" alt="Avatar"> <span>{{Auth()->user()->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+								<li><a href="/user/{{Auth()->user()->id}}/profile"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
@@ -64,13 +66,17 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="/dashboard" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-						<li><a href="/soal" class=""><i class="lnr lnr-code"></i> <span>Soal</span></a></li>
+						<li><a href="/dashboard" class="{{ (request()->is('dashboard')) ? 'active' : '' }}"> <i class="lnr lnr-home "></i> <span>Dashboard</span></a></li>
+
+
 						@if(auth()->user()->role == 'admin')
-						<li><a href="/customer" class=""><i class="lnr lnr-user"></i> <span>Customer</span></a></li>
-						<li><a href="/mahasiswa" class=""><i class="lnr lnr-user"></i> <span>Mahasiswa</span></a></li>
-						<li><a href="/data_soal" class=""><i class="lnr lnr-code"></i> <span>Manegemen Soal</span></a></li>
-						<li><a href="/user" class=""><i class="lnr lnr-code"></i> <span>Data login</span></a></li>
+						<li><a href="/soal" class="{{ (request()->is('modul')) ? 'active' : '' }}"><i class="lnr lnr-code"></i> <span>Soal</span></a></li>
+
+						<li><a href="/nilai" class="{{ (request()->is('nilai')) ? 'active' : '' }}"> <i class="lnr lnr-home "></i> <span>Nilai</span></a></li>
+						<li><a href="/mahasiswa" class="{{ (request()->is('mahasiswa')) ? 'active' : '' }}"><i class="lnr lnr-user"></i> <span>Mahasiswa</span></a></li>
+						<li><a href="/data_soal" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr lnr-code"></i> <span>Manegemen Soal</span></a></li>
+						<li><a href="/praktikum" class="{{ (request()->is('praktikum')) ? 'active' : '' }}"><i class="lnr lnr-code"></i> <span>Manegemen praktikum</span></a></li>
+						<li><a href="/user" class="{{ (request()->is('user')) ? 'active' : '' }}"><i class="lnr lnr-code"></i> <span>Data login</span></a></li>
 						@endif
 					</ul>
 				</nav>
@@ -83,7 +89,7 @@
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+				<p class="copyright">create by France Wilson Capur</a>
 				</p>
 			</div>
 		</footer>
@@ -94,7 +100,14 @@
 	<script src="{{asset('admin/assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('admin/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 	<script src="{{asset('admin/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
+	<script src="{{asset('admin/assets/scripts/klorofil-common.js')}}"></script>
 
+
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+	@yield('footer')
 </body>
 
 </html>

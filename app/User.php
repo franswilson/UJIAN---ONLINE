@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
     use Notifiable;
 
     /**
@@ -18,6 +19,12 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password', 'role',
     ];
+
+
+    public function praktikum()
+    {
+        return $this->belongsToMany(Praktikum::class)->withPivot(['nama', 'nilai']);
+    }
 
     /**
      * The attributes that should be hidden for arrays.

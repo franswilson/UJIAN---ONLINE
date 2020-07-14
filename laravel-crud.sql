@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2020 at 03:14 AM
+-- Generation Time: Jul 06, 2020 at 08:23 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -42,30 +42,19 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `nama`, `alamat`, `tlp`, `created_at`, `updated_at`) VALUES
-(2, 'sarjono', 'kulom', '0091212121222', '2020-04-03 19:10:35', '2020-04-12 05:29:25'),
-(7, 'cc', 'bb', '1212', '2020-04-06 22:20:04', '2020-04-06 22:50:46');
+(2, 'sarjono', 'kulom', '0091212121222', '2020-04-03 19:10:35', '2020-04-12 05:29:25');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jawaban`
+-- Table structure for table `kode`
 --
 
-CREATE TABLE `jawaban` (
-  `id_jawaban` int(10) UNSIGNED NOT NULL,
-  `id_user` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nilai` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `jawaban`
---
-
-INSERT INTO `jawaban` (`id_jawaban`, `id_user`, `nama`, `nilai`, `created_at`, `updated_at`) VALUES
-(1, '2', 'bb', '20', '2020-04-10 22:07:54', '2020-04-10 22:07:54');
+CREATE TABLE `kode` (
+  `id` int(222) NOT NULL,
+  `id_user` int(255) NOT NULL,
+  `id_praktikum` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -90,8 +79,8 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id`, `user_id`, `nama`, `tlp`, `alamat`, `npm`, `gambar`, `updated_at`, `created_at`) VALUES
-(3, 12, 'ganti', '13', 'adad', '234', '1111111111.jpg', '2020-04-15 23:44:18', '2020-04-13 02:10:10'),
-(4, 13, 'mahasiswa1', '12311', 'ff', '232321', '112957i018FEA41D376BD28.gif', '2020-04-15 23:41:07', '2020-04-13 22:38:28');
+(5, 14, 'aaa', '1212', 'aaaa', '121212', NULL, '2020-06-11 19:05:58', '2020-06-11 19:05:58'),
+(6, 16, 'bagus', '12132', 'asdad', '1212', NULL, '2020-06-11 19:55:14', '2020-06-11 19:29:16');
 
 -- --------------------------------------------------------
 
@@ -130,6 +119,52 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `praktikum`
+--
+
+CREATE TABLE `praktikum` (
+  `id` int(255) NOT NULL,
+  `nama` enum('JARKOM-1','JARKOM-2','JARKOM-3') DEFAULT NULL,
+  `kode` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `praktikum`
+--
+
+INSERT INTO `praktikum` (`id`, `nama`, `kode`) VALUES
+(1, 'JARKOM-1', 'JK12'),
+(2, 'JARKOM-2', 'MMM'),
+(4, 'JARKOM-3', 'KKK');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `praktikum_user`
+--
+
+CREATE TABLE `praktikum_user` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `praktikum_id` int(255) DEFAULT NULL,
+  `nama` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nilai` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `praktikum_user`
+--
+
+INSERT INTO `praktikum_user` (`id`, `user_id`, `praktikum_id`, `nama`, `nilai`, `created_at`, `updated_at`) VALUES
+(1, '2', 1, 'bb', '80', '2020-04-10 22:07:54', '2020-04-10 22:07:54'),
+(3, '2', 4, 'bb', '20', '2020-06-13 00:28:51', '2020-06-13 00:28:51'),
+(5, '2', 4, 'bb', '0', '2020-06-15 01:29:07', '2020-06-15 01:29:07');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `siswa`
 --
 
@@ -147,32 +182,36 @@ CREATE TABLE `siswa` (
 --
 
 CREATE TABLE `tbl_soal` (
-  `id` int(222) NOT NULL,
+  `id` int(100) NOT NULL,
   `soal` text NOT NULL,
   `a` varchar(30) NOT NULL,
   `b` varchar(30) NOT NULL,
   `c` varchar(30) NOT NULL,
   `d` varchar(30) NOT NULL,
   `knc_jawaban` varchar(30) NOT NULL,
-  `gambar` varchar(100) DEFAULT NULL,
+  `gambar` varchar(100) NOT NULL,
+  `tanggal` date NOT NULL,
   `aktif` enum('Y','N') NOT NULL DEFAULT 'Y',
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_soal`
 --
 
-INSERT INTO `tbl_soal` (`id`, `soal`, `a`, `b`, `c`, `d`, `knc_jawaban`, `gambar`, `aktif`, `updated_at`, `created_at`) VALUES
-(15, 'Berikut yang bukan termasuk alat output adalah...?111', 'keyboard', 'speaker', 'monitor', 'printer', 'a', '30DFC13E2.jpg', 'Y', '2020-04-12 20:48:11', '2020-04-12 11:49:20'),
-(16, 'Tanda panah (tanda lain) yang mewakili posisi gerakan mouse disebut dengan...?', 'kursor', 'mouse', 'pointer', 'printer', 'c', '', 'Y', '2020-04-12 11:42:22', '2020-04-12 11:49:20'),
-(17, 'Fungsi printer adalah untuk....?', 'mengeluarkan suara', 'mencetak dokumen', 'menyimpan dokumen', 'salah semua', 'b', '30DFC13E2.jpg', 'Y', '2020-04-12 21:00:21', '2020-04-12 11:49:20'),
-(18, 'USB merupakan singkatan dari', 'universal serial buss', 'unit serial bus', 'Universal Serial Bus', 'Unit serial booster', 'c', 'c', 'N', '2020-04-12 21:00:40', '2020-04-12 11:49:20'),
-(19, 'Salah satu perangkat Lunak pengolah kata adalah', 'Ms.Word', 'Winamp', 'CC cleaner', 'Jet audio', 'a', '', 'Y', '2020-04-12 11:42:22', '2020-04-12 11:49:20'),
-(20, 'Program yang digunakan untuk disain gambar adalah..?', 'Ms.Exel', 'Media Player', 'Power Point', 'Photoshop', 'd', '', 'N', '2020-04-12 11:42:22', '2020-04-12 11:49:20'),
-(29, 'jawaban e B', 'd', 'v', 'd', 'd', 'b', 'deadpool-movie-logo-wallpaper-hd-resolution-On-High-Resolution-Wallpaper.jpg', 'Y', '2020-04-15 23:17:51', '2020-04-12 07:18:39'),
-(30, 'berapa jumlah kaki kuda', 'lima', 'sepuluh', 'satu', 'sembilan', 'd', NULL, 'Y', '2020-04-12 07:46:45', '2020-04-12 07:46:45');
+INSERT INTO `tbl_soal` (`id`, `soal`, `a`, `b`, `c`, `d`, `knc_jawaban`, `gambar`, `tanggal`, `aktif`, `updated_at`) VALUES
+(9, 'User atau Operator Komputer dalam Istilah Komputer disebut dengan..?', 'Brainware', 'Fireware', 'Software', 'Hardware', 'a', '', '0000-00-00', 'Y', '2020-06-13 07:32:30'),
+(10, 'CPU Merupakan Singkatan dari', 'Central Progamming Unit', 'Central Promoting Unit', 'Central Processing Unit', 'Central Producing Unit', 'c', '', '0000-00-00', 'Y', '2020-06-13 07:32:30'),
+(11, 'Jaringan dari elemen-elemen yang saling berhubungan adalah ?', 'pentium ', 'instal', 'system', 'data', 'c', '', '0000-00-00', 'Y', '2020-06-13 07:32:30'),
+(12, 'Berikut merupakan elemen-elemen sistem komputer kecuali...?', 'Fireware', 'Brainware', 'Software', 'Hadware', 'a', '', '0000-00-00', 'Y', '2020-06-13 07:32:30'),
+(13, 'Program yang berisi perinta-perintah / perangkat lunak disebut...?', 'Pentium', 'Brainware', 'Hardware', 'software', 'd', '', '0000-00-00', 'Y', '2020-06-13 07:32:30'),
+(14, 'Proses memasukkan dan memasang software ke dalam komputer disebut...?', 'data', 'instal', 'loading', 'online', 'b', '', '0000-00-00', 'Y', '2020-06-13 07:32:30'),
+(15, 'Berikut yang bukan termasuk alat output adalah...?', 'keyboard', 'speaker', 'monitor', 'printer', 'a', '', '0000-00-00', 'Y', '2020-06-13 07:32:30'),
+(16, 'Tanda panah (tanda lain) yang mewakili posisi gerakan mouse disebut dengan...?', 'kursor', 'mouse', 'pointer', 'printer', 'c', '', '0000-00-00', 'Y', '2020-06-13 07:32:30'),
+(17, 'Fungsi printer adalah untuk....?', 'mengeluarkan suara', 'mencetak dokumen', 'menyimpan dokumen', 'salah semua', 'b', 'Logo-ITATS.png', '0000-00-00', 'Y', '2020-06-13 01:48:13'),
+(18, 'USB merupakan singkatan dari', 'universal serial buss', 'unit serial bus', 'Universal Serial Bus', 'Unit serial booster', 'c', '', '0000-00-00', 'N', '2020-06-13 07:32:30'),
+(19, 'Salah satu perangkat Lunak pengolah kata adalah', 'Ms.Word', 'Winamp', 'CC cleaner', 'Jet audio', 'a', '', '0000-00-00', 'Y', '2020-06-13 07:32:30'),
+(20, 'Program yang digunakan untuk disain gambar adalah..?', 'Ms.Exel', 'Media Player', 'Power Point', 'Photoshop', 'd', '', '0000-00-00', 'N', '2020-06-13 07:32:30');
 
 -- --------------------------------------------------------
 
@@ -182,7 +221,7 @@ INSERT INTO `tbl_soal` (`id`, `soal`, `a`, `b`, `c`, `d`, `knc_jawaban`, `gambar
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `role` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` enum('admin','mahasiswa') COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -197,9 +236,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'admin', 'bb', 'bb@gmail.com', NULL, '$2y$10$Z3sUi.nfL9Dr2vblWRP1YewzVvrGl.jT0MT4d02R34gR2pO6NmmlC', 'LSZsHMwNOqKNkSMKbErsVbYolzsJqTjTtKRNssRh7ddShaIFTJPtxnoqgYGg', '2020-04-08 00:02:04', '2020-04-08 00:02:04'),
-(12, 'mahasiswa', 'coba1', 'vv@gmail.com', NULL, '$2y$10$4dh0.1ITiTVDIL26k/49XuJMC1Mk6YkuICs1weRoejAPuxa0IAy1.', 'psARKsdlBrKzj3Uz3xYMOIkTdTrws02eHpIZlSWQSEHfgAHZWPhZdAZKza8V', '2020-04-13 02:10:09', '2020-04-13 02:10:09'),
-(13, 'mahasiswa', 'mahasiswa1', 'm@gmail.com', NULL, '$2y$10$a1MU.9zvmoqNgFV0IO0iaOdWnenKpjtMdPO47hpx.MDvYBQnwnA0i', 'AdeTpJWdgNjRG0vHK8er7dPBsCv5MroBVpGu3GOxOlNjinksCwFybN0Wv3Gu', '2020-04-13 22:38:28', '2020-04-13 22:38:28');
+(2, 'admin', 'bb', 'bb@gmail.com', NULL, '$2y$10$Z3sUi.nfL9Dr2vblWRP1YewzVvrGl.jT0MT4d02R34gR2pO6NmmlC', 'yqe0c7ZXQiAzlEfUii9twi8uYkXUrz2g5zMtj2wN53m4cFQRENm4N8umF4Te', '2020-04-08 00:02:04', '2020-06-13 20:53:24'),
+(12, 'mahasiswa', 'coba1', 'vv@gmail.com', NULL, '$2y$10$4dh0.1ITiTVDIL26k/49XuJMC1Mk6YkuICs1weRoejAPuxa0IAy1.', 'ic85CfrIljBw7M86pmJxFqq6mGgO4RvDgaucxVRh6tTKnM9R67EDhhPrEHKj', '2020-04-13 02:10:09', '2020-04-13 02:10:09'),
+(13, 'mahasiswa', 'mahasiswa1', 'm@gmail.com', NULL, '$2y$10$a1MU.9zvmoqNgFV0IO0iaOdWnenKpjtMdPO47hpx.MDvYBQnwnA0i', 'AdeTpJWdgNjRG0vHK8er7dPBsCv5MroBVpGu3GOxOlNjinksCwFybN0Wv3Gu', '2020-04-13 22:38:28', '2020-04-13 22:38:28'),
+(14, 'mahasiswa', 'aaa', 'ahoy@gmail.com', NULL, '$2y$10$r90RA3FI0.n1NVMFuTkwIOdoXiTWNW5DvZMRcwd20sPHhBGj3u3Yi', 'tVErPef63ngufbYIQr7YGBP4NVjCngbYeibA5PTTDTiBWSqoD8NrdqjMP9fc', '2020-06-11 19:05:58', '2020-06-13 22:38:02'),
+(16, 'mahasiswa', 'addss', 'vsasv@gmail.com', NULL, '$2y$10$wWZwcpI7Ma.6t9je1jMtOeV.8La7x4Qn8skcNeGXTe3vrGizc1S4.', 'tbJsDonOcxBqBFpOusxi60s8qslw3wSFR7VUGROBLWW7PZjwsT1wJnhakoUG', '2020-06-11 19:29:16', '2020-06-13 21:02:20');
 
 --
 -- Indexes for dumped tables
@@ -212,10 +253,10 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `jawaban`
+-- Indexes for table `kode`
 --
-ALTER TABLE `jawaban`
-  ADD PRIMARY KEY (`id_jawaban`);
+ALTER TABLE `kode`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `mahasiswa`
@@ -234,6 +275,18 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `praktikum`
+--
+ALTER TABLE `praktikum`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `praktikum_user`
+--
+ALTER TABLE `praktikum_user`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `siswa`
@@ -265,21 +318,33 @@ ALTER TABLE `customer`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `jawaban`
+-- AUTO_INCREMENT for table `kode`
 --
-ALTER TABLE `jawaban`
-  MODIFY `id_jawaban` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `kode`
+  MODIFY `id` int(222) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `praktikum`
+--
+ALTER TABLE `praktikum`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `praktikum_user`
+--
+ALTER TABLE `praktikum_user`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -292,13 +357,13 @@ ALTER TABLE `siswa`
 -- AUTO_INCREMENT for table `tbl_soal`
 --
 ALTER TABLE `tbl_soal`
-  MODIFY `id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

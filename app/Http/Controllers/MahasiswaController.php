@@ -8,8 +8,8 @@ class MahasiswaController extends Controller
 {
     public function index()
     {
-        $data_mahasiswa = \App\Mahasiswa::paginate(1);
-        return view('mahasiswa.index', ['data_mahasiswa' => $data_mahasiswa]);
+        $mahasiswa = \App\Mahasiswa::all();
+        return view('mahasiswa.index', ['mahasiswa' => $mahasiswa]);
     }
 
     public function create(Request $request)

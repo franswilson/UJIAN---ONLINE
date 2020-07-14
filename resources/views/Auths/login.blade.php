@@ -30,7 +30,7 @@
                     <div class="left">
                         <div class="content">
                             <div class="header">
-                                <div class="logo text-center"><img src="admin/assets/img/logo-dark.png" alt="Klorofil Logo"></div>
+
                                 <p class="lead">Login to your account</p>
                             </div>
                             <form class="form-auth-small" action="/postlogin" method="POST">
@@ -53,7 +53,7 @@
                     <div class="right">
                         <div class="overlay"></div>
                         <div class="content text">
-                            <h1 class="heading">Free Bootstrap dashboard template</h1>
+
                             <p>by The Develovers</p>
                         </div>
                     </div>

@@ -10,9 +10,12 @@ class SoalController extends Controller
 
     public function getSoal()
     {
+        $praktikum = \App\Praktikum::where('aktif', '=', 'Y')->get();
         $soal = Soal::where('aktif', '=', 'Y')->inRandomOrder()->get();
-        return view('soal', compact('soal'));
+        return view('soal', ['soal' => $soal, 'praktikum' => $praktikum]);
     }
+
+
 
     public function getJawaban()
     {

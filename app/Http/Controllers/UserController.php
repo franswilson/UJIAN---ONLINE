@@ -24,14 +24,8 @@ class UserController extends Controller
         $profile  = \App\User::find($id);
         $praktikum = \App\Praktikum::all();
         // $user = \App\User::find($id);
-
-
-
         return view('user.profile', ['profile' => $profile]);
     }
-
-
-
 
     public function create(Request $request)
     {

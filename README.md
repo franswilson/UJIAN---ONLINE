@@ -1,2 +1,0 @@
-# pretest
-tugas KP

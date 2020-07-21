@@ -1,7 +1,6 @@
 @extends('layouts.layout')
 @section('content')
 <div class="main">
-
     <div class="main-content">
         <div class="container-fluid">
             <div class="row">

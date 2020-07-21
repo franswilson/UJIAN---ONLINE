@@ -10,10 +10,18 @@
                             <h3 class="panel-title">Nilai</h3>
                         </div>
                         <div class="panel-body">
-                            <div class="panel-body">
+                            <div class="col-6">
                                 <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
                                     Tambah Soal
                                 </button>
+
+                            </div>
+                            @if(session('sukses'))
+                            <div class="alert alert-success" role="alert">
+                                {{session('sukses')}}
+                            </div>
+                            @endif
+                            <div class="panel-body">
                                 <table class="table table-striped table-bordered" id="praktikum">
                                     <thead>
                                         <tr>
@@ -21,7 +29,7 @@
                                             <th>id</th>
                                             <th>nama praktikum</th>
                                             <th>kode</th>
-                                            <th>aktivasi</th>
+                                            <th>aktif</th>
                                             <th>aksi</th>
 
 
@@ -36,13 +44,13 @@
                                             <td>{{$u->id}}</td>
                                             <td>{{$u->nama}}</td>
                                             <td>{{$u->kode}}</td>
-                                            <td>{{$u->aktif}}</td>
+                                            <td><span class="label label-warning">{{$u->aktif}}</span></td>
                                             <td>
                                                 <form action="{{ route('praktikum.delete', $u->id)}}" class="d-inline">
 
-                                                    <button class="btn btn-danger btn-sm" type="submit">Hapus</button>
+                                                    <button class="btn btn-danger btn-sm lnr lnr-trash" type="submit"></button>
                                                     @csrf
-                                                    <a class="btn btn-primary btn-sm" href="{{ route('praktikum.edit', $u->id) }}">Edit</a>
+                                                    <a class="btn btn-primary btn-sm  lnr lnr-pencil" href="{{ route('praktikum.edit', $u->id) }}"></a>
                                                 </form>
                                             </td>
 
@@ -62,31 +70,20 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="/mahasiswa/create" method="POST">
+                                                <form action="praktikum/create" method="POST">
                                                     {{csrf_field()}}
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Nama</label>
-                                                        <input type="text" name="nama" class="form-control" placeholder="nama mahasiswa" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                        <input type="text" name="nama" class="form-control" placeholder="nama praktikum" id="exampleInputEmail1" aria-describedby="emailHelp">
 
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="form-group">
-                                                            <label for="exampleInputEmail1">Email</label>
-                                                            <input type="email" name="email" class="form-control" placeholder="nama mahasiswa" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                            <label for="exampleInputEmail1">kode</label>
+                                                            <input type="text" name="kode" class="form-control" placeholder="kode praktikum" id="exampleInputEmail1" aria-describedby="emailHelp">
 
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputPassword1">alamat</label>
-                                                            <input name="alamat" type="text" class="form-control" id="exampleInputPassword1 " placeholder="Alamat mahasiswa">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputPassword1">NO hp</label>
-                                                            <input type="text" placeholder="tlp mahasiswa" name="tlp" class="form-control" id="exampleInputPassword1">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleInputPassword1">NPM</label>
-                                                            <input type="text" placeholder="NPM mahasiswa" name="npm" class="form-control" id="exampleInputPassword1">
-                                                        </div>
+
 
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
@@ -94,8 +91,8 @@
                                                         </div>
                                                 </form>
                                             </div>
-
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -106,6 +103,7 @@
         </div>
     </div>
 </div>
+
 <div class="container">
     <div class="col-md-12">
 

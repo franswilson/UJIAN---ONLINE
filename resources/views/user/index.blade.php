@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Data user</h3>
+                            <h3 class="panel-title">Data Login</h3>
                         </div>
                         <div class="panel-body">
                             <div class="col-6">
@@ -48,9 +48,9 @@
                                             <td>
                                                 <form action="{{ route('user.delete', $c->id)}}" class="d-inline">
 
-                                                    <button class="btn btn-danger btn-sm" type="submit">Hapus</button>
+                                                    <button class="btn btn-danger btn-sm lnr lnr-trash" type="submit"></button>
                                                     @csrf
-                                                    <a class="btn btn-primary btn-sm" href="{{ route('user.edit', $c->id) }}">Edit</a>
+                                                    <a class="btn btn-primary btn-sm  lnr lnr-pencil" href="{{ route('user.edit', $c->id) }}"></a>
                                                 </form>
                                             </td>
                                         </tr>
@@ -66,20 +66,29 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="/user/create" method="POST">
+                                                <form action="user/create" method="POST">
                                                     {{csrf_field()}}
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Nama</label>
-                                                        <input type="text" name="nama" class="form-control" placeholder="nama user" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                        <input type="text" name="name" class="form-control" placeholder="nama " id="exampleInputEmail1" aria-describedby="emailHelp">
 
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="exampleInputPassword1">alamat</label>
-                                                        <input name="alamat" type="text" class="form-control" id="exampleInputPassword1 " placeholder="Alamat user">
+                                                        <label for="exampleInputEmail1">password</label>
+                                                        <input type="text" name="password" class="form-control" placeholder="password" id="exampleInputEmail1" aria-describedby="emailHelp">
+
                                                     </div>
+
                                                     <div class="form-group">
-                                                        <label for="exampleInputPassword1">NO hp</label>
-                                                        <input type="text" placeholder="tlp user" name="tlp" class="form-control" id="exampleInputPassword1">
+                                                        <label for="exampleInputEmail1">email</label>
+                                                        <input type="text" name="email" class="form-control" placeholder="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                    </div>
+                                                    <div class=" form-group">
+                                                        <label for="exampleInputPassword1">Role</label>
+                                                        <select name="role" class="form-control" id="exampleInputPassword1">
+                                                            <option value="admin" selected>admin</option>
+                                                            <option value="mahasiswa" selected>mahasiswa</option>
+                                                        </select>
                                                     </div>
 
                                                     <div class="modal-footer">

@@ -30,24 +30,19 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="index.html"><img src="{{asset('admin/assets/img/coba.jpg')}}" alt="Klorofil Logo" class="img-responsive logo"></a>
+				<a href="index.html"><img src="{{asset('admin/assets/img/logo1.jpg')}}" alt="Klorofil Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
 					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
 				</div>
-				<form class="navbar-form navbar-left">
-					<div class="input-group">
-						<input type="text" value="" class="form-control" placeholder="Search dashboard...">
-						<span class="input-group-btn"><button type="button" class="btn btn-primary">Go</button></span>
-					</div>
-				</form>
+
 
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('admin/assets/img/user.png')}}" class="img-circle" alt="Avatar"> <span>{{Auth()->user()->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span>{{Auth()->user()->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="/user/{{Auth()->user()->id}}/profile"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
@@ -70,13 +65,13 @@
 
 
 						@if(auth()->user()->role == 'admin')
-						<li><a href="/soal" class="{{ (request()->is('modul')) ? 'active' : '' }}"><i class="lnr lnr-code"></i> <span>Soal</span></a></li>
+						<!-- <li><a href="/soal" class="{{ (request()->is('modul')) ? 'active' : '' }}"><i class="lnr lnr-code"></i> <span>Soal</span></a></li> -->
 
-						<li><a href="/nilai" class="{{ (request()->is('nilai')) ? 'active' : '' }}"> <i class="lnr lnr-home "></i> <span>Nilai</span></a></li>
-						<li><a href="/mahasiswa" class="{{ (request()->is('mahasiswa')) ? 'active' : '' }}"><i class="lnr lnr-user"></i> <span>Mahasiswa</span></a></li>
-						<li><a href="/data_soal" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr lnr-code"></i> <span>Manegemen Soal</span></a></li>
-						<li><a href="/praktikum" class="{{ (request()->is('praktikum')) ? 'active' : '' }}"><i class="lnr lnr-code"></i> <span>Manegemen praktikum</span></a></li>
-						<li><a href="/user" class="{{ (request()->is('user')) ? 'active' : '' }}"><i class="lnr lnr-code"></i> <span>Data login</span></a></li>
+						<li><a href="/nilai" class="{{ (request()->is('nilai')) ? 'active' : '' }}"> <i class="lnr lnr-pencil "></i> <span>Nilai</span></a></li>
+						<!-- <li><a href="/mahasiswa" class="{{ (request()->is('mahasiswa')) ? 'active' : '' }}"><i class="lnr lnr-users"></i> <span>Mahasiswa</span></a></li> -->
+						<li><a href="/data_soal" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr  lnr-inbox"></i> <span>Manegemen Soal</span></a></li>
+						<li><a href="/praktikum" class="{{ (request()->is('praktikum')) ? 'active' : '' }}"><i class="lnr lnr-inbox"></i> <span>Manegemen praktikum</span></a></li>
+						<li><a href="/user" class="{{ (request()->is('user')) ? 'active' : '' }}"><i class="lnr lnr-users"></i> <span>Data login</span></a></li>
 						@endif
 					</ul>
 				</nav>

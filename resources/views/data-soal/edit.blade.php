@@ -38,6 +38,10 @@
                                         <input type="text" placeholder="Jawaban d" name="d" class="form-control" id="exampleInputPassword1" value="{{$data_soal->d}}">
                                     </div>
                                     <div class="form-group">
+                                        <label for="exampleInputPassword1">E</label>
+                                        <input type="text" placeholder="Jawaban e" name="e" class="form-control" id="exampleInputPassword1" value="{{$data_soal->e}}">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="exampleInputPassword1">Kunci Jawaban</label>
                                         <input type="text" placeholder="Kunci jawaban" name="knc_jawaban" class="form-control" id="exampleInputPassword1" value="{{$data_soal->knc_jawaban}}">
                                     </div>

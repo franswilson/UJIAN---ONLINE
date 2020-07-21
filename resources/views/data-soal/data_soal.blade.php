@@ -11,7 +11,6 @@
                         </div>
                         <div class="panel-body">
                             <div class="col-6">
-                                <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
                                     Tambah Soal
                                 </button>
@@ -22,7 +21,6 @@
                                 {{session('sukses')}}
                             </div>
                             @endif
-
                             <div class="panel-body">
                                 <table class="table table-striped table-bordered" id="soal">
                                     <thead>
@@ -33,6 +31,7 @@
                                             <th>b</th>
                                             <th>c</th>
                                             <th>d</th>
+                                            <th>e</th>
                                             <th>kunci jawaban</th>
                                             <th>gambar</th>
                                             <th>aktif</th>
@@ -49,15 +48,16 @@
                                             <td>{{ $c->b }}</td>
                                             <td>{{ $c->c }}</td>
                                             <td>{{ $c->d }}</td>
+                                            <td>{{ $c->e }}</td>
                                             <td>{{ $c->knc_jawaban }}</td>
                                             <td>{{ $c->gambar }}</td>
-                                            <td>{{ $c->aktif}}</td>
+                                            <td><span class="label label-warning">{{ $c->aktif}}</span></td>
                                             <td>
                                                 <form action="{{ route('data_soal.delete', $c->id)}}" class="d-inline">
 
-                                                    <button class="btn btn-danger btn-sm" type="submit">Hapus</button>
+                                                    <button class="btn btn-danger btn-sm lnr lnr-trash" type="submit"></button>
                                                     @csrf
-                                                    <a class="btn btn-primary btn-sm" href="{{ route('data_soal.edit', $c->id) }}">Edit</a>
+                                                    <a class="btn btn-primary btn-sm  lnr lnr-pencil" href="{{ route('data_soal.edit', $c->id) }}"></a>
                                                 </form>
                                             </td>
                                         </tr>
@@ -97,6 +97,10 @@
                                                         <div class="form-group">
                                                             <label for="exampleInputPassword1">D</label>
                                                             <input type="text" placeholder="Jawaban d" name="d" class="form-control" id="exampleInputPassword1">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputPassword1">E</label>
+                                                            <input type="text" placeholder="Jawaban e" name="e" class="form-control" id="exampleInputPassword1">
                                                         </div>
 
                                                         <div class="form-group">

@@ -22,12 +22,12 @@
                                 </div>
                                 <div class=" form-group">
                                     <label for="exampleInputEmail1">Nama</label>
-                                    <input type="text" name="nama" class="form-control" placeholder="nama user" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$user->name}}">
+                                    <input type="text" name="name" class="form-control" placeholder="nama user" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$user->name}}">
 
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Email</label>
-                                    <input name="npm" type="text" class="form-control" id="exampleInputPassword1 " placeholder="Email user" value="{{$user->email}}">
+                                    <input name="email" type="text" class="form-control" id="exampleInputPassword1 " placeholder="Email user" value="{{$user->email}}">
                                 </div>
 
                                 <div class="form-group">

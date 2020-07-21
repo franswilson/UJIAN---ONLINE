@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2020 at 08:23 AM
+-- Generation Time: Jul 19, 2020 at 03:42 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -124,18 +124,18 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `praktikum` (
   `id` int(255) NOT NULL,
-  `nama` enum('JARKOM-1','JARKOM-2','JARKOM-3') DEFAULT NULL,
-  `kode` varchar(255) NOT NULL
+  `nama` varchar(255) DEFAULT NULL,
+  `kode` varchar(255) NOT NULL,
+  `aktif` varchar(221) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `praktikum`
 --
 
-INSERT INTO `praktikum` (`id`, `nama`, `kode`) VALUES
-(1, 'JARKOM-1', 'JK12'),
-(2, 'JARKOM-2', 'MMM'),
-(4, 'JARKOM-3', 'KKK');
+INSERT INTO `praktikum` (`id`, `nama`, `kode`, `aktif`) VALUES
+(1, 'JARKOM-1', 'asdasd', 'Y'),
+(4, 'SO', 'LM12', 'Y');
 
 -- --------------------------------------------------------
 
@@ -160,7 +160,13 @@ CREATE TABLE `praktikum_user` (
 INSERT INTO `praktikum_user` (`id`, `user_id`, `praktikum_id`, `nama`, `nilai`, `created_at`, `updated_at`) VALUES
 (1, '2', 1, 'bb', '80', '2020-04-10 22:07:54', '2020-04-10 22:07:54'),
 (3, '2', 4, 'bb', '20', '2020-06-13 00:28:51', '2020-06-13 00:28:51'),
-(5, '2', 4, 'bb', '0', '2020-06-15 01:29:07', '2020-06-15 01:29:07');
+(5, '2', 4, 'bb', '0', '2020-06-15 01:29:07', '2020-06-15 01:29:07'),
+(6, '2', 1, 'bb', '0', '2020-07-06 20:48:38', '2020-07-06 20:48:38'),
+(7, '2', 1, 'bb', '10', '2020-07-06 20:52:37', '2020-07-06 20:52:37'),
+(8, '12', 4, 'coba1', '20', '2020-07-07 00:15:29', '2020-07-07 00:15:29'),
+(16, '12', 2, 'coba1', '10', '2020-07-10 10:27:48', '2020-07-10 10:27:48'),
+(17, '12', 2, 'coba1', '10', '2020-07-11 19:32:48', '2020-07-11 19:32:48'),
+(18, '12', 1, 'coba1', '50', '2020-07-11 19:33:16', '2020-07-11 19:33:16');
 
 -- --------------------------------------------------------
 
@@ -208,7 +214,7 @@ INSERT INTO `tbl_soal` (`id`, `soal`, `a`, `b`, `c`, `d`, `knc_jawaban`, `gambar
 (14, 'Proses memasukkan dan memasang software ke dalam komputer disebut...?', 'data', 'instal', 'loading', 'online', 'b', '', '0000-00-00', 'Y', '2020-06-13 07:32:30'),
 (15, 'Berikut yang bukan termasuk alat output adalah...?', 'keyboard', 'speaker', 'monitor', 'printer', 'a', '', '0000-00-00', 'Y', '2020-06-13 07:32:30'),
 (16, 'Tanda panah (tanda lain) yang mewakili posisi gerakan mouse disebut dengan...?', 'kursor', 'mouse', 'pointer', 'printer', 'c', '', '0000-00-00', 'Y', '2020-06-13 07:32:30'),
-(17, 'Fungsi printer adalah untuk....?', 'mengeluarkan suara', 'mencetak dokumen', 'menyimpan dokumen', 'salah semua', 'b', 'Logo-ITATS.png', '0000-00-00', 'Y', '2020-06-13 01:48:13'),
+(17, 'Fungsi printer adalah untuk....?', 'mengeluarkan suara', 'mencetak dokumen', 'menyimpan dokumen', 'salah semua', 'b', 'Logo-ITATS.png', '0000-00-00', 'N', '2020-07-13 07:42:06'),
 (18, 'USB merupakan singkatan dari', 'universal serial buss', 'unit serial bus', 'Universal Serial Bus', 'Unit serial booster', 'c', '', '0000-00-00', 'N', '2020-06-13 07:32:30'),
 (19, 'Salah satu perangkat Lunak pengolah kata adalah', 'Ms.Word', 'Winamp', 'CC cleaner', 'Jet audio', 'a', '', '0000-00-00', 'Y', '2020-06-13 07:32:30'),
 (20, 'Program yang digunakan untuk disain gambar adalah..?', 'Ms.Exel', 'Media Player', 'Power Point', 'Photoshop', 'd', '', '0000-00-00', 'N', '2020-06-13 07:32:30');
@@ -236,8 +242,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'admin', 'bb', 'bb@gmail.com', NULL, '$2y$10$Z3sUi.nfL9Dr2vblWRP1YewzVvrGl.jT0MT4d02R34gR2pO6NmmlC', 'yqe0c7ZXQiAzlEfUii9twi8uYkXUrz2g5zMtj2wN53m4cFQRENm4N8umF4Te', '2020-04-08 00:02:04', '2020-06-13 20:53:24'),
-(12, 'mahasiswa', 'coba1', 'vv@gmail.com', NULL, '$2y$10$4dh0.1ITiTVDIL26k/49XuJMC1Mk6YkuICs1weRoejAPuxa0IAy1.', 'ic85CfrIljBw7M86pmJxFqq6mGgO4RvDgaucxVRh6tTKnM9R67EDhhPrEHKj', '2020-04-13 02:10:09', '2020-04-13 02:10:09'),
+(2, 'admin', 'bb', 'bb@gmail.com', NULL, '$2y$10$Z3sUi.nfL9Dr2vblWRP1YewzVvrGl.jT0MT4d02R34gR2pO6NmmlC', 'LDVbPgPoUTNfYpa02EB5AvT2e5htJGICJIH6QP9BpcqfdFqhVD80b1MKCBOF', '2020-04-08 00:02:04', '2020-06-13 20:53:24'),
+(12, 'admin', 'coba1', 'vv@gmail.com', NULL, '$2y$10$4dh0.1ITiTVDIL26k/49XuJMC1Mk6YkuICs1weRoejAPuxa0IAy1.', 'nN5tJ8paM2TISOrv4wBDiKqXWeMvD4ypglVtc53hiiOb5XZDvIw1hQW8lUaB', '2020-04-13 02:10:09', '2020-07-13 07:59:50'),
 (13, 'mahasiswa', 'mahasiswa1', 'm@gmail.com', NULL, '$2y$10$a1MU.9zvmoqNgFV0IO0iaOdWnenKpjtMdPO47hpx.MDvYBQnwnA0i', 'AdeTpJWdgNjRG0vHK8er7dPBsCv5MroBVpGu3GOxOlNjinksCwFybN0Wv3Gu', '2020-04-13 22:38:28', '2020-04-13 22:38:28'),
 (14, 'mahasiswa', 'aaa', 'ahoy@gmail.com', NULL, '$2y$10$r90RA3FI0.n1NVMFuTkwIOdoXiTWNW5DvZMRcwd20sPHhBGj3u3Yi', 'tVErPef63ngufbYIQr7YGBP4NVjCngbYeibA5PTTDTiBWSqoD8NrdqjMP9fc', '2020-06-11 19:05:58', '2020-06-13 22:38:02'),
 (16, 'mahasiswa', 'addss', 'vsasv@gmail.com', NULL, '$2y$10$wWZwcpI7Ma.6t9je1jMtOeV.8La7x4Qn8skcNeGXTe3vrGizc1S4.', 'tbJsDonOcxBqBFpOusxi60s8qslw3wSFR7VUGROBLWW7PZjwsT1wJnhakoUG', '2020-06-11 19:29:16', '2020-06-13 21:02:20');
@@ -345,7 +351,7 @@ ALTER TABLE `praktikum`
 -- AUTO_INCREMENT for table `praktikum_user`
 --
 ALTER TABLE `praktikum_user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `siswa`

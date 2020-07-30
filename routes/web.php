@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('Auths.login');
 });
@@ -95,4 +96,5 @@ Route::group(['middleware' => ['auth', 'checkRole:mahasiswa,admin']], function (
 
     //profile
     Route::get('/user/{id}/profile', 'UserController@profile');
+    Route::get('/soal/{id}/{jawab}', 'SoalController@simpansoal');
 });

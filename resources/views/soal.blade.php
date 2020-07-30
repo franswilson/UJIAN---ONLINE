@@ -36,12 +36,14 @@ div class="main">
 
                                 @php
                                 $angka = 1;
+                                $soal = Session::get('soal');
+                                $jawab = Session::get('jawab');
+                                $jawaban = Session::get('jawaban');
                                 @endphp
-                                @foreach($soal as $s)
+                                @foreach($soal[0] as $s)
 
 
                                 @csrf
-                                <input type="hidden" name="jumlah" value="{{$s->jumlah}}">
                                 <tr>
                                     <td width="17">
                                         <font color="#000000">{{$angka}}</font>
@@ -62,7 +64,17 @@ div class="main">
                                     </td>
                                     <td>
                                         <font color="#000000">
-                                            A. <input name="pilihan[{{ $s->id }}]" type="radio" value="a">
+                                            A. <input name="pilihan[{{ $s->id }}]" type="radio" value="a" @php $no=-1; for($i=0;$i<count($jawab);$i++){ if($jawab[$i]=="pilihan[" .$s->id."]"){
+                                            $no = $i;
+                                            }
+                                            }
+                                            if($no > -1){
+                                            if($jawaban[$no] == "a"){
+                                            echo "checked";
+                                            }
+                                            }
+                                            @endphp
+                                            >
                                             {{$s->a}}</font>
                                     </td>
                                 </tr>
@@ -72,7 +84,17 @@ div class="main">
                                     </td>
                                     <td>
                                         <font color="#000000">
-                                            B. <input name="pilihan[{{ $s->id }}]" type="radio" value="b">
+                                            B. <input name="pilihan[{{ $s->id }}]" type="radio" value="b" @php $no=-1; for($i=0;$i<count($jawab);$i++){ if($jawab[$i]=="pilihan[" .$s->id."]"){
+                                            $no = $i;
+                                            }
+                                            }
+                                            if($no > -1){
+                                            if($jawaban[$no] == "b"){
+                                            echo "checked";
+                                            }
+                                            }
+                                            @endphp
+                                            >
                                             {{$s->b}}</font>
                                     </td>
                                 </tr>
@@ -82,7 +104,17 @@ div class="main">
                                     </td>
                                     <td>
                                         <font color="#000000">
-                                            C. <input name="pilihan[{{ $s->id }}]" type="radio" value="c">
+                                            C. <input name="pilihan[{{ $s->id }}]" type="radio" value="c" @php $no=-1; for($i=0;$i<count($jawab);$i++){ if($jawab[$i]=="pilihan[" .$s->id."]"){
+                                            $no = $i;
+                                            }
+                                            }
+                                            if($no > -1){
+                                            if($jawaban[$no] == "c"){
+                                            echo "checked";
+                                            }
+                                            }
+                                            @endphp
+                                            >
                                             {{$s->c}}</font>
                                     </td>
                                 </tr>
@@ -93,7 +125,17 @@ div class="main">
                                     <td>
                                         <font color="#000000">
 
-                                            D. <input name="pilihan[{{ $s->id }}]" type="radio" value="d">
+                                            D. <input name="pilihan[{{ $s->id }}]" type="radio" value="d" @php $no=-1; for($i=0;$i<count($jawab);$i++){ if($jawab[$i]=="pilihan[" .$s->id."]"){
+                                            $no = $i;
+                                            }
+                                            }
+                                            if($no > -1){
+                                            if($jawaban[$no] == "d"){
+                                            echo "checked";
+                                            }
+                                            }
+                                            @endphp
+                                            >
                                             {{$s->d}}</font>
                                     </td>
 
@@ -105,7 +147,17 @@ div class="main">
                                     <td>
                                         <font color="#000000">
 
-                                            E. <input name="pilihan[{{ $s->id }}]" type="radio" value="e">
+                                            E. <input name="pilihan[{{ $s->id }}]" type="radio" value="e" @php $no=-1; for($i=0;$i<count($jawab);$i++){ if($jawab[$i]=="pilihan[" .$s->id."]"){
+                                            $no = $i;
+                                            }
+                                            }
+                                            if($no > -1){
+                                            if($jawaban[$no] == "e"){
+                                            echo "checked";
+                                            }
+                                            }
+                                            @endphp
+                                            >
                                             {{$s->e}}</font>
                                     </td>
 
@@ -130,4 +182,29 @@ div class="main">
         </div>
     </div>
 </div>
+@endsection
+
+@section('footer')
+<script>
+    $(document).ready(function() {
+        $('input[type=radio]').click(function() {
+            var nilai = $(this).attr("value");
+            var soal = $(this).attr("name");
+            $.ajax({
+
+                url: "{{ url('/soal') }}/" + soal + "/" + nilai,
+                type: "get",
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(xhr) {
+
+                }
+
+            });
+
+        });
+
+    });
+</script>
 @endsection

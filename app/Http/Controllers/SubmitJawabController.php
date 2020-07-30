@@ -8,13 +8,16 @@ use App\Soal;
 use App\Praktikum;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SubmitJawabController extends Controller
 {
     public function store(Request $request)
     {
         //$praktikum = \App\Praktikum::all();
-
+        Session::forget('soal');
+        Session::forget('jawab');
+        Session::forget('jawaban');
         $benar = 10;
         $nilai = 0;
         foreach ($request->pilihan as $i => $pilihan) {

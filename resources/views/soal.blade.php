@@ -13,6 +13,7 @@ div class="main">
                                 <h3>
                                     <class class="panell-title"><b>Ujian Online Pilihan Ganda</b></class>
 
+
                                 </h3>
                                 <form name="form1" method="post" action="{{ route('jawab.store') }}">
 
@@ -30,7 +31,14 @@ div class="main">
                                     </div>
                             </div>
 
-
+                            <style>
+                                p {
+                                    text-align: right;
+                                    font-size: 60px;
+                                    margin-top: 0px;
+                                }
+                            </style>
+                            <p id="timer"></p>
 
                             <table width="100%" border="0">
 
@@ -206,5 +214,57 @@ div class="main">
         });
 
     });
+</script>
+
+<script>
+    // program timer
+    const tgltujuan = new Date('Aug 15, 2020 19:56:00').getTime();
+
+    const hitungmundur = setInterval(function() {
+        const tglsekarang = new Date().getTime();
+        const selisih = tgltujuan - tglsekarang;
+
+        const jam = Math.floor(selisih % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+        const menit = Math.floor(selisih % (1000 * 60 * 60) / (1000 * 60));
+        const detik = Math.floor(selisih % (1000 * 60) / (1000));
+
+        const timer = document.getElementById('timer');
+        timer.innerHTML = 'waktu ujian : ' + jam + 'jam' + menit + 'menit' + detik + 'detik';
+
+        if (selisih < 0) {
+            clearInterval(hitungmundur);
+            timer.innerHTML = 'waktu telah habis';
+        }
+    }, 1000);
+
+
+
+    // document.getElementById('timer').innerHTML =
+    //     60 + ":" + 00;
+    // startTimer();
+
+    // function startTimer() {
+    //     var presentTime = document.getElementById('timer').innerHTML;
+    //     var timeArray = presentTime.split(/[:]+/);
+    //     var m = timeArray[0];
+    //     var s = checkSecond((timeArray[1] - 1));
+    //     if (s == 59) {
+    //         m = m - 1
+    //     }
+    //     //if(m<0){alert('timer completed')}
+    //     document.getElementById('timer').innerHTML =
+    //         m + ":" + s;
+    //     setTimeout(startTimer, 1000);
+    // }
+
+    // function checkSecond(sec) {
+    //     if (sec < 10 && sec >= 0) {
+    //         sec = "0" + sec
+    //     }; // add zero in front of numbers < 10
+    //     if (sec < 0) {
+    //         sec = "59"
+    //     };
+    //     return sec;
+    // }
 </script>
 @endsection

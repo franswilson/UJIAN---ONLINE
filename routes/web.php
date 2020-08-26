@@ -66,7 +66,11 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/user/{id}/delete', 'UserController@delete')->name('user.delete');
 
 
-
+    //waktu
+    Route::get('/waktu', 'WaktuController@index');
+    Route::get('/waktu/{id}/edit', 'WaktuController@edit')->name('waktu.edit');
+    Route::post('/waktu/{id}/update', 'WaktuController@update');
+    Route::get('/waktu/{id}/delete', 'WaktuController@delete')->name('waktu.delete');
 
 
     //data mahasiswa

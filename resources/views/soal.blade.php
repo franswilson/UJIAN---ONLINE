@@ -15,7 +15,7 @@ div class="main">
 
 
                                 </h3>
-                                <form name="form1" method="post" action="{{ route('jawab.store') }}">
+                                <form id="formSoal" name="form1" method="post" action="{{ route('jawab.store') }}">
 
                                     <div class=" form-group">
 
@@ -34,7 +34,7 @@ div class="main">
                             <style>
                                 p {
                                     text-align: right;
-                                    font-size: 60px;
+                                    font-size: 20px;
                                     margin-top: 0px;
                                 }
                             </style>
@@ -177,7 +177,7 @@ div class="main">
                                 @endforeach
                                 <tr>
                                     <td>&nbsp;</td>
-                                    <td><input type="submit" name="submit" value="Jawab" onclick="return confirm('Apakah Anda yakin dengan jawaban Anda?')"></td>
+                                    <td><input id="tombolSubmit" type="submit" name="submit" value="Jawab"></td>
                                 </tr>
                             </table>
 
@@ -215,10 +215,14 @@ div class="main">
 
     });
 </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 <script>
     // program timer
-    const tgltujuan = new Date('Aug 15, 2020 19:56:00').getTime();
+    // alert(moment("{{ $cek->waktu_mulai }}", "YYYY-MM-DD HH:mm:ss").format("MMM DD, YYYY HH:mm:ss").valueOf());
+    const tgl = moment("{{ $cek->waktu_selesai }}", "YYYY-MM-DD HH:mm:ss").format("MMM DD, YYYY HH:mm:ss").valueOf();
+    // alert(tgl);
+    const tgltujuan = new Date(tgl).getTime();
+    // alert(tgltujuan);
 
     const hitungmundur = setInterval(function() {
         const tglsekarang = new Date().getTime();
@@ -229,11 +233,12 @@ div class="main">
         const detik = Math.floor(selisih % (1000 * 60) / (1000));
 
         const timer = document.getElementById('timer');
-        timer.innerHTML = 'waktu ujian : ' + jam + 'jam' + menit + 'menit' + detik + 'detik';
+        timer.innerHTML = 'waktu ujian : ' + jam + ':' + menit + ':' + detik;
 
         if (selisih < 0) {
             clearInterval(hitungmundur);
             timer.innerHTML = 'waktu telah habis';
+            // $('#tombolSubmit').click();
         }
     }, 1000);
 

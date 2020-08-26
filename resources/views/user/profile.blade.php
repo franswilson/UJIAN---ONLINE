@@ -13,11 +13,11 @@
                             <br>
 
                             <div class="profile-main">
-                                <img src="{{asset('assets/img/user-medium.png')}}" class="img-circle" alt="Avatar">
+                                <!-- <img src="{{asset('assets/img/user-medium.png')}}" class="img-circle" alt="Avatar"> -->
 
                                 <h3 class="name">{{$profile->name}}</h3>
 
-                                <span class="online-status status-available">Available</span>
+                                <span class="online-status status-available">AKTIF</span>
                             </div>
                             <div class="profile-stat">
                                 <div class="row">

@@ -20,12 +20,14 @@ class SubmitJawabController extends Controller
         Session::forget('jawaban');
         $benar = 10;
         $nilai = 0;
-        foreach ($request->pilihan as $i => $pilihan) {
-            $find = Soal::where('id', $i)->first();
-            if ($find->knc_jawaban == $pilihan) {
-                $nilai +=  $benar;
-            }
-        };
+        if (!empty($request->pilihan)) {
+            foreach ($request->pilihan as $i => $pilihan) {
+                $find = Soal::where('id', $i)->first();
+                if ($find->knc_jawaban == $pilihan) {
+                    $nilai +=  $benar;
+                }
+            };
+        }
 
 
         $jawaban = new Jawaban;

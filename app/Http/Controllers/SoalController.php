@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Soal;
+use App\Waktu;
 use Illuminate\Support\Facades\Session;
 
 class SoalController extends Controller
@@ -11,15 +12,25 @@ class SoalController extends Controller
 
     public function getSoal()
     {
-        $praktikum = \App\Praktikum::where('aktif', '=', 'Y')->get();
+        date_default_timezone_set("Asia/Bangkok");
+        // \Carbon\Carbon::setLocale('id');
+        $timeNow = \Carbon\Carbon::now()->toDateTimeString();
+        // dd($timeNow);
+        $cek = Waktu::where('waktu_mulai', '<=', $timeNow)->where('waktu_selesai', '>=', $timeNow)->first();
+        // dd($cek);
+        if ($cek) {
+            $praktikum = \App\Praktikum::where('aktif', '=', 'Y')->get();
 
-        $soal = Soal::where('aktif', '=', 'Y')->inRandomOrder()->paginate(10);
-        // Session::forget('jawab');
-        // Session::forget('jawaban');
-        Session::push('jawab', []);
-        Session::push('jawaban', []);
-        Session::push('soal', $soal);
-        return view('soal', ['praktikum' => $praktikum]);
+            Session::push('jawab', []);
+            Session::push('jawaban', []);
+            if (empty(Session::get('soal'))) {
+                $soal = Soal::where('aktif', '=', 'Y')->inRandomOrder()->paginate(10);
+                Session::push('soal', $soal);
+            }
+            return view('soal', compact('praktikum', 'cek'));
+        }
+
+        return Redirect()->Back();
     }
 
 

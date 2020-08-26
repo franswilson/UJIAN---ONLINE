@@ -18,7 +18,7 @@
 	<!-- GOOGLE FONTS -->
 
 	<!-- ICONS -->
-	<link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
+	<link rel="apple-touch-icon" sizes="100x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
 	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('admin/assets/img/favicon.png')}}">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 
@@ -72,6 +72,7 @@
 						<li><a href="/data_soal" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr  lnr-inbox"></i> <span>Manegemen Soal</span></a></li>
 						<li><a href="/praktikum" class="{{ (request()->is('praktikum')) ? 'active' : '' }}"><i class="lnr lnr-inbox"></i> <span>Manegemen praktikum</span></a></li>
 						<li><a href="/user" class="{{ (request()->is('user')) ? 'active' : '' }}"><i class="lnr lnr-users"></i> <span>Data login</span></a></li>
+						<li><a href="/waktu" class="{{ (request()->is('waktu')) ? 'active' : '' }}"><i class="lnr lnr-clock"></i> <span>Waktu</span></a></li>
 						@endif
 					</ul>
 				</nav>

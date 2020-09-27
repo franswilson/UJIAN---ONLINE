@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/customer/{id}/delete', 'CustomerController@delete')->name('customer.delete');
 
 
-    //modul 
+    //modul
     Route::get('/nilai', 'UserController@nilai');
 
 
@@ -101,4 +101,11 @@ Route::group(['middleware' => ['auth', 'checkRole:mahasiswa,admin']], function (
     //profile
     Route::get('/user/{id}/profile', 'UserController@profile');
     Route::get('/soal/{id}/{jawab}', 'SoalController@simpansoal');
+
+    //Export Excel
+    Route::get('/soal', 'Data_soalController@index');
+    Route::get('/soal/export_excel', 'Data_soalController@export_excel');
+
+    //Import Excel
+    Route::post('/soal/import_excel', 'Data_soalController@import_excel');
 });

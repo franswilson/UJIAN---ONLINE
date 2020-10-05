@@ -84,7 +84,7 @@
                                         <?php $i = 1 ?>
                                         @foreach($data_soal as $c)
                                         <tr>
-                                            <td>{{$i++}}</td>
+                                            <td>{{$i++}}<input type="checkbox" name="pilih[]" value="<?php echo $c['id']; ?>"> </td>
                                             <td>{{ $c->soal }}</td>
                                             <td>{{ $c->a }}</td>
                                             <td>{{ $c->b }}</td>
@@ -103,7 +103,12 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                        @endforeach </tbody>
+                                        
+                                        @endforeach 
+                                        <form action="{{ route('data_soal.delete', $c->id)}}" class="d-inline">
+                                             <input type="submit" name="hapus" value="Hapus">
+                                             </form>
+                                             </tbody>
                                 </table>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">

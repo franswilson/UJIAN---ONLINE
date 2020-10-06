@@ -86,7 +86,10 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     //profile mahasiswa
     Route::get('/mahasiswa/{id}/profile', 'MahasiswaController@profile');
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90187482d1a356c0b12f04a9723edb32f657b519
     //Export Excel
     Route::get('/soal', 'Data_soalController@index');
     Route::get('/soal/export_excel', 'Data_soalController@export_excel');
@@ -112,4 +115,8 @@ Route::group(['middleware' => ['auth', 'checkRole:mahasiswa,admin']], function (
     //profile
     Route::get('/user/{id}/profile', 'UserController@profile');
     Route::get('/soal/{id}/{jawab}', 'SoalController@simpansoal');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 90187482d1a356c0b12f04a9723edb32f657b519
 });

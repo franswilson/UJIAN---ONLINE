@@ -85,16 +85,10 @@
                                     <tbody>
                                         <?php $i = 1 ?>
                                         @foreach($data_soal as $c)
-<<<<<<< HEAD
 
                                         <tr id="tr_{{$c->id}}">
                                             <td><input type="checkbox" class="checkbox" data-id="{{$c->id}}"></td>
                                             <td>{{$i++}}</td>
-
-=======
-                                        <tr>
-                                            <td>{{$i++}}<input type="checkbox" name="pilih[]" value="<?php echo $c['id']; ?>"> </td>
->>>>>>> 90187482d1a356c0b12f04a9723edb32f657b519
                                             <td>{{ $c->soal }}</td>
                                             <td>{{ $c->a }}</td>
                                             <td>{{ $c->b }}</td>
@@ -114,11 +108,8 @@
                                             </td>
 
                                         </tr>
-                                        
-                                        @endforeach 
-                                        <form action="{{ route('data_soal.delete', $c->id)}}" class="d-inline">
-                                             <input type="submit" name="hapus" value="Hapus">
-                                             </form>
+
+                                        @endforeach
                                              </tbody>
                                 </table>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

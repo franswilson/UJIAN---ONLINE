@@ -16,19 +16,6 @@ div class="main">
 
                                 </h3>
                                 <form id="formSoal" name="form1" method="post" action="{{ route('jawab.store') }}">
-
-                                    <div class=" form-group">
-
-                                        <div class="col-md-12">
-                                            <label for="exampleInputPassword1">Praktikum</label>
-                                            <select name="praktikum" class="form-control" id="exampleInputPassword1">
-                                                @foreach ($praktikum as $p)
-                                                <option value="{{$p->id}}">{{$p->nama}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                    </div>
                             </div>
 
                             <style>

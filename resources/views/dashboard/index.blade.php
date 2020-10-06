@@ -20,6 +20,19 @@
                             </h4>
                         </div>
 
+                        <div class=" form-group">
+
+                            <div class="col-md-12">
+                                <label for="exampleInputPassword1">Praktikum</label>
+                                <select name="praktikum" class="form-control" id="exampleInputPassword1">
+                                    @foreach ($praktikum as $p)
+                                    <option value="{{$p->id}}">{{$p->nama}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                        </div>
+
                         <div class="text-center">
                             <a href="/soal" type="button" class="btn btn-primary btn-lg" data-dismiss="modal">START</a>
                         </div>

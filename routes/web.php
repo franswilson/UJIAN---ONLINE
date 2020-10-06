@@ -32,7 +32,10 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::post('/customer/{id}/update', 'CustomerController@update');
     Route::get('/customer/{id}/delete', 'CustomerController@delete')->name('customer.delete');
 
-
+    //delete all
+    // Route::delete('/data_soal', 'Data_soalController@deleteall');
+    Route::delete('/data_soal/{id}', ['as' => 'data_soal.destroy', 'uses' => 'Data_soalController@destroy']);
+    Route::delete('/delete-multiple-product', ['as' => 'data_soal.multiple-delete', 'uses' => 'Data_soalController@deleteMultiple']);
     //modul
     Route::get('/nilai', 'UserController@nilai');
 
@@ -82,6 +85,14 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 
     //profile mahasiswa
     Route::get('/mahasiswa/{id}/profile', 'MahasiswaController@profile');
+
+
+    //Export Excel
+    Route::get('/soal', 'Data_soalController@index');
+    Route::get('/soal/export_excel', 'Data_soalController@export_excel');
+
+    //Import Excel
+    Route::post('/soal/import_excel', 'Data_soalController@import_excel');
 });
 
 
@@ -101,11 +112,4 @@ Route::group(['middleware' => ['auth', 'checkRole:mahasiswa,admin']], function (
     //profile
     Route::get('/user/{id}/profile', 'UserController@profile');
     Route::get('/soal/{id}/{jawab}', 'SoalController@simpansoal');
-
-    //Export Excel
-    Route::get('/soal', 'Data_soalController@index');
-    Route::get('/soal/export_excel', 'Data_soalController@export_excel');
-
-    //Import Excel
-    Route::post('/soal/import_excel', 'Data_soalController@import_excel');
 });

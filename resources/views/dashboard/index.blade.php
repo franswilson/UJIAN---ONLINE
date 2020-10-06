@@ -18,15 +18,18 @@
                                 <br>
                                 3. cek nilai pada menu my profil
                             </h4>
-
-                            <div class="text-center">
-                                <a href="/soal" type="button" class="btn btn-primary btn-lg" data-dismiss="modal">START</a>
-                            </div>
                         </div>
+
+                        <div class="text-center">
+                            <a href="/soal" type="button" class="btn btn-primary btn-lg" data-dismiss="modal">START</a>
+                        </div>
+                        <br>
+                        <br>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Data_soal;
-
+use DB;
 use Illuminate\Http\Request;
 
 use Session;
@@ -34,6 +34,28 @@ class Data_soalController extends Controller
         $data_soal->delete($data_soal);
         return redirect('/data_soal')->with('sukses', 'Data berhasil di hapus');
     }
+
+    // public function deleteall(Request $request)
+    // {
+    //     $ids = $request->get('ids');
+    //     \DB::table("tbl_soal")->whereIn('id', explode(",", $ids))->delete();
+    //     return redirect('/data_soal')->with('sukses', 'Data berhasil di hapus');
+    // }
+    public function destroy(Request $request, $id)
+    {
+        $c = Data_soal::find($id);
+        $c->delete();
+        return back()->with('success', 'Product deleted successfully');
+    }
+    public function deleteMultiple(Request $request)
+    {
+        $ids = $request->ids;
+        Data_soal::whereIn('id', explode(",", $ids))->delete();
+        return response()->json(['status' => true, 'message' => "Product deleted successfully."]);
+    }
+
+
+
     public function edit($id)
     {
         $data_soal = \App\Data_soal::find($id);
@@ -51,30 +73,30 @@ class Data_soalController extends Controller
         return redirect('/data_soal')->with('sukses', 'Data berhasil di ubah');
     }
     public function export_excel()
-	  {
-	       return Excel::download(new SoalExport, 'soal.xlsx');
-	  }
+    {
+        return Excel::download(new SoalExport, 'soal.xlsx');
+    }
     public function import_excel(Request $request)
     {
         // validasi
         $this->validate($request, [
-          'file' => 'required|mimes:csv,xls,xlsx'
+            'file' => 'required|mimes:csv,xls,xlsx'
         ]);
 
         // menangkap file excel
         $file = $request->file('file');
 
         // membuat nama file unik
-        $nama_file = rand().$file->getClientOriginalName();
+        $nama_file = rand() . $file->getClientOriginalName();
 
         // upload ke folder file_soal di dalam folder public
-        $file->move('file_soal',$nama_file);
+        $file->move('file_soal', $nama_file);
 
         // import data
-        Excel::import(new SoalImport, public_path('/file_soal/'.$nama_file));
+        Excel::import(new SoalImport, public_path('/file_soal/' . $nama_file));
 
         // notifikasi dengan session
-        Session::flash('sukses','Data Soal Berhasil Diimport!');
+        Session::flash('sukses', 'Data Soal Berhasil Diimport!');
 
         // alihkan halaman kembali
         return redirect('/soal');

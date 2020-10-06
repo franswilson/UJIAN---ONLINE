@@ -13,61 +13,63 @@
                             <div class="col-6">
 
                                 {{-- notifikasi form validasi --}}
-                              		@if ($errors->has('file'))
-                              		<span class="invalid-feedback" role="alert">
-                              			<strong>{{ $errors->first('file') }}</strong>
-                              		</span>
-                              		@endif
+                                @if ($errors->has('file'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('file') }}</strong>
+                                </span>
+                                @endif
 
-                              		{{-- notifikasi sukses --}}
-                              		@if ($sukses = Session::get('sukses'))
-                              		<div class="alert alert-success alert-block">
-                              			<button type="button" class="close" data-dismiss="alert">×</button>
-                              			<strong>{{ $sukses }}</strong>
-                              		</div>
-                              		@endif
+                                {{-- notifikasi sukses --}}
+                                @if ($sukses = Session::get('sukses'))
+                                <div class="alert alert-success alert-block">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>{{ $sukses }}</strong>
+                                </div>
+                                @endif
 
                                 <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
                                     Tambah Soal
                                 </button>
                                 <a href="/soal/export_excel" class="btn btn-success my-3" target="_blank">Download Soal</a>
                                 <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#importExcel">
-		                                Upload Soal
-		                            </button>
+                                    Upload Soal
+                                </button>
 
                                 <div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <form method="post" action="/soal/import_excel" enctype="multipart/form-data">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
-                                      </div>
-                                      <div class="modal-body">
+                                    <div class="modal-dialog" role="document">
+                                        <form method="post" action="/soal/import_excel" enctype="multipart/form-data">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
+                                                </div>
+                                                <div class="modal-body">
 
-                                        {{ csrf_field() }}
+                                                    {{ csrf_field() }}
 
-                                        <label>Pilih file excel</label>
-                                        <div class="form-group">
-                                          <input type="file" name="file" required="required">
-                                        </div>
+                                                    <label>Pilih file excel</label>
+                                                    <div class="form-group">
+                                                        <input type="file" name="file" required="required">
+                                                    </div>
 
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Import</button>
-                                      </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Import</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                  </form>
                                 </div>
-                              </div>
 
                             </div>
 
                             <div class="panel-body">
+                                <button style="margin: 5px;" class="btn btn-danger btn-sm delete-all" data-url="">Delete All</button>
                                 <table class="table table-striped table-bordered" id="soal">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                            <th><input type="checkbox" id="check_all"></th>
+                                            <th>No </th>
                                             <th>soal</th>
                                             <th>a</th>
                                             <th>b</th>
@@ -83,8 +85,11 @@
                                     <tbody>
                                         <?php $i = 1 ?>
                                         @foreach($data_soal as $c)
-                                        <tr>
+
+                                        <tr id="tr_{{$c->id}}">
+                                            <td><input type="checkbox" class="checkbox" data-id="{{$c->id}}"></td>
                                             <td>{{$i++}}</td>
+
                                             <td>{{ $c->soal }}</td>
                                             <td>{{ $c->a }}</td>
                                             <td>{{ $c->b }}</td>
@@ -102,6 +107,7 @@
                                                     <a class="btn btn-primary btn-sm  lnr lnr-pencil" href="{{ route('data_soal.edit', $c->id) }}"></a>
                                                 </form>
                                             </td>
+
                                         </tr>
                                         @endforeach </tbody>
                                 </table>
@@ -173,13 +179,76 @@
         </div>
     </div>
 </div>
+
+
 @stop
 
 
 @section('footer')
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#check_all').on('click', function(e) {
+            if ($(this).is(':checked', true)) {
+                $(".checkbox").prop('checked', true);
+            } else {
+                $(".checkbox").prop('checked', false);
+            }
+        });
+        $('.checkbox').on('click', function() {
+            if ($('.checkbox:checked').length == $('.checkbox').length) {
+                $('#check_all').prop('checked', true);
+            } else {
+                $('#check_all').prop('checked', false);
+            }
+        });
+        $('.delete-all').on('click', function(e) {
+            var idsArr = [];
+            $(".checkbox:checked").each(function() {
+                idsArr.push($(this).attr('data-id'));
+            });
+            if (idsArr.length <= 0) {
+                alert("Please select atleast one record to delete.");
+            } else {
+                if (confirm("Apakah yakin ingin menghapus semua soal..?")) {
+                    var strIds = idsArr.join(",");
+                    $.ajax({
+                        url: "{{ route('data_soal.multiple-delete') }}",
+                        type: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        data: 'ids=' + strIds,
+                        success: function(data) {
+                            if (data['status'] == true) {
+                                $(".checkbox:checked").each(function() {
+                                    $(this).parents("tr").remove();
+                                });
+                                alert(data['message']);
+                            } else {
+                                alert('Whoops Something went wrong!!');
+                            }
+                        },
+                        error: function(data) {
+                            alert(data.responseText);
+                        }
+                    });
+                }
+            }
+        });
+        $('[data-toggle=confirmation]').confirmation({
+            rootSelector: '[data-toggle=confirmation]',
+            onConfirm: function(event, element) {
+                element.closest('form').submit();
+            }
+        });
+
+    });
+</script>
+
 <script>
     $(document).ready(function() {
         $('#soal').DataTable();
     });
 </script>
+
 @stop

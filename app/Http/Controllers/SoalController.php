@@ -24,7 +24,7 @@ class SoalController extends Controller
             Session::push('jawab', []);
             Session::push('jawaban', []);
             if (empty(Session::get('soal'))) {
-                $soal = Soal::where('aktif', '=', 'Y')->inRandomOrder()->paginate(10);
+                $soal = Soal::where('aktif', '=', 'Y')->inRandomOrder()->paginate(20);
                 Session::push('soal', $soal);
             }
             return view('soal', compact('praktikum', 'cek'));

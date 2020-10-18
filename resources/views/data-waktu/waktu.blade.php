@@ -20,6 +20,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Nama</th>
                                             <th>waktu mulai</th>
                                             <th>waktu selesai</th>
                                             <th>Aksi</th>
@@ -30,6 +31,7 @@
                                         @foreach($waktu as $c)
                                         <tr>
                                             <td>{{$i++}}</td>
+                                            <td>{{$c->nama}}</td>
                                             <td>{{$c->waktu_mulai}}</td>
                                             <td>{{$c->waktu_selesai}}</td>
                                             <td>

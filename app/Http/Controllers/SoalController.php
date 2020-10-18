@@ -6,28 +6,43 @@ use Illuminate\Http\Request;
 use App\Soal;
 use App\Waktu;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class SoalController extends Controller
 {
 
-    public function getSoal()
+    public function getSoal(Request $request)
     {
+        //return response()->json(['message'=>'OK'],200);
         date_default_timezone_set("Asia/Bangkok");
         // \Carbon\Carbon::setLocale('id');
         $timeNow = \Carbon\Carbon::now()->toDateTimeString();
         // dd($timeNow);
-        $cek = Waktu::where('waktu_mulai', '<=', $timeNow)->where('waktu_selesai', '>=', $timeNow)->first();
+
+        $PrakId = $request->praktikum;
+
+        $cek = Waktu::where('waktu_mulai', '<=', $timeNow)
+        ->where('waktu_selesai', '>=', $timeNow)
+        ->where('id_praktikum','=',$PrakId)->first();
+
+        $PrakId = $request->praktikum;
+        //dd($PrakId);
+
         // dd($cek);
         if ($cek) {
-            $praktikum = \App\Praktikum::where('aktif', '=', 'Y')->get();
-
             Session::push('jawab', []);
             Session::push('jawaban', []);
             if (empty(Session::get('soal'))) {
-                $soal = Soal::where('aktif', '=', 'Y')->inRandomOrder()->paginate(20);
+                // $soal = DB::table('tbl_soal')
+                // ->join('praktikum','praktikum.id','tbl_soal.id_praktikum')
+                // ->where('tbl_soal.aktif','=','Y')->where('praktikum.pretest','=','Y')
+                // ->select('tbl_soal.*')->inRandomOrder()->paginate(20);
+                $soal = Soal::where('aktif', '=', 'Y')->where('id_praktikum', '=', $PrakId)->inRandomOrder()->paginate(20);
                 Session::push('soal', $soal);
             }
-            return view('soal', compact('praktikum', 'cek'));
+            return view('soal', compact('cek'));
         }
 
         return Redirect()->Back();

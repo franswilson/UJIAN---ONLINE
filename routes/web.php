@@ -92,6 +92,8 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 
     //Import Excel
     Route::post('/soal/import_excel', 'Data_soalController@import_excel');
+
+
 });
 
 
@@ -101,7 +103,9 @@ Route::group(['middleware' => ['auth', 'checkRole:mahasiswa,admin']], function (
 
 
     // soal
+    Route::post('/soal', 'SoalController@getSoal')->name('idSoal');
     Route::get('/soal', 'SoalController@getSoal');
+
     // Route::get('/soal', 'SoalController@praktikum');
     // Route::get('/modul', 'NilaiController@modul');
 

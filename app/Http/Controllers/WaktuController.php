@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WaktuController extends Controller
 {
     public function index()
     {
-        $waktu = \App\Waktu::all();
-        return view('data-waktu.waktu', ['waktu' => $waktu]);
+        $waktu = DB::table('waktu')
+        ->join('praktikum','praktikum.id','=','waktu.id_praktikum')
+        ->select('waktu.id','praktikum.nama','waktu.waktu_mulai','waktu.waktu_selesai')->get();
+        return view('data-waktu.waktu', compact('waktu'));
     }
 
     public function edit($id)

@@ -9,7 +9,8 @@ class NilaiController extends Controller
     public function index()
     {
         $nilai = \App\User::where(Auth()->user()->name);
-        return view('nilai.index', ['nilai' => $nilai]);
+        $praktikum = \App\Praktikum::all();
+        return view('nilai.index', ['nilai' => $nilai],compact('praktikum'));
     }
 
     public function praktikum()

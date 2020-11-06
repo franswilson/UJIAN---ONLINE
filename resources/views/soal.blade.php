@@ -225,7 +225,7 @@ div class="main">
         if (selisih < 0) {
             clearInterval(hitungmundur);
             timer.innerHTML = 'waktu telah habis';
-            // $('#tombolSubmit').click();
+            $('#tombolSubmit').click();
         }
     }, 1000);
 

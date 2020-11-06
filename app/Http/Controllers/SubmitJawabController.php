@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Session;
 
 class SubmitJawabController extends Controller
 {
+
     public function store(Request $request)
     {
         //$praktikum = \App\Praktikum::all();

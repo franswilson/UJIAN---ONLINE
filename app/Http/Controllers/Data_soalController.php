@@ -10,6 +10,7 @@ use Session;
 
 use App\Exports\SoalExport;
 use App\Imports\SoalImport;
+use App\Praktikum;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 
@@ -18,8 +19,9 @@ class Data_soalController extends Controller
 {
     public function index()
     {
+        $praktikum = \App\Praktikum::all();
         $data_soal = \App\Data_soal::all();
-        return view('data-soal.data_soal', ['data_soal' => $data_soal]);
+        return view('data-soal.data_soal', ['data_soal' => $data_soal],compact('praktikum'));
     }
 
     public function create(Request $request)
@@ -55,7 +57,6 @@ class Data_soalController extends Controller
     }
 
 
-
     public function edit($id)
     {
         $data_soal = \App\Data_soal::find($id);
@@ -72,9 +73,11 @@ class Data_soalController extends Controller
         }
         return redirect('/data_soal')->with('sukses', 'Data berhasil di ubah');
     }
-    public function export_excel()
+    public function export_excel(Request $request)
     {
-        return Excel::download(new SoalExport, 'soal.xlsx');
+        $idPrak = $request->praktikum;
+        $prak =  Praktikum::where('id','=',$idPrak)->select('nama')->first();
+        return Excel::download(new SoalExport($idPrak), "Soal " .$prak->nama. ".xlsx");
     }
     public function import_excel(Request $request)
     {

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Praktikum;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+use App\Exports\NilaiExport;
 
 
 class UserController extends Controller
@@ -14,8 +18,9 @@ class UserController extends Controller
     }
     public function nilai()
     {
+        $praktikum = \App\Praktikum::all();
         $user = \App\User::with(['praktikum'])->get();
-        return view('nilai.index', ['user' => $user]);
+        return view('nilai.index', ['user' => $user],compact('praktikum'));
     }
 
 
@@ -49,5 +54,11 @@ class UserController extends Controller
         $user = \App\User::find($id);
         $user->delete($user);
         return redirect('/user')->with('sukses', 'Data berhasil di hapus');
+    }
+    public function export_excel(Request $request)
+    {
+        $idPrak = $request->praktikum;
+        $prak =  Praktikum::where('id','=',$idPrak)->select('nama')->first();
+        return Excel::download(new NilaiExport($idPrak), "Nilai " .$prak->nama. ".xlsx");
     }
 }

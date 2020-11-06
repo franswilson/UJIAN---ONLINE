@@ -87,8 +87,13 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/mahasiswa/{id}/profile', 'MahasiswaController@profile');
 
     //Export Excel
+    Route::post('/nilai/export_excel', 'UserController@export_excel')->name('idPraktikum');
+    Route::get('/nilai/export_excel', 'UserController@export_excel');
+
+    Route::post('/soal/export_excel', 'Data_soalController@export_excel')->name('idPrak');
     Route::get('/soal', 'Data_soalController@index');
     Route::get('/soal/export_excel', 'Data_soalController@export_excel');
+
 
     //Import Excel
     Route::post('/soal/import_excel', 'Data_soalController@import_excel');
@@ -111,6 +116,7 @@ Route::group(['middleware' => ['auth', 'checkRole:mahasiswa,admin']], function (
 
     Route::get('/jawaban', 'SoalController@getjawaban');
     Route::post('submit-jawab', 'SubmitJawabController@store')->name('jawab.store');
+
 
     //profile
     Route::get('/user/{id}/profile', 'UserController@profile');

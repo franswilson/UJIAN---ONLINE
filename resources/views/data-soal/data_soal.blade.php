@@ -26,14 +26,22 @@
                                     <strong>{{ $sukses }}</strong>
                                 </div>
                                 @endif
-
+                                <form id="post-data" method="post" action="{{ route('idPrak') }}">
                                 <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
                                     Tambah Soal
                                 </button>
-                                <a href="/soal/export_excel" class="btn btn-success my-3" target="_blank">Download Soal</a>
                                 <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#importExcel">
                                     Upload Soal
                                 </button>
+
+                                  {{ csrf_field() }}
+                                  <select style="width:200px" name="praktikum" class="form-control" id="exampleInputPassword1">
+                                      @foreach ($praktikum as $p)
+                                      <option id ="soalID" value="{{$p->id}}">{{$p->nama}}</option>
+                                      @endforeach
+                                  </select>
+                                  <button type="submit" class="btn btn-success float-right">Download</button>
+                                </form>
 
                                 <div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -157,7 +165,7 @@
                                                             <input type="text" placeholder="Kunci jawaban" name="knc_jawaban" class="form-control" id="exampleInputPassword1">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="exampleInputPassword1">Uplode gambar</label>
+                                                            <label for="exampleInputPassword1">Upload gambar</label>
                                                             <input type="file" placeholder="gambar" name="gambar" class="form-control" id="exampleInputPassword1">
                                                         </div>
 
@@ -168,7 +176,6 @@
                                                         </div>
                                                 </form>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>

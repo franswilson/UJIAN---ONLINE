@@ -26,8 +26,6 @@ class SoalController extends Controller
         $cek = Waktu::where('waktu_mulai', '<=', $timeNow)
         ->where('waktu_selesai', '>=', $timeNow)
         ->where('id_praktikum','=',$PrakId)->first();
-
-        $PrakId = $request->praktikum;
         //dd($PrakId);
 
         // dd($cek);

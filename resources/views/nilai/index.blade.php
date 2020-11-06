@@ -9,6 +9,15 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">Nilai</h3>
                         </div>
+                        <form id="post-data" method="post" action="{{ route('idPraktikum') }}">
+                        {{ csrf_field() }}
+                        <select style="width:200px" name="praktikum" class="form-control" id="exampleInputPassword1">
+                            @foreach ($praktikum as $p)
+                            <option id ="soalID" value="{{$p->id}}">{{$p->nama}}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="btn btn-success float-right">Download</button>
+                      </form>
                         <div class="panel-body">
                             <div class="panel-body">
                                 <table class="table table-striped table-bordered" id="nilai">

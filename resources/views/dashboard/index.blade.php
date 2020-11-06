@@ -58,14 +58,10 @@
                                 <br>
                                 <div class="text-center">
                                   <button type="submit" class="btn btn-primary btn-lg">START</button>
-                                    <!-- <a href='/soal'>START</a> -->
                                 </div>
                               </form>
                             </div>
-                            <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
-                            <script src="{{ asset('js/post.js') }}" type="text/javascript">
 
-                            </script>
                         </div>
                         <br>
                         <br>

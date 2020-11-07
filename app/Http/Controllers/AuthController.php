@@ -32,7 +32,7 @@ class AuthController extends Controller
             'body' => json_encode(
 
                 [
-                    "npm" => $request->email,
+                    "npm" => $request->npm,
                     "password" => $request->password
                 ]
             )
@@ -50,7 +50,7 @@ class AuthController extends Controller
                 'body' => json_encode(
 
                     [
-                        "username" => $request->email,
+                        "username" => $request->npm,
                         "password" => $request->password
                     ]
                 )
@@ -60,7 +60,7 @@ class AuthController extends Controller
             if (count($test->users) == 0) {
                 dd('Username atau password salah');
             } else if ($test->users[1] == "admin") {
-                $cek_login = User::where('email', $test->users[0])->first();
+                $cek_login = User::where('npm', $test->users[0])->first();
                 if ($cek_login == null) {
                     $get_user = User::create([
                         'email' => $test->users[0],
@@ -76,7 +76,7 @@ class AuthController extends Controller
 
             return redirect('/login');
         } else if ($test->users[2] == "Praktikan") {
-            $cek_login = User::where('email', $test->users[0])->first();
+            $cek_login = User::where('npm', $test->users[0])->first();
             if ($cek_login == null) {
                 $get_user = User::create([
                     'email' => $test->users[0],

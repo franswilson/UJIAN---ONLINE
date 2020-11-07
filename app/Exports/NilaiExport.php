@@ -22,7 +22,7 @@ class NilaiExport implements FromCollection
         ->join('praktikum_user','users.id','=','praktikum_user.user_id')
         ->join('praktikum','praktikum.id','=','praktikum_user.praktikum_id')
         ->where('praktikum.id','=',$this->idNilai)
-        ->select('users.name','praktikum_user.nilai','praktikum.nama')->get();
+        ->select('users.name', 'users.npm','praktikum_user.nilai','praktikum.nama')->get();
 
         // return Jawaban::where('praktikum_id','=',$this->idNilai)->get();
     }

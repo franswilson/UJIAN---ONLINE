@@ -40,7 +40,7 @@ class SoalController extends Controller
                 $soal = Soal::where('aktif', '=', 'Y')->where('id_praktikum', '=', $PrakId)->inRandomOrder()->paginate(20);
                 Session::push('soal', $soal);
             }
-            return view('soal', compact('cek'));
+            return view('soal', compact('cek','PrakId'));
         }
 
         return Redirect()->Back();

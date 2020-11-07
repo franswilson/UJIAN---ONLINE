@@ -26,9 +26,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>id</th>
                                             <th>nama praktikum</th>
-                                            <th>kode</th>
                                             <th>aktif</th>
                                             <th>aksi</th>
 
@@ -41,9 +39,7 @@
 
                                         <tr>
                                             <td>{{$i++}}</td>
-                                            <td>{{$u->id}}</td>
                                             <td>{{$u->nama}}</td>
-                                            <td>{{$u->kode}}</td>
                                             <td><span class="label label-warning">{{$u->aktif}}</span></td>
                                             <td>
                                                 <form action="{{ route('praktikum.delete', $u->id)}}" class="d-inline">

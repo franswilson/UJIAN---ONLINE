@@ -8,5 +8,5 @@ class Soal extends Model
 {
     protected $table = "tbl_soal";
     protected $timestamp = false;
-    protected $fillable = ['soal','a','b','c','d','e','knc_jawaban'];
+    protected $fillable = ['id_praktikum','soal','a','b','c','d','e','knc_jawaban'];
 }

@@ -4,8 +4,10 @@ namespace App\Exports;
 
 use App\Soal;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class SoalExport implements FromCollection
+class SoalExport implements FromCollection,WithHeadings
 {
     private $IdPraktikum;
     /**
@@ -17,6 +19,14 @@ class SoalExport implements FromCollection
 
     public function collection()
     {
-        return Soal::where('id_praktikum','=',$this->IdPraktikum)->select('id','soal','a','b','c','d','e','knc_jawaban')->get();
+        return DB::table('tbl_soal')
+        ->join('praktikum', 'praktikum.id','=','tbl_soal.id_praktikum')
+        ->where('praktikum.id','=',$this->IdPraktikum)
+        ->select( 'praktikum.id','tbl_soal.soal', 'tbl_soal.a', 'tbl_soal.b', 'tbl_soal.c', 'tbl_soal.d', 'tbl_soal.e',
+        'tbl_soal.knc_jawaban')->get();
+    }
+    public function headings(): array
+    {
+        return ['id praktikum','Soal', 'a', 'b', 'c', 'd', 'e', 'kunci jawaban'];
     }
 }

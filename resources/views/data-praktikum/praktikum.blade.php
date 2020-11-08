@@ -12,7 +12,7 @@
                         <div class="panel-body">
                             <div class="col-6">
                                 <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
-                                    Tambah Soal
+                                    Tambah Praktikum
                                 </button>
 
                             </div>
@@ -27,10 +27,9 @@
                                         <tr>
                                             <th>No</th>
                                             <th>nama praktikum</th>
+                                            <th>id praktikum</th>
                                             <th>aktif</th>
                                             <th>aksi</th>
-
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -40,6 +39,7 @@
                                         <tr>
                                             <td>{{$i++}}</td>
                                             <td>{{$u->nama}}</td>
+                                            <td>{{$u->id}}</td>
                                             <td><span class="label label-warning">{{$u->aktif}}</span></td>
                                             <td>
                                                 <form action="{{ route('praktikum.delete', $u->id)}}" class="d-inline">
@@ -69,21 +69,21 @@
                                                 <form action="praktikum/create" method="POST">
                                                     {{csrf_field()}}
                                                     <div class="form-group">
-                                                        <label for="exampleInputEmail1">Nama</label>
+                                                        <label for="exampleInputEmail1">Nama Praktikum</label>
                                                         <input type="text" name="nama" class="form-control" placeholder="nama praktikum" id="exampleInputEmail1" aria-describedby="emailHelp">
 
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="form-group">
-                                                            <label for="exampleInputEmail1">kode</label>
-                                                            <input type="text" name="kode" class="form-control" placeholder="kode praktikum" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                            <label for="exampleInputEmail1">Id Praktikum</label>
+                                                            <input type="text" name="id" class="form-control" placeholder="id praktikum" id="exampleInputEmail1" aria-describedby="emailHelp">
 
                                                         </div>
 
 
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-                                                            <button type="submit" class="btn btn-primary">update</button>
+                                                            <button type="submit" class="btn btn-primary">Tambah</button>
                                                         </div>
                                                 </form>
                                             </div>

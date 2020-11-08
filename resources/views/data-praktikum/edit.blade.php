@@ -13,12 +13,12 @@
                             <form action="/praktikum/{{$praktikum->id}}/update" method="POST" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">nama</label>
+                                    <label for="exampleInputEmail1">nama praktikum</label>
                                     <textarea type="text" name="nama" class="form-control" placeholder="nama" id="exampleInputEmail1" aria-describedby="emailHelp">{{$praktikum->nama}}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">kode</label>
-                                    <textarea type="text" name="kode" class="form-control" placeholder="kode" id="exampleInputEmail1" aria-describedby="emailHelp">{{$praktikum->kode}}</textarea>
+                                    <label for="exampleInputEmail1">id praktikum</label>
+                                    <textarea type="text" name="id" class="form-control" placeholder="id" id="exampleInputEmail1" aria-describedby="emailHelp">{{$praktikum->id}}</textarea>
                                 </div>
                                 <div class=" form-group">
                                     <label for="exampleInputPassword1">Aktivasi</label>

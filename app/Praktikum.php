@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Praktikum extends Model
 {
-    protected $fillable = ['nama', 'kode', 'aktif'];
+    protected $fillable = ['nama', 'id', 'aktif'];
     protected $table = 'praktikum';
     public $timestamps = false;
 

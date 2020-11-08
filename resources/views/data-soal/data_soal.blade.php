@@ -84,8 +84,9 @@
                                             <th>c</th>
                                             <th>d</th>
                                             <th>e</th>
-                                            <th>kunci jawaban</th>
+                                            <th>kunci</th>
                                             <th>gambar</th>
+                                            <th>praktikum</th>
                                             <th>aktif</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -105,6 +106,7 @@
                                             <td>{{ $c->e }}</td>
                                             <td>{{ $c->knc_jawaban }}</td>
                                             <td>{{ $c->gambar }}</td>
+                                            <td>{{ $c->nama }}</td>
                                             <td><span class="label label-warning">{{ $c->aktif}}</span></td>
                                             <td>
                                                 <form action="{{ route('data_soal.delete', $c->id)}}" class="d-inline">
@@ -132,6 +134,11 @@
                                             <div class="modal-body">
                                                 <form action="/data_soal/create" method="POST">
                                                     {{csrf_field()}}
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Id Praktikum</label>
+                                                        <input type="text" name="id_praktikum" class="form-control" placeholder="id_praktikum" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                                                    </div>
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Soal</label>
                                                         <textarea type="text" name="soal" class="form-control" placeholder="Isi Soal" rows="4"></textarea>

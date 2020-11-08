@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Data_soal;
-use DB;
 use Illuminate\Http\Request;
 
 use Session;
@@ -13,6 +12,7 @@ use App\Imports\SoalImport;
 use App\Praktikum;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 
 class Data_soalController extends Controller
@@ -20,8 +20,13 @@ class Data_soalController extends Controller
     public function index()
     {
         $praktikum = \App\Praktikum::all();
-        $data_soal = \App\Data_soal::all();
-        return view('data-soal.data_soal', ['data_soal' => $data_soal],compact('praktikum'));
+
+        $data_soal = DB::table('tbl_soal')
+        ->join('praktikum', 'praktikum.id','=','tbl_soal.id_praktikum')
+        ->select('tbl_soal.id', 'tbl_soal.soal', 'tbl_soal.a', 'tbl_soal.b', 'tbl_soal.c', 'tbl_soal.d', 'tbl_soal.e', 'tbl_soal.knc_jawaban',
+         'tbl_soal.gambar', 'tbl_soal.aktif', 'tbl_soal.soal', 'praktikum.nama')->get();
+
+        return view('data-soal.data_soal',compact('praktikum','data_soal'));
     }
 
     public function create(Request $request)
@@ -77,7 +82,7 @@ class Data_soalController extends Controller
     {
         $idPrak = $request->praktikum;
         $prak =  Praktikum::where('id','=',$idPrak)->select('nama')->first();
-        return Excel::download(new SoalExport($idPrak), "Soal " .$prak->nama. ".xlsx");
+        return Excel::download(new SoalExport($idPrak), "Soal Praktikum " .$prak->nama. ".xlsx");
     }
     public function import_excel(Request $request)
     {

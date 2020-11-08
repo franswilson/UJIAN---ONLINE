@@ -59,6 +59,6 @@ class UserController extends Controller
     {
         $idPrak = $request->praktikum;
         $prak =  Praktikum::where('id','=',$idPrak)->select('nama')->first();
-        return Excel::download(new NilaiExport($idPrak), "Nilai " .$prak->nama. ".xlsx");
+        return Excel::download(new NilaiExport($idPrak), "Nilai Praktikum " .$prak->nama. ".xlsx");
     }
 }

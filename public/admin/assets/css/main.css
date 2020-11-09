@@ -12,7 +12,7 @@
 *	
 *	############################################################################################
 */
-/********************
+/******************** 
  * GENERAL STYLES
  ********************/
 html {
@@ -20,7 +20,7 @@ html {
   min-height: 100%; }
 
 body {
-  background-color: #F3F5F8;
+  background-color: #e1e2e4;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 15px;
   color: #676a6d; }
@@ -85,7 +85,7 @@ footer {
 
 #wrapper #sidebar-nav,
 #wrapper .main {
-  padding-top: 80px; }
+  padding-top: 95px; }
 
 @media screen and (max-width: 767px) {
   #wrapper #sidebar-nav,
@@ -184,6 +184,7 @@ html.fullscreen-bg #wrapper {
       display: none; } }
   @media screen and (max-width: 640px) {
     .navbar-default #navbar-menu {
+      margin-top: 50px;
       float: right; } }
 
 .navbar-btn {
@@ -262,7 +263,7 @@ html.fullscreen-bg #wrapper {
   min-width: 200px; }
 
 .navbar-nav .dropdown-menu {
-  border-top: 2px solid #ACB0B5; }
+  border-top: 2px solid #2268bd; }
 
 .navbar-nav .dropdown-menu > li > a {
   padding: 10px 20px; }
@@ -274,7 +275,9 @@ html.fullscreen-bg #wrapper {
 
 @media screen and (min-width: 768px) {
   .navbar-nav.navbar-right {
-    margin-right: 0; } }
+    
+    margin-top: 18px;
+    margin-right: 5px; } }
 
 @media screen and (max-width: 767px) {
   .navbar-nav {
@@ -620,6 +623,19 @@ fieldset[disabled] .btn {
 /********************
  * PANELS
  ********************/
+ .panelbox{
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
+ }
+ 
 .panel {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -634,6 +650,11 @@ fieldset[disabled] .btn {
   .panel .panel-footer {
     padding-left: 25px;
     padding-right: 25px; }
+
+  .panel .panel-body .panel-body-dataLogin{
+    padding-left: 10px;
+    padding-right: 20px;
+  }
   .panel .panel-heading {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -974,10 +995,10 @@ ul.activity-list > li {
 .auth-box {
   -moz-box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 0px 10px 10px rgba(0, 0, 0, 0.1);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  border-radius: 5px;
+  border-radius: 20px;
   width: 70%;
   height: 450px;
   margin: 0 auto;
@@ -1019,7 +1040,7 @@ ul.activity-list > li {
     width: 58%;
     height: 100%;
     position: relative;
-    background-image: url("../../assets/img/login-bg.jpg");
+    background-image: url("../../assets/img/itats.jpg");
     background-repeat: no-repeat;
     background-size: cover; }
     .auth-box .right:before {
@@ -1050,7 +1071,7 @@ ul.activity-list > li {
       display: block;
       width: 100%;
       height: 100%;
-      background: rgba(99, 156, 185, 0.92); }
+      background: rgba(59, 86, 102, 0.92); }
   .auth-box .header {
     margin-bottom: 30px; }
   .auth-box .lead {
@@ -1706,6 +1727,7 @@ ul.activity-list > li {
 
 .award-icon {
   font-size: 36px;
+  
   line-height: 1.5em; }
 
 ul.activity-timeline > li {

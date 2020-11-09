@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<link rel ="icon" type="image/jpg" href="{{asset('admin/assets/img/itats.jpg')}}"> 
 	<title>pretest online</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -39,7 +40,7 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="index.html"><img src="{{asset('admin/assets/img/logo1.jpg')}}" alt="Klorofil Logo" class="img-responsive logo"></a>
+				<a href="index.html"><img src="{{asset('admin/assets/img/informatika.png')}}" alt="Klorofil Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -51,7 +52,7 @@
 					<ul class="nav navbar-nav navbar-right">
 
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span>{{Auth()->user()->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span>{{strtoupper(Auth()->user()->name)}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="/user/{{Auth()->user()->id}}/profile"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>

@@ -2,7 +2,8 @@
 <html lang="en" class="fullscreen-bg">
 
 <head>
-    <title>Login | Klorofil - Free Bootstrap Dashboard Template</title>
+    <title>Login | Pretest</title>
+    <link rel ="icon" type="image/jpg" href="{{asset('admin/assets/img/itats.jpg')}}"> 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -30,14 +31,15 @@
                     <div class="left">
                         <div class="content">
                             <div class="header">
+                            <br><br>
 
-                                <p class="lead">Login to your account</p>
+                                <p class="lead"><b>Login to your account</b></p>
                             </div>
                             <form class="form-auth-small" action="/postlogin" method="POST">
                                 {{csrf_field()}}
                                 <div class="form-group">
-                                    <label for="signin-npm" class="control-label sr-only">NPM</label>
-                                    <input name="npm" type="text" class="form-control" id="signin-npm" placeholder="NPM">
+                                    <label for="signin-email" class="control-label sr-only">Email</label>
+                                    <input name="npm" type="text" class="form-control" id="signin-email" placeholder="NPM">
                                 </div>
                                 <div class="form-group">
                                     <label for="signin-password" class="control-label sr-only">Password</label>
@@ -50,11 +52,17 @@
                             </form>
                         </div>
                     </div>
+                    
                     <div class="right">
                         <div class="overlay"></div>
                         <div class="content text">
-
-                            <p>by The Develovers</p>
+                        <br><br>
+                        <br><br><br><br>
+                        <br><br><br><br>
+                        <br><br><br><br>
+                        <br><br><br>
+                            <p>by Laboratorium</p>
+                            <p>- Teknik Informatika</p>
                         </div>
                     </div>
                     <div class="clearfix"></div>

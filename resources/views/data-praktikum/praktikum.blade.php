@@ -6,12 +6,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel">
-                        <div class="panel-heading">
+                        <!-- <div class="panel-heading">
                             <h3 class="panel-title">Nilai</h3>
-                        </div>
+                        </div> -->
                         <div class="panel-body">
                             <div class="col-6">
-                                <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
+                                <button style="margin-top:10px; margin-left:25px;margin-bottom:1px;" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
                                     Tambah Praktikum
                                 </button>
 
@@ -60,7 +60,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Menambahkan Data Praktikum</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>

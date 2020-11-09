@@ -6,9 +6,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel">
-                        <div class="panel-heading">
+                        <!-- <div class="panel-heading">
                             <h3 class="panel-title">Data soal</h3>
-                        </div>
+                        </div> -->
                         <div class="panel-body">
                             <div class="col-6">
 
@@ -27,20 +27,22 @@
                                 </div>
                                 @endif
                                 <form id="post-data" method="post" action="{{ route('idPrak') }}">
-                                <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
-                                    Tambah Soal
-                                </button>
-                                <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#importExcel">
-                                    Upload Soal
-                                </button>
-
+                                
                                   {{ csrf_field() }}
-                                  <select style="width:200px" name="praktikum" class="form-control" id="exampleInputPassword1">
+                                  <select style="width:200px; margin-left:27px;margin-top:20px;" name="praktikum" class="form-control" id="exampleInputPassword1">
                                       @foreach ($praktikum as $p)
                                       <option id ="soalID" value="{{$p->id}}">{{$p->nama}}</option>
                                       @endforeach
                                   </select>
-                                  <button type="submit" class="btn btn-success float-right">Download</button>
+                                  <button style="float:right; margin-top:-34px; margin-right:575px; type="submit" class="btn btn-success float-right">Download</button>
+                                  <button style="margin-top: 17px; margin-left:100px; type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
+                                    Tambah Soal
+                                </button>
+                                <button style=" margin-top: 17px; margin-left:13px;" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#importExcel">
+                                    Upload Soal
+                                </button>
+                                <button style="margin-left:800px; margin-top:-10px;" class="btn btn-danger btn-sm delete-all" data-url="">Delete All</button>
+
                                 </form>
 
                                 <div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -72,7 +74,7 @@
                             </div>
 
                             <div class="panel-body">
-                                <button style="margin: 5px;" class="btn btn-danger btn-sm delete-all" data-url="">Delete All</button>
+                                
                                 <table class="table table-striped table-bordered" id="soal">
                                     <thead>
                                         <tr>
@@ -118,10 +120,12 @@
                                             </td>
 
                                         </tr>
+                                        
 
                                         @endforeach
                                              </tbody>
                                 </table>
+                                
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -182,10 +186,14 @@
                                                             <button type="submit" class="btn btn-primary">update</button>
                                                         </div>
                                                 </form>
+                                                
                                             </div>
+                                            
                                         </div>
                                     </div>
+                                    
                                 </div>
+                                
                             </div>
                         </div>
                     </div>

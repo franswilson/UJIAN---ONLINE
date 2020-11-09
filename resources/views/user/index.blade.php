@@ -9,13 +9,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel">
-                        <div class="panel-heading">
+                        <!-- <div class="panel-heading">
                             <h3 class="panel-title">Data Login</h3>
-                        </div>
-                        <div class="panel-body">
+                        </div> -->
+                        <div class="panel-body-dataLogin">
                             <div class="col-6">
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
+                                <button style="margin-top:25px; margin-left:25px;" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
                                     Tambah data
                                 </button>
 
@@ -63,7 +63,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Menambahkan Data Login</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>

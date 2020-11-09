@@ -6,9 +6,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel">
-                        <div class="panel-heading">
+                        <!-- <div class="panel-heading">
                             <h3 class="panel-title">Data waktu ujian</h3>
-                        </div>
+                        </div> -->
                         <div class="panel-body">
                             @if(session('sukses'))
                             <div class="alert alert-success" role="alert">

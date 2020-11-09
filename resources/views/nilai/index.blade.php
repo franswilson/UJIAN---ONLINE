@@ -6,17 +6,19 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel">
-                        <div class="panel-heading">
+                        <!-- <div class="panel-heading">
                             <h3 class="panel-title">Nilai</h3>
-                        </div>
+                        </div> -->
                         <form id="post-data" method="post" action="{{ route('idPraktikum') }}">
                         {{ csrf_field() }}
-                        <select style="width:200px" name="praktikum" class="form-control" id="exampleInputPassword1">
+                        <select style="width:200px; margin-top:20px; margin-left:50px" name="praktikum" class="form-control" id="exampleInputPassword1">
                             @foreach ($praktikum as $p)
                             <option id ="soalID" value="{{$p->id}}">{{$p->nama}}</option>
+                            
                             @endforeach
                         </select>
-                        <button type="submit" class="btn btn-success float-right">Download</button>
+                        <button style="float:right; margin-top:-35px; margin-right:600px;"type="submit" class="btn btn-success float-right">Download</button>
+                        
                       </form>
                         <div class="panel-body">
                             <div class="panel-body">
@@ -88,7 +90,7 @@
                                                         </div>
                                                 </form>
                                             </div>
-
+                                        
                                         </div>
                                     </div>
                                 </div>

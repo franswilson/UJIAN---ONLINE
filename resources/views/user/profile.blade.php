@@ -13,10 +13,9 @@
                             <br>
 
                             <div class="profile-main">
-                                <!-- <img src="{{asset('assets/img/user-medium.png')}}" class="img-circle" alt="Avatar"> -->
+                                <img style="weigh:100px; height:100px;"type="image/png" src="{{asset('admin/assets/img/pp.jpg')}}" class="img-circle" alt="Avatar">
 
                                 <h3 class="name">{{$profile->name}}</h3>
-
                                 <span class="online-status status-available">AKTIF</span>
                             </div>
                             <div class="profile-stat">
@@ -25,15 +24,19 @@
                                         <span>sebagai</span> {{$profile->role}}
 
                                     </div>
+                                    <div>
+                                    
+                                    </div>
 
                                     <div class="col-md-6 stat-item">
                                         <span>email</span>{{$profile->email}}
                                     </div>
 
                                 </div>
-                            </div>
+                            </div>   
+                            
                         </div>
-
+                        
                     </div>
                     <!-- END LEFT COLUMN -->
                     <!-- RIGHT COLUMN -->
@@ -92,4 +95,5 @@
         </div>
     </div>
 </div>
+
 @stop

@@ -163,11 +163,22 @@ div class="main">
                                 $angka++;
                                 @endphp
                                 @endforeach
-                                <tr>
+                                <!-- <tr>
                                     <td>&nbsp;</td>
-                                    <td><input id="tombolSubmit" type="submit" name="submit" value="Jawab"></td>
-                                </tr>
+                                    <div class="text-center ">
+                                    <center><td><input id="tombolSubmit" type="submit" name="submit" value="Jawab11"></td></center>
+                                        </div>
+                                </tr> -->
                             </table>
+                            <div class="text-center ">
+                            <div class="panel-body col-6">
+                                <button style="margin-top:10px; margin-left:25px;margin-bottom:1px;" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
+                                    Tambah Praktikum
+                                </button>
+
+                            </div>
+                                    <td><input id="tombolSubmit" type="submit" name="submit" value="Jawab11"></td>
+                                        </div>
 
                             </form>
                             </p>

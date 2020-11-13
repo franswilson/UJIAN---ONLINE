@@ -9,7 +9,7 @@ use App\User;
 require '../vendor/autoload.php';
 
 use GuzzleHttp\Client;
-
+ 
 
 class AuthController extends Controller
 {
@@ -20,10 +20,6 @@ class AuthController extends Controller
 
     public function postlogin(Request $request)
     {
-
-
-
-
         $client = new Client();
         $response = $client->request('POSt', 'https://labinformatika.itats.ac.id/api/login-praktikan', [
             'headers' => [

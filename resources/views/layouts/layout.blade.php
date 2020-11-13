@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+<head> 
 <link rel ="icon" type="image/jpg" href="{{asset('admin/assets/img/itats.jpg')}}"> 
 	<title>pretest online</title>
 	<meta charset="utf-8">
@@ -81,9 +81,10 @@
 						<!-- <li><a href="/mahasiswa" class="{{ (request()->is('mahasiswa')) ? 'active' : '' }}"><i class="lnr lnr-users"></i> <span>Mahasiswa</span></a></li> -->
 						<li><a href="/data_soal" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr  lnr-inbox"></i> <span>Manegemen Soal</span></a></li>
 						<li><a href="/praktikum" class="{{ (request()->is('praktikum')) ? 'active' : '' }}"><i class="lnr lnr-inbox"></i> <span>Manegemen praktikum</span></a></li>
+						<!-- <li><a href="/data_laporan" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr  lnr-inbox"></i> <span>laporan praktikum</span></a></li> -->
 						<li><a href="/user" class="{{ (request()->is('user')) ? 'active' : '' }}"><i class="lnr lnr-users"></i> <span>Data login</span></a></li>
 						<li><a href="/waktu" class="{{ (request()->is('waktu')) ? 'active' : '' }}"><i class="lnr lnr-clock"></i> <span>Waktu</span></a></li>
-						@endif
+						@endif	
 					</ul>
 				</nav>
 			</div>
@@ -108,11 +109,9 @@
 	<script src="{{asset('admin/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
 	<script src="{{asset('admin/assets/scripts/klorofil-common.js')}}"></script>
 
-
 	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-
 	@yield('footer')
 </body>
 

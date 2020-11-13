@@ -17,7 +17,7 @@ class DashboardController extends Controller
         $j = 0;
 
         for($i=2019 ; $i<2024 ; $i++){
-          $temp = 0;          
+          $temp = 0;
           foreach($praktikumUser as $item){
             if(substr($item->created_at,0,4) == $i){
                 $temp++;
@@ -26,7 +26,7 @@ class DashboardController extends Controller
           $list[$j]['x'] = $i;
           $list[$j]['y'] = $temp;
           $j++;
-        }    
+        }
 
         $userPraktikan = DB::table('users')->where('role','=','mahasiswa')->count();
         $userAslab = DB::table('users')->where('role','=','admin')->count();

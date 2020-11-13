@@ -31,7 +31,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Uplode gambar</label>
+                                    <label for="exampleInputPassword1">Upload gambar</label>
                                     <input type="file" placeholder="gambar" name="gambar" class="form-control" id="exampleInputPassword1" ">
                                     </div>
 

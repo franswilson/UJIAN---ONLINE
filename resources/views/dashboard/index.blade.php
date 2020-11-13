@@ -125,11 +125,11 @@
                                     </tr>
                                     @endforeach </tbody>
                             </table>
-                            <div class=" form-group">
-                            <div class="col-md-12">
+                            <div style="margin-left:350px;width: 60%;padding: 5px;"class=" form-group">
+                            <div class="col-md-5">
                               <form id="post-data" method="post" action="{{ route('idSoal') }}">
                                 {{ csrf_field() }}
-                                <label for="exampleInputPassword1">Pilih Praktikum</label>
+                                <center><label for="exampleInputPassword1">Pilih Praktikum</label>
                                 <select name="praktikum" class="form-control" id="exampleInputPassword1">
                                     @foreach ($praktikum as $p)
                                     <option id ="soalID" value="{{$p->id}}">{{$p->nama}}</option>

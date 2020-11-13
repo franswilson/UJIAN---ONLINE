@@ -21,14 +21,14 @@ div class="main">
 
                             <style>
                                 p {
-                                    text-align: right;
+                                    text-align: center;
                                     font-size: 20px;
                                     margin-top: 0px;
                                 }
                             </style>
                             <p id="timer"></p>
 
-                            <table width="100%" border="0">
+                            <table class="panel" width="100%" border="0">
 
                                 @php
                                 $angka = 1;
@@ -172,14 +172,12 @@ div class="main">
                             </table>
                             <div class="text-center ">
                             <div class="panel-body col-6">
-                                <button style="margin-top:10px; margin-left:25px;margin-bottom:1px;" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
-                                    Tambah Praktikum
-                                </button>
-
+                                
+                                <div class="btn btn-success ">
+                                        <td><input style="border:none; background-color: #FC000000" id="tombolSubmit" type="submit" name="submit" value="Jawab"></td>
+                                </div>
+                                </div>
                             </div>
-                                    <td><input id="tombolSubmit" type="submit" name="submit" value="Jawab11"></td>
-                                        </div>
-
                             </form>
                             </p>
                         </div>

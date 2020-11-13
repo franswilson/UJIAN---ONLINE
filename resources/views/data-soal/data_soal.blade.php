@@ -35,13 +35,13 @@
                                       @endforeach
                                   </select>
                                   <button style="float:right; margin-top:-34px; margin-right:575px; type="submit" class="btn btn-success float-right">Download</button>
-                                  <button style="margin-top: 17px; margin-left:100px; type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
+                                  <button style="margin-top: -57px; margin-left:345px; type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
                                     Tambah Soal
                                 </button>
-                                <button style=" margin-top: 17px; margin-left:13px;" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#importExcel">
+                                <button style=" margin-top: -57px; margin-left:13px;" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#importExcel">
                                     Upload Soal
                                 </button>
-                                <button style="margin-left:800px; margin-top:-10px;" class="btn btn-danger btn-sm delete-all" data-url="">Delete All</button>
+                                <button style="margin-left:800px; margin-top:-90px;" class="btn btn-danger btn-sm delete-all" data-url="">Delete All</button>
 
                                 </form>
 

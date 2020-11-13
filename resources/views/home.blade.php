@@ -8,7 +8,8 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-heading">
-                            home
+                        <center>SILAHKAN UNTUK 
+                        <button><a href="/user/{{Auth()->user()->id}}/profile"><i class="lnr"></i> <span>CEK NILAI</span></a></button></center>
                         </div>
                     </div>
                 </div>

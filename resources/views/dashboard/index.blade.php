@@ -48,7 +48,7 @@
                                 <div class="metric">
                                     <span class="icon"><i class="fa fa-user-circle-o"></i></span>
                                     <p>
-                                        <span class="number"><?=$userAslab ?></span>
+                                        <span class="number"><?=$userAslab?></span>
                                         <span class="title">Aslab Aktif</span></br>
                                         <a href=#>More Info</a>
                                     </p>

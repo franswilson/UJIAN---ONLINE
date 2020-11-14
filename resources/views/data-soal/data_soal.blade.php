@@ -27,21 +27,21 @@
                                 </div>
                                 @endif
                                 <form id="post-data" method="post" action="{{ route('idPrak') }}">
-                                
+
                                   {{ csrf_field() }}
-                                  <select style="width:200px; margin-left:27px;margin-top:20px;" name="praktikum" class="form-control" id="exampleInputPassword1">
+                                  <select style="width:200px; margin-left:27px;margin-top:20px" name="praktikum" class="form-control" id="exampleInputPassword1">
                                       @foreach ($praktikum as $p)
                                       <option id ="soalID" value="{{$p->id}}">{{$p->nama}}</option>
                                       @endforeach
                                   </select>
-                                  <button style="float:right; margin-top:-34px; margin-right:575px; type="submit" class="btn btn-success float-right">Download</button>
-                                  <button style="margin-top: -57px; margin-left:345px; type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
+                                  <button style="float:right; margin-top:-34px; margin-right:650px" type="submit" class="btn btn-success float-right">Download</button>
+                                  <button style="margin-top: -57px; margin-left:345px" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
                                     Tambah Soal
                                 </button>
-                                <button style=" margin-top: -57px; margin-left:13px;" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#importExcel">
+                                <button style=" margin-top: -57px; margin-left:13px" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#importExcel">
                                     Upload Soal
                                 </button>
-                                <button style="margin-left:800px; margin-top:-90px;" class="btn btn-danger btn-sm delete-all" data-url="">Delete All</button>
+                                <button style="margin-left:800px; margin-top:-90px" class="btn btn-danger btn-sm delete-all" data-url="">Delete All</button>
 
                                 </form>
 
@@ -74,7 +74,7 @@
                             </div>
 
                             <div class="panel-body">
-                                
+
                                 <table class="table table-striped table-bordered" id="soal">
                                     <thead>
                                         <tr>
@@ -120,12 +120,12 @@
                                             </td>
 
                                         </tr>
-                                        
+
 
                                         @endforeach
                                              </tbody>
                                 </table>
-                                
+
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -186,14 +186,14 @@
                                                             <button type="submit" class="btn btn-primary">update</button>
                                                         </div>
                                                 </form>
-                                                
+
                                             </div>
-                                            
+
                                         </div>
                                     </div>
-                                    
+
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>

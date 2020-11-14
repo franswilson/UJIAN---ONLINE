@@ -25,18 +25,18 @@
 
                                     </div>
                                     <div>
-                                    
+
                                     </div>
 
                                     <div class="col-md-6 stat-item">
-                                        <span>email</span>{{$profile->email}}
+                                        <span>npm</span>{{$profile->npm}}
                                     </div>
 
                                 </div>
-                            </div>   
-                            
+                            </div>
+
                         </div>
-                        
+
                     </div>
                     <!-- END LEFT COLUMN -->
                     <!-- RIGHT COLUMN -->

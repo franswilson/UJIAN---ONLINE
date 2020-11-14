@@ -16,7 +16,7 @@ div class="main">
 
                                 </h3>
                                 <form id="formSoal" name="form1" method="post" action="{{ route('jawab.store') }}">
-                                  <input type ="hidden", name = "praktikum", value="{{$PrakId}}">
+                                    <input type="hidden" name="praktikum" value="{{$PrakId}}">
                             </div>
 
                             <style>
@@ -171,11 +171,12 @@ div class="main">
                                 </tr> -->
                             </table>
                             <div class="text-center ">
-                            <div class="panel-body col-6">
-                                
-                                <div class="btn btn-success ">
-                                        <td><input style="border:none; background-color: #FC000000" id="tombolSubmit" type="submit" name="submit" value="Jawab"></td>
-                                </div>
+                                <div class="panel-body col-6">
+
+                                    <div class="btn btn-success ">
+                                        <td>
+                                            <input style="border:none; background-color: #FC000000" id="tombolSubmit" type="submit" name="submit" value="Jawab"></td>
+                                    </div>
                                 </div>
                             </div>
                             </form>

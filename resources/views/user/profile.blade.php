@@ -10,10 +10,8 @@
                     <div class="profile-left">
                         <!-- PROFILE HEADER -->
                         <div class="profile-header">
-                            <br>
-
                             <div class="profile-main">
-                                <img style="weigh:100px; height:100px;"type="image/png" src="{{asset('admin/assets/img/pp.jpg')}}" class="img-circle" alt="Avatar">
+                                <img style="weigh:100px; height:100px;" type="image/png" src="{{asset('admin/assets/img/pp.jpg')}}" class="img-circle" alt="Avatar">
 
                                 <h3 class="name">{{$profile->name}}</h3>
                                 <span class="online-status status-available">AKTIF</span>

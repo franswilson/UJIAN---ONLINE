@@ -30,7 +30,6 @@ class SubmitJawabController extends Controller
             };
         }
 
-
         $jawaban = new Jawaban;
         $jawaban->user_id = Auth::user()->id;
         $jawaban->nama = Auth::user()->name;

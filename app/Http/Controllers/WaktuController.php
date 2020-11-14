@@ -9,6 +9,7 @@ class WaktuController extends Controller
 {
     public function index()
     {
+
         $waktu = DB::table('waktu')
         ->join('praktikum','praktikum.id','=','waktu.id_praktikum')
         ->select('waktu.id','praktikum.nama','waktu.waktu_mulai','waktu.waktu_selesai')->get();
@@ -17,8 +18,9 @@ class WaktuController extends Controller
 
     public function edit($id)
     {
+      $praktikum = \App\Praktikum::where('aktif', '=', 'Y')->get();
         $waktu = \App\Waktu::find($id);
-        return view('data-waktu/edit', ['waktu' => $waktu]);
+        return view('data-waktu/edit', ['waktu' => $waktu],compact('praktikum'));
     }
 
     public function delete($id)

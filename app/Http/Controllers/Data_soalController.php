@@ -64,8 +64,9 @@ class Data_soalController extends Controller
 
     public function edit($id)
     {
+        $praktikum = \App\Praktikum::where('aktif', '=', 'Y')->get();
         $data_soal = \App\Data_soal::find($id);
-        return view('data-soal/edit', ['data_soal' => $data_soal]);
+        return view('data-soal/edit', ['data_soal' => $data_soal], compact('praktikum'));
     }
     public function update(Request $request, $id)
     {

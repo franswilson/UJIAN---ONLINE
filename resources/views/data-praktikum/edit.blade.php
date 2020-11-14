@@ -22,7 +22,7 @@
                                 </div>
                                 <div class=" form-group">
                                     <label for="exampleInputPassword1">Aktivasi</label>
-                                    <select name="aktif" class="form-control" id="exampleInputPassword1">
+                                    <select style="width: 60px" name="aktif" class="form-control" id="exampleInputPassword1">
                                         <option value="Y" @if($praktikum->aktif == 'Y') selected @endif>Y</option>
                                         <option value="N" @if($praktikum->aktif == 'N') selected @endif>N</option>
                                     </select>

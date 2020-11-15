@@ -15,6 +15,13 @@
                                 {{session('sukses')}}
                             </div>
                             @endif
+
+                            <div class="col-6">
+                                <button style="margin-top:10px; margin-left:25px;margin-bottom:1px;" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
+                                    Tambah Praktikum
+                                </button>
+
+                            </div>
                             <div class="panel-body">
                                 <table class="table table-striped table-bordered" id="waktu">
                                     <thead>
@@ -23,6 +30,7 @@
                                             <th>Nama</th>
                                             <th>waktu mulai</th>
                                             <th>waktu selesai</th>
+                                            <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -34,6 +42,7 @@
                                             <td>{{$c->nama}}</td>
                                             <td>{{$c->waktu_mulai}}</td>
                                             <td>{{$c->waktu_selesai}}</td>
+                                            <td>{{$c->aktif}}</td>
                                             <td>
                                                 <form>
                                                     @csrf
@@ -43,6 +52,42 @@
                                         </tr>
                                         @endforeach </tbody>
                                 </table>
+
+
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Menambahkan Data Praktikum</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="waktu/create" method="POST">
+                                                    {{csrf_field()}}
+                                                    <div class="form-group">
+                                                        <select style="width: 325px" name="id_praktikum" class="form-control" id="exampleInputPassword1">
+                                                            @foreach ($praktikum as $p)
+                                                            <option id="soalID" value="{{$p->id}}">{{$p->nama}}</option>
+
+                                                            @endforeach
+                                                        </select></br></br>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                                                            <button type="submit" class="btn btn-primary">Tambah</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>

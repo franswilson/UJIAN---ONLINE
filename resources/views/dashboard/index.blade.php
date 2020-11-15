@@ -91,12 +91,12 @@
                             </div>
                                 <div class="panelbox">
                                 <div class="text-center ">
-                                <h1><b>PERATURAN PRETEST :</b></h1>
+                                <h1><b>PERATURAN PRETEST :</b></h1><br>
                                 <center><h4>
                                     1. kerjakan soal sampai waktu yang di tentukan
-                                    <br>
+                                    <br><br>
                                     2. kerjakan secara individu
-                                    <br>
+                                    <br><br>
                                     3. cek nilai pada menu my profil
                                     </h4></center>
                                 </div>
@@ -125,12 +125,12 @@
                                     </tr>
                                     @endforeach </tbody>
                             </table>
-                            <div style="margin-left:350px;width: 60%;padding: 5px;"class=" form-group">
+                            <div style="margin-left:350px;width: 85%;padding: 5px;"class=" form-group">
                             <div class="col-md-5">
                               <form id="post-data" method="post" action="{{ route('idSoal') }}">
                                 {{ csrf_field() }}
                                 <center><label for="exampleInputPassword1">Pilih Praktikum</label>
-                                <select name="praktikum" class="form-control" id="exampleInputPassword1">
+                                <select style="width: 325px" name="praktikum" class="form-control" id="exampleInputPassword1">
                                     @foreach ($praktikum as $p)
                                     <option id ="soalID" value="{{$p->id}}">{{$p->nama}}</option>
                                     @endforeach

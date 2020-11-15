@@ -1,29 +1,31 @@
 <!doctype html>
 <html lang="en">
 
-<head> 
-<link rel ="icon" type="image/jpg" href="{{asset('admin/assets/img/itats.jpg')}}"> 
+<head>
+	<link rel="icon" type="image/jpg" href="{{asset('admin/assets/img/itats.jpg')}}">
 	<title>pretest online</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
 	<!-- VENDOR CSS -->
 	<link rel="stylesheet" href="{{asset('admin/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('admin/assets/vendor/font-awesome/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{asset('admin/assets/vendor/linearicons/style.css')}}">
+	<link rel="stylesheet" href="{{asset('admin/assets/vendor/chartist/css/chartist-custom.css')}}">
+
 
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="{{asset('admin/assets/css/main.css')}}">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}">
-	<!-- GOOGLE FONTS -->
-
+	<!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet"> -->
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="100x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
 	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('admin/assets/img/favicon.png')}}">
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --> -->
 
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -31,7 +33,7 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.5/bootstrap-confirmation.min.js"></script> -->
 
-	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<!-- <meta name="csrf-token" content="{{ csrf_token() }}"> -->
 </head>
 
 <body>
@@ -50,11 +52,10 @@
 
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
-
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span>{{strtoupper(Auth()->user()->name)}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="/user/{{Auth()->user()->id}}/profile"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+								<li><a href="/user/profile"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
@@ -72,8 +73,6 @@
 				<nav>
 					<ul class="nav">
 						<li><a href="/dashboard" class="{{ (request()->is('dashboard')) ? 'active' : '' }}"> <i class="lnr lnr-home "></i> <span>Dashboard</span></a></li>
-
-
 						@if(auth()->user()->role == 'admin')
 						<!-- <li><a href="/soal" class="{{ (request()->is('modul')) ? 'active' : '' }}"><i class="lnr lnr-code"></i> <span>Soal</span></a></li> -->
 
@@ -84,7 +83,7 @@
 						<!-- <li><a href="/data_laporan" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr  lnr-inbox"></i> <span>laporan praktikum</span></a></li> -->
 						<li><a href="/user" class="{{ (request()->is('user')) ? 'active' : '' }}"><i class="lnr lnr-users"></i> <span>Data login</span></a></li>
 						<li><a href="/waktu" class="{{ (request()->is('waktu')) ? 'active' : '' }}"><i class="lnr lnr-clock"></i> <span>Waktu</span></a></li>
-						@endif	
+						@endif
 					</ul>
 				</nav>
 			</div>

@@ -20,13 +20,14 @@ class UserController extends Controller
     {
         $praktikum = \App\Praktikum::all();
         $user = \App\User::with(['praktikum'])->get();
-        return view('nilai.index', ['user' => $user],compact('praktikum'));
+        return view('nilai.index', ['user' => $user], compact('praktikum'));
     }
 
 
-    public function profile($id)
+    public function profile()
     {
 
+        $id = auth()->user()->id;
         $profile  = \App\User::find($id);
         $praktikum = \App\Praktikum::all();
         // $user = \App\User::find($id);
@@ -58,7 +59,7 @@ class UserController extends Controller
     public function export_excel(Request $request)
     {
         $idPrak = $request->praktikum;
-        $prak =  Praktikum::where('id','=',$idPrak)->select('nama')->first();
-        return Excel::download(new NilaiExport($idPrak), "Nilai Praktikum " .$prak->nama. ".xlsx");
+        $prak =  Praktikum::where('id', '=', $idPrak)->select('nama')->first();
+        return Excel::download(new NilaiExport($idPrak), "Nilai Praktikum " . $prak->nama . ".xlsx");
     }
 }

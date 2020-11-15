@@ -8,11 +8,18 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Edit data customer</h3>
+                            <h3 class="panel-title">Edit data soal</h3>
                         </div>
                         <div class="panel-body">
                             <form action="/data_soal/{{$data_soal->id}}/update" method="POST" enctype="multipart/form-data">
                                 {{csrf_field()}}
+                                <label for="exampleInputEmail1">Praktikum</label>
+                                <select style="size:200px" name="id_praktikum" class="form-control" id="exampleInputPassword1">
+                                    @foreach ($praktikum as $p)
+                                    <option id="soalID" value="{{$p->id}}">{{$p->nama}}</option>
+
+                                    @endforeach
+                                </select></br>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Soal</label>
                                     <textarea type="text" name="soal" class="form-control" placeholder="Isi Soal" id="exampleInputEmail1" aria-describedby="emailHelp">{{$data_soal->soal}}</textarea>
@@ -47,7 +54,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Uplode gambar</label>
-                                        <input type="file" placeholder="gambar" name="gambar" class="form-control" id="exampleInputPassword1" ">
+                                        <input type="file" placeholder="gambar" name="gambar" class="form-control" id="exampleInputPassword1">
                                     </div>
                                     <div class=" form-group">
                                         <label for="exampleInputPassword1">Aktivasi</label>

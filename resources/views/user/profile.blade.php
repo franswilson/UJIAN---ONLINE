@@ -11,20 +11,20 @@
                         <!-- PROFILE HEADER -->
                         <div class="profile-header">
                             <div class="profile-main">
-                                <img style="weigh:100px; height:100px;" type="image/png" src="{{asset('admin/assets/img/pp.jpg')}}" class="img-circle" alt="Avatar">
+                                <img style="weigh:100px; height:100px;" type="image/png" src="{{$profile->foto}}" class="img-circle" alt="Avatar">
 
                                 <h3 class="name">{{$profile->name}}</h3>
                                 <span class="online-status status-available">AKTIF</span>
                             </div>
                             <div class="profile-stat">
                                 <div class="row">
-                                    <div class="col-md-6 stat-item">
+                                    <!-- <div class="col-md-6 stat-item">
                                         <span>sebagai</span> {{$profile->role}}
 
                                     </div>
                                     <div>
 
-                                    </div>
+                                    </div> -->
 
                                     <div class="col-md-6 stat-item">
                                         <span>npm</span>{{$profile->npm}}

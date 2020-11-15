@@ -9,7 +9,7 @@ use App\User;
 require '../vendor/autoload.php';
 
 use GuzzleHttp\Client;
- 
+
 
 class AuthController extends Controller
 {
@@ -54,7 +54,8 @@ class AuthController extends Controller
             $test = json_decode($response->getBody()->getContents());
 
             if (count($test->users) == 0) {
-                dd('Username atau password salah');
+                return view('Auths.login');
+                // dd('Username atau password salah');
             } else if ($test->users[1] == "admin") {
                 $cek_login = User::where('npm', $test->users[0])->first();
                 if ($cek_login == null) {
@@ -75,8 +76,9 @@ class AuthController extends Controller
             $cek_login = User::where('npm', $test->users[0])->first();
             if ($cek_login == null) {
                 $get_user = User::create([
-                    'email' => $test->users[0],
+                    'npm' => $test->users[0],
                     'name' => $test->users[1],
+                    'foto' => $test->users[3],
                     'role' => 'mahasiswa',
                 ]);
                 Auth::login($get_user);

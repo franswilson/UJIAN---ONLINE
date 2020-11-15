@@ -24,8 +24,8 @@ class SoalController extends Controller
         $PrakId = $request->praktikum;
 
         $cek = Waktu::where('waktu_mulai', '<=', $timeNow)
-        ->where('waktu_selesai', '>=', $timeNow)
-        ->where('id_praktikum','=',$PrakId)->first();
+            ->where('waktu_selesai', '>=', $timeNow)
+            ->where('id_praktikum', '=', $PrakId)->first();
         //dd($PrakId);
 
         // dd($cek);
@@ -37,10 +37,11 @@ class SoalController extends Controller
                 // ->join('praktikum','praktikum.id','tbl_soal.id_praktikum')
                 // ->where('tbl_soal.aktif','=','Y')->where('praktikum.pretest','=','Y')
                 // ->select('tbl_soal.*')->inRandomOrder()->paginate(20);
-                $soal = Soal::where('aktif', '=', 'Y')->where('id_praktikum', '=', $PrakId)->inRandomOrder()->paginate(20);
+                $soal = Soal::where('aktif', '=', 1)->where('id_praktikum', '=', $PrakId)->inRandomOrder()->paginate(20);
                 Session::push('soal', $soal);
             }
-            return view('soal', compact('cek','PrakId'));
+
+            return view('soal', compact('cek', 'PrakId'));
         }
 
         return Redirect()->Back();

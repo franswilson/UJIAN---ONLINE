@@ -10,12 +10,12 @@
                             <h3 class="panel-title">Nilai</h3>
                         </div> -->
                         <div class="panel-body">
-                            <div class="col-6">
+                            <!-- <div class="col-6">
                                 <button style="margin-top:10px; margin-left:25px;margin-bottom:1px;" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
                                     Tambah Praktikum
                                 </button>
 
-                            </div>
+                            </div> -->
                             @if(session('sukses'))
                             <div class="alert alert-success" role="alert">
                                 {{session('sukses')}}
@@ -28,8 +28,8 @@
                                             <th>No</th>
                                             <th>nama praktikum</th>
                                             <th>id praktikum</th>
-                                            <th>aktif</th>
-                                            <th>aksi</th>
+                                            <th>status</th>
+                                            <!-- <th>aksi</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -40,15 +40,20 @@
                                             <td>{{$i++}}</td>
                                             <td>{{$u->nama}}</td>
                                             <td>{{$u->id}}</td>
-                                            <td><span class="label label-warning">{{$u->aktif}}</span></td>
-                                            <td>
+                                            <td>@if($u->aktif == 1)
+                                                <span class="label label-success"> aktif</span>
+                                                @else
+                                                <span class="label label-warning">non aktif</span>
+                                                @endif
+                                            </td>
+                                            <!-- <td>
                                                 <form action="{{ route('praktikum.delete', $u->id)}}" class="d-inline">
 
                                                     <button class="btn btn-danger btn-sm lnr lnr-trash" type="submit"></button>
                                                     @csrf
                                                     <a class="btn btn-primary btn-sm  lnr lnr-pencil" href="{{ route('praktikum.edit', $u->id) }}"></a>
                                                 </form>
-                                            </td>
+                                            </td> -->
 
                                         </tr>
                                         @endforeach

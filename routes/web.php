@@ -68,12 +68,12 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::post('/user/{id}/update', 'UserController@update');
     Route::get('/user/{id}/delete', 'UserController@delete')->name('user.delete');
 
-
     //waktu
     Route::get('/waktu', 'WaktuController@index');
     Route::get('/waktu/{id}/edit', 'WaktuController@edit')->name('waktu.edit');
     Route::post('/waktu/{id}/update', 'WaktuController@update');
     Route::get('/waktu/{id}/delete', 'WaktuController@delete')->name('waktu.delete');
+    Route::post('/waktu/create', 'WaktuController@create');
 
 
     //data mahasiswa
@@ -97,8 +97,6 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 
     //Import Excel
     Route::post('/soal/import_excel', 'Data_soalController@import_excel');
-
-
 });
 
 
@@ -119,7 +117,6 @@ Route::group(['middleware' => ['auth', 'checkRole:mahasiswa,admin']], function (
 
 
     //profile
-    Route::get('/user/{id}/profile', 'UserController@profile');
+    Route::get('/user/profile', 'UserController@profile')->name('mahasiswa.profile');
     Route::get('/soal/{id}/{jawab}', 'SoalController@simpansoal');
-
 });

@@ -28,20 +28,25 @@
                                 @endif
                                 <form id="post-data" method="post" action="{{ route('idPrak') }}">
 
-                                  {{ csrf_field() }}
-                                  <select style="width:200px; margin-left:27px;margin-top:20px" name="praktikum" class="form-control" id="exampleInputPassword1">
-                                      @foreach ($praktikum as $p)
-                                      <option id ="soalID" value="{{$p->id}}">{{$p->nama}}</option>
-                                      @endforeach
-                                  </select>
-                                  <button style="margin-top:-55px;margin-left:245px; margin-right:60px" type="submit" class="btn btn-success float-right">Download</button>
-                                  <button style="margin-top: -55px; margin-left:-45px" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
-                                    Tambah Soal
-                                </button>
-                                <button style=" margin-top: -55px; margin-left:13px" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#importExcel">
-                                    Upload Soal
-                                </button>
-                                <button style="margin-left:800px; margin-top:-90px" class="btn btn-danger btn-sm delete-all" data-url="">Delete All</button>
+                                    {{ csrf_field() }}
+                                    <select style="width:200px; margin-left:27px;margin-top:20px" name="praktikum" class="form-control" id="exampleInputPassword1">
+                                        @foreach ($praktikum as $p)
+                                        <option id="soalID" value="{{$p->id}}">{{$p->nama}}</option>
+                                        @endforeach
+                                    </select>
+                                    <button style="margin-top:-55px;margin-left:245px; margin-right:60px" type="submit" class="btn btn-success float-right">Download</button>
+                                    <button style="margin-top: -55px; margin-left:-45px" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
+                                        Tambah Soal
+                                    </button>
+                                    <button style=" margin-top: -55px; margin-left:13px" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#importExcel">
+                                        Upload Soal
+                                    </button>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <button style="margin-top:-90px; margin-left:25px" class="btn btn-danger float-right">
+                                        Delete All
+                                    </button>
 
                                 </form>
 
@@ -89,7 +94,7 @@
                                             <th>kunci</th>
                                             <th>gambar</th>
                                             <th>praktikum</th>
-                                            <th>aktif</th>
+                                            <th>status</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -109,7 +114,12 @@
                                             <td>{{ $c->knc_jawaban }}</td>
                                             <td>{{ $c->gambar }}</td>
                                             <td>{{ $c->nama }}</td>
-                                            <td><span class="label label-warning">{{ $c->aktif}}</span></td>
+                                            <td>@if($c->aktif == 'Y')
+                                                <span class="label label-success"> aktif</span>
+                                                @else
+                                                <span class="label label-warning">non aktif</span>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <form action="{{ route('data_soal.delete', $c->id)}}" class="d-inline">
 
@@ -123,7 +133,7 @@
 
 
                                         @endforeach
-                                             </tbody>
+                                    </tbody>
                                 </table>
 
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

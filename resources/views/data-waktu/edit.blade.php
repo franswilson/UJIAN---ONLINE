@@ -22,24 +22,30 @@
                         <div class="panel-body">
                             <form action="/waktu/{{$waktu->id}}/update" method="POST" method="POST" enctype="multipart/form-data">
                                 {{csrf_field()}}
+                                <label for="waktu">Praktikum</label>
+                                <select style="width: 325px" name="id_praktikum" class="form-control" id="exampleInputPassword1">
+                                    @foreach ($praktikum as $p)
+                                    <option id="soalID" value="{{$p->id}}">{{$p->nama}}</option>
+
+                                    @endforeach
+                                </select></br></br>
                                 <div class="form-group">
                                     <text for="waktu">waktu mulai saat ini = </text>
                                     {{$waktu->waktu_mulai}}</input>
                                     <br>
 
-                                    <label for="waktu">waktu mulai ujian:</label>
+                                    <label for="waktu">waktu mulai ujian : </label>
                                     <input type="datetime-local" id="waktu_mulai" name="waktu_mulai">
 
                                 </div>
 
-                                <br>
                                 <br>
                                 <div class="form-group">
                                     <text for="waktu">waktu selesai saat ini = </text>
                                     {{$waktu->waktu_selesai}}</input>
 
                                     <br>
-                                    <label for="waktu">waktu selesai ujian:</label>
+                                    <label for="waktu">waktu selesai ujian : </label>
                                     <input type="datetime-local" id="waktu_selesai" name="waktu_selesai">
 
                                 </div>

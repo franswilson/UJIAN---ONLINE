@@ -9,16 +9,21 @@ class WaktuController extends Controller
 {
     public function index()
     {
+
         $waktu = DB::table('waktu')
-        ->join('praktikum','praktikum.id','=','waktu.id_praktikum')
-        ->select('waktu.id','praktikum.nama','waktu.waktu_mulai','waktu.waktu_selesai')->get();
-        return view('data-waktu.waktu', compact('waktu'));
+            ->join('praktikum', 'praktikum.id', '=', 'waktu.id_praktikum')
+            ->select('waktu.id', 'praktikum.nama', 'waktu.waktu_mulai', 'waktu.waktu_selesai', 'praktikum.aktif')->get();
+
+        $praktikum = DB::table('praktikum')->get();
+
+        return view('data-waktu.waktu', compact('waktu', 'praktikum'));
     }
 
     public function edit($id)
     {
+        $praktikum = \App\Praktikum::where('aktif', '=', 'Y')->get();
         $waktu = \App\Waktu::find($id);
-        return view('data-waktu/edit', ['waktu' => $waktu]);
+        return view('data-waktu/edit', ['waktu' => $waktu], compact('praktikum'));
     }
 
     public function delete($id)
@@ -38,5 +43,10 @@ class WaktuController extends Controller
             $waktu->save();
         }
         return redirect('/waktu')->with('sukses', 'Data berhasil di ubah');
+    }
+    public function create(Request $request)
+    {
+        \App\Waktu::create($request->all());
+        return redirect('/waktu')->with('sukses', 'Data berhasil di input');
     }
 }

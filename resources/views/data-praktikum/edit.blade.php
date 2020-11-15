@@ -22,9 +22,9 @@
                                 </div>
                                 <div class=" form-group">
                                     <label for="exampleInputPassword1">Aktivasi</label>
-                                    <select name="aktif" class="form-control" id="exampleInputPassword1">
-                                        <option value="Y" @if($praktikum->aktif == 'Y') selected @endif>Y</option>
-                                        <option value="N" @if($praktikum->aktif == 'N') selected @endif>N</option>
+                                    <select style="width: 60px" name="aktif" class="form-control" id="exampleInputPassword1">
+                                        <option value="Y" @if($praktikum->aktif == 1) selected @endif>aktif</option>
+                                        <option value="N" @if($praktikum->aktif == 0) selected @endif>non aktif</option>
                                     </select>
                                 </div>
                                 <div class="modal-footer">

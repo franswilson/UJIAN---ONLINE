@@ -38,7 +38,7 @@ class SubmitJawabController extends Controller
 
         $jawaban->save();
         // dd($jawaban);
-        return view('/home');
+        return redirect()->route('mahasiswa.profile');
 
         // dd($nilai);
         // return $request;

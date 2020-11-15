@@ -19,14 +19,27 @@ class Data_soalController extends Controller
 {
     public function index()
     {
+
         $praktikum = \App\Praktikum::all();
 
         $data_soal = DB::table('tbl_soal')
-        ->join('praktikum', 'praktikum.id','=','tbl_soal.id_praktikum')
-        ->select('tbl_soal.id', 'tbl_soal.soal', 'tbl_soal.a', 'tbl_soal.b', 'tbl_soal.c', 'tbl_soal.d', 'tbl_soal.e', 'tbl_soal.knc_jawaban',
-         'tbl_soal.gambar', 'tbl_soal.aktif', 'tbl_soal.soal', 'praktikum.nama')->get();
+            ->join('praktikum', 'praktikum.id', '=', 'tbl_soal.id_praktikum')
+            ->select(
+                'tbl_soal.id',
+                'tbl_soal.soal',
+                'tbl_soal.a',
+                'tbl_soal.b',
+                'tbl_soal.c',
+                'tbl_soal.d',
+                'tbl_soal.e',
+                'tbl_soal.knc_jawaban',
+                'tbl_soal.gambar',
+                'tbl_soal.aktif',
+                'tbl_soal.soal',
+                'praktikum.nama'
+            )->get();
 
-        return view('data-soal.data_soal',compact('praktikum','data_soal'));
+        return view('data-soal.data_soal', compact('praktikum', 'data_soal'));
     }
 
     public function create(Request $request)
@@ -54,6 +67,7 @@ class Data_soalController extends Controller
         $c->delete();
         return back()->with('success', 'Product deleted successfully');
     }
+
     public function deleteMultiple(Request $request)
     {
         $ids = $request->ids;
@@ -64,8 +78,9 @@ class Data_soalController extends Controller
 
     public function edit($id)
     {
+        $praktikum = \App\Praktikum::where('aktif', '=', 'Y')->get();
         $data_soal = \App\Data_soal::find($id);
-        return view('data-soal/edit', ['data_soal' => $data_soal]);
+        return view('data-soal/edit', ['data_soal' => $data_soal], compact('praktikum'));
     }
     public function update(Request $request, $id)
     {
@@ -81,8 +96,8 @@ class Data_soalController extends Controller
     public function export_excel(Request $request)
     {
         $idPrak = $request->praktikum;
-        $prak =  Praktikum::where('id','=',$idPrak)->select('nama')->first();
-        return Excel::download(new SoalExport($idPrak), "Soal Praktikum " .$prak->nama. ".xlsx");
+        $prak =  Praktikum::where('id', '=', $idPrak)->select('nama')->first();
+        return Excel::download(new SoalExport($idPrak), "Soal Praktikum " . $prak->nama . ".xlsx");
     }
     public function import_excel(Request $request)
     {

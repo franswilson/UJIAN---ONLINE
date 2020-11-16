@@ -33,7 +33,7 @@
                                             <th>No</th>
                                             <th>role</th>
                                             <th>nama</th>
-                                            <th>email</th>
+                                            <th>npm</th>
                                             <th>password</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -46,7 +46,7 @@
 
                                             <td>{{ $c->role }}</td>
                                             <td>{{ $c->name }}</td>
-                                            <td>{{ $c->email }}</td>
+                                            <td>{{ $c->npm }}</td>
                                             <td>{{ $c->password }}</td>
                                             <td>
                                                 <form action="{{ route('user.delete', $c->id)}}" class="d-inline">

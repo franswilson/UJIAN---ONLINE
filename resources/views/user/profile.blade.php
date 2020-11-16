@@ -56,7 +56,6 @@
                                         <tr>
                                             <th>No</th>
                                             <th>praktikum</th>
-                                            <th>kode</th>
                                             <th>nama</th>
                                             <th>nilai</th>
 
@@ -68,7 +67,6 @@
                                         <tr>
                                             <td>{{$i++}}</td>
                                             <td>{{$p->nama}}</td>
-                                            <td>{{$p->kode}}</td>
                                             <td>{{$p->pivot->nama}}</td>
                                             <td>{{$p->pivot->nilai}}</td>
                                         </tr>

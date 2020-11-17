@@ -74,15 +74,16 @@
 <div class="login-brand">
 Login Praktikan   
 </div>
-<div class="card card-primary" style="border-top: 2px solid #0081c2;">
-<div class="card-body">
-<form method="POST" action="/postlogin" class="needs-validation" novalidate="">
-{{csrf_field()}}
 <?php if(isset($message)) { ?>
 <div class="alert alert-danger">
 <?= $message ?>
 </div>
 <?php } ?>
+<div class="card card-primary" style="border-top: 2px solid #0081c2;">
+<div class="card-body">
+<form method="POST" action="/postlogin" class="needs-validation" novalidate="">
+{{csrf_field()}}
+
 <div class="form-group">
 <label for="npm">NPM</label>
 <input id="npm" type="text" class="form-control" name="npm">

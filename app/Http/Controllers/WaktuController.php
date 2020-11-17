@@ -21,9 +21,8 @@ class WaktuController extends Controller
 
     public function edit($id)
     {
-        $praktikum = \App\Praktikum::where('aktif', '=', 'Y')->get();
         $waktu = \App\Waktu::find($id);
-        return view('data-waktu/edit', ['waktu' => $waktu], compact('praktikum'));
+        return view('data-waktu/edit', ['waktu' => $waktu]);
     }
 
     public function delete($id)

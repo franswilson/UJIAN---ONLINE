@@ -72,13 +72,13 @@ class Data_soalController extends Controller
     {
         $ids = $request->ids;
         Data_soal::whereIn('id', explode(",", $ids))->delete();
-        return response()->json(['status' => true, 'message' => "Product deleted successfully."]);
+        return response()->json(['status' => true, 'message' => "Soal berhasil dihapus"]);
     }
 
 
     public function edit($id)
     {
-        $praktikum = \App\Praktikum::where('aktif', '=', 'Y')->get();
+        $praktikum = \App\Praktikum::where('aktif', '=', '1')->get();
         $data_soal = \App\Data_soal::find($id);
         return view('data-soal/edit', ['data_soal' => $data_soal], compact('praktikum'));
     }

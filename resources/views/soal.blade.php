@@ -158,6 +158,7 @@ div class="main">
                                     </td>
 
                                 </tr>
+                                <br><br><br><br><br><br>
 
                                 @php
                                 $angka++;

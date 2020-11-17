@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     // Route::delete('/data_soal', 'Data_soalController@deleteall');
     Route::delete('/data_soal/{id}', ['as' => 'data_soal.destroy', 'uses' => 'Data_soalController@destroy']);
     Route::delete('/delete-multiple-product', ['as' => 'data_soal.multiple-delete', 'uses' => 'Data_soalController@deleteMultiple']);
+
     //modul
     Route::get('/nilai', 'UserController@nilai');
 

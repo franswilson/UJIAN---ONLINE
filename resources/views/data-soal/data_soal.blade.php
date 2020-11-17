@@ -44,11 +44,11 @@
                                     <br>
                                     <br>
                                     <br>
-                                    <button style="margin-top:-90px; margin-left:25px" class="btn btn-danger float-right">
-                                        Delete All
-                                    </button>
 
                                 </form>
+
+                                <button style="margin: 5px; margin-left:30px" class="btn btn-danger btn-bg delete-all" data-url="">Delete All</button>
+
 
                                 <div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">

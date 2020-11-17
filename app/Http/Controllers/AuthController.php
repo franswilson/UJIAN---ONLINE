@@ -54,8 +54,9 @@ class AuthController extends Controller
             $test = json_decode($response->getBody()->getContents());
 
             if (count($test->users) == 0) {
-                return view('Auths.login');
-                // dd('Username atau password salah');
+                $message = "NPM atau Password salah";
+                return view('Auths.login', compact('message'));
+                // dd(' Usernameatau password salah');
             } else if ($test->users[1] == "admin") {
                 $cek_login = User::where('npm', $test->users[0])->first();
                 if ($cek_login == null) {

@@ -130,7 +130,7 @@
                               <form id="post-data" method="post" action="{{ route('idSoal') }}">
                                 {{ csrf_field() }}
                                 <center><label for="exampleInputPassword1">Pilih Praktikum</label>
-                                <select style="width: 325px" name="praktikum" class="form-control" id="exampleInputPassword1">
+                                <select style="width: 320px" name="praktikum" class="form-control" id="exampleInputPassword1">
                                     @foreach ($praktikum as $p)
                                     <option id ="soalID" value="{{$p->id}}">{{$p->nama}}</option>
                                     @endforeach

@@ -155,10 +155,12 @@ div class="main">
                                             @endphp
                                             >
                                             {{$s->e}}</font>
+                                            <br><br>
                                     </td>
+                                    
 
                                 </tr>
-                                <br><br><br><br><br><br>
+                                
 
                                 @php
                                 $angka++;

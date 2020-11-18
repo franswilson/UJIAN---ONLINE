@@ -42,8 +42,6 @@
                                         Upload Soal
                                     </button>
                                     <br>
-                                    <br>
-                                    <br>
 
                                 </form>
 
@@ -80,7 +78,7 @@
 
                             <div class="panel-body">
 
-                                <table class="table table-striped table-bordered" id="soal">
+                                <table style="margin-left:-54px" class="table table-striped table-bordered" id="soal">
                                     <thead>
                                         <tr>
                                             <th><input type="checkbox" id="check_all"></th>

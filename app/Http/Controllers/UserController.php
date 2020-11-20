@@ -7,6 +7,7 @@ use App\Praktikum;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use App\Exports\NilaiExport;
+use Illuminate\Support\Facades\DB;
 
 
 class UserController extends Controller
@@ -18,9 +19,13 @@ class UserController extends Controller
     }
     public function nilai()
     {
-        $praktikum = \App\Praktikum::all();
-        $user = \App\User::with(['praktikum'])->get();
-        return view('nilai.index', ['user' => $user], compact('praktikum'));
+      $nilai = DB::table('praktikum_user')
+          ->join('praktikum', 'praktikum.id', '=', 'praktikum_user.praktikum_id')
+          ->join('modul', 'modul.id', '=', 'praktikum_user.id_modul')
+          ->select( 'praktikum.nama as nama_prak', 'modul.nama as nama_mod', 'praktikum_user.nama', 'praktikum_user.nilai'
+          )->get();
+      $praktikum = \App\Praktikum::all();
+      return view('nilai.index', ['nilai' => $nilai], compact('praktikum'));
     }
 
 

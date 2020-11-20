@@ -38,11 +38,12 @@ class DashboardController extends Controller
       //        return response($list);
     } else {
       $praktikum = \App\Praktikum::where('aktif', '=', 1)->get();
+      $modul = \App\Modul::where('aktif', '=', 1)->get();
       $waktu = DB::table('waktu')
         ->join('praktikum', 'praktikum.id', '=', 'waktu.id_praktikum')
         ->select('waktu.id', 'praktikum.nama', 'waktu.waktu_mulai', 'waktu.waktu_selesai')
         ->where('praktikum.aktif', '=', '1')->get();
-      return view('dashboard.index', compact('praktikum', 'waktu'));
+      return view('dashboard.index', compact('praktikum', 'waktu', 'modul'));
     }
   }
 }

@@ -25,13 +25,13 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('admin/assets/img/favicon.png')}}">
 
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --> -->
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.5/bootstrap-confirmation.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.5/bootstrap-confirmation.min.js"></script> --> -->
 
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -53,7 +53,8 @@
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span>{{strtoupper(Auth()->user()->name)}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<span>{{strtoupper(Auth()->user()->name)}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="/user/profile"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
@@ -80,6 +81,7 @@
 						<!-- <li><a href="/mahasiswa" class="{{ (request()->is('mahasiswa')) ? 'active' : '' }}"><i class="lnr lnr-users"></i> <span>Mahasiswa</span></a></li> -->
 						<li><a href="/data_soal" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr  lnr-inbox"></i> <span>Manegemen Soal</span></a></li>
 						<li><a href="/praktikum" class="{{ (request()->is('praktikum')) ? 'active' : '' }}"><i class="lnr lnr-inbox"></i> <span>Manegemen praktikum</span></a></li>
+						<li><a href="/modul" class="{{ (request()->is('modul')) ? 'active' : '' }}"><i class="lnr lnr-inbox"></i> <span>Manegemen modul</span></a></li>
 						<!-- <li><a href="/data_laporan" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr  lnr-inbox"></i> <span>laporan praktikum</span></a></li> -->
 						<li><a href="/user" class="{{ (request()->is('user')) ? 'active' : '' }}"><i class="lnr lnr-users"></i> <span>Data login</span></a></li>
 						<li><a href="/waktu" class="{{ (request()->is('waktu')) ? 'active' : '' }}"><i class="lnr lnr-clock"></i> <span>Waktu</span></a></li>

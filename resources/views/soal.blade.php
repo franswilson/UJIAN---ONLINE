@@ -17,6 +17,7 @@ div class="main">
                                 </h3>
                                 <form id="formSoal" name="form1" method="post" action="{{ route('jawab.store') }}">
                                     <input type="hidden" name="praktikum" value="{{$PrakId}}">
+                                    <input type="hidden" name="modul" value="{{$ModId}}">
                             </div>
 
                             <style>
@@ -157,10 +158,10 @@ div class="main">
                                             {{$s->e}}</font>
                                             <br><br>
                                     </td>
-                                    
+
 
                                 </tr>
-                                
+
 
                                 @php
                                 $angka++;

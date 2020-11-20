@@ -10,6 +10,7 @@ use Session;
 use App\Exports\SoalExport;
 use App\Imports\SoalImport;
 use App\Praktikum;
+use App\Modul;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -21,9 +22,11 @@ class Data_soalController extends Controller
     {
 
         $praktikum = \App\Praktikum::all();
+        $modul = \App\Modul::all();
 
         $data_soal = DB::table('tbl_soal')
             ->join('praktikum', 'praktikum.id', '=', 'tbl_soal.id_praktikum')
+            ->join('modul', 'modul.id', '=', 'tbl_soal.id_modul')
             ->select(
                 'tbl_soal.id',
                 'tbl_soal.soal',
@@ -36,14 +39,16 @@ class Data_soalController extends Controller
                 'tbl_soal.gambar',
                 'tbl_soal.aktif',
                 'tbl_soal.soal',
-                'praktikum.nama'
+                'praktikum.nama',
+                'modul.nama as nama_mod'
             )->get();
 
-        return view('data-soal.data_soal', compact('praktikum', 'data_soal'));
+        return view('data-soal.data_soal', compact('praktikum', 'data_soal', 'modul'));
     }
 
     public function create(Request $request)
     {
+        $praktikum = \App\Praktikum::where('aktif', '=', '1')->get();
         \App\Data_soal::create($request->all());
         return redirect('/data_soal')->with('sukses', 'Data berhasil di input');
     }
@@ -78,9 +83,8 @@ class Data_soalController extends Controller
 
     public function edit($id)
     {
-        $praktikum = \App\Praktikum::where('aktif', '=', '1')->get();
         $data_soal = \App\Data_soal::find($id);
-        return view('data-soal/edit', ['data_soal' => $data_soal], compact('praktikum'));
+        return view('data-soal/edit', ['data_soal' => $data_soal]);
     }
     public function update(Request $request, $id)
     {

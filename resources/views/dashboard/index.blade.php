@@ -135,6 +135,11 @@
                                     <option id ="soalID" value="{{$p->id}}">{{$p->nama}}</option>
                                     @endforeach
                                 </select>
+                                <select style="width: 320px" name="modul" class="form-control" id="exampleInputPassword1">
+                                    @foreach ($modul as $m)
+                                    <option id ="soalID" value="{{$m->id}}">{{$m->nama}}</option>
+                                    @endforeach
+                                </select>
                                 <br>
                                 <div class="text-center">
                                   <button type="submit" class="btn btn-primary btn-lg">START</button>

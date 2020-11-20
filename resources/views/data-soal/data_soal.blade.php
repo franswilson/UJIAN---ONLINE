@@ -92,6 +92,7 @@
                                             <th>kunci</th>
                                             <th>gambar</th>
                                             <th>praktikum</th>
+                                            <th>modul</th>
                                             <th>status</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -112,7 +113,8 @@
                                             <td>{{ $c->knc_jawaban }}</td>
                                             <td>{{ $c->gambar }}</td>
                                             <td>{{ $c->nama }}</td>
-                                            <td>@if($c->aktif == 'Y')
+                                            <td>{{ $c->nama_mod }}</td>
+                                            <td>@if($c->aktif == '1')
                                                 <span class="label label-success"> aktif</span>
                                                 @else
                                                 <span class="label label-warning">non aktif</span>
@@ -146,11 +148,20 @@
                                             <div class="modal-body">
                                                 <form action="/data_soal/create" method="POST">
                                                     {{csrf_field()}}
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Id Praktikum</label>
-                                                        <input type="text" name="id_praktikum" class="form-control" placeholder="id_praktikum" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                    <label for="exampleInputEmail1">Praktikum</label>
+                                                    <select style="size:200px" name="id_praktikum" class="form-control" id="exampleInputPassword1">
+                                                        @foreach ($praktikum as $p)
+                                                        <option id="soalID" value="{{$p->id}}">{{$p->nama}}</option>
+                                                        @endforeach
+                                                    </select></br>
 
-                                                    </div>
+                                                    <label for="exampleInputEmail1">Modul</label>
+                                                    <select style="size:200px" name="id_modul" class="form-control" id="exampleInputPassword1">
+                                                        @foreach ($modul as $m)
+                                                        <option id="soalID" value="{{$m->id}}">{{$m->nama}}</option>
+                                                        @endforeach
+                                                    </select></br>
+
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Soal</label>
                                                         <textarea type="text" name="soal" class="form-control" placeholder="Isi Soal" rows="4"></textarea>

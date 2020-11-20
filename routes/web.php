@@ -39,6 +39,12 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 
     //modul
     Route::get('/nilai', 'UserController@nilai');
+    Route::get('/modul', 'ModulController@index');
+
+    Route::post('/modul/create', 'ModulController@create');
+    Route::get('/modul/{id}/edit', 'ModulController@edit')->name('modul.edit');
+    Route::post('/modul/{id}/update', 'ModulController@update');
+    Route::get('/modul/{id}/delete', 'ModulController@delete')->name('modul.delete');
 
 
     //praktikum

@@ -14,11 +14,11 @@
                         <select style="width:200px; margin-top:20px; margin-left:50px" name="praktikum" class="form-control" id="exampleInputPassword1">
                             @foreach ($praktikum as $p)
                             <option id ="soalID" value="{{$p->id}}">{{$p->nama}}</option>
-                            
+
                             @endforeach
                         </select>
                         <button style="float:right; margin-top:-35px; margin-right:600px;"type="submit" class="btn btn-success float-right">Download</button>
-                        
+
                       </form>
                         <div class="panel-body">
                             <div class="panel-body">
@@ -27,6 +27,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Praktikum</th>
+                                            <th>Modul</th>
                                             <th>Nama</th>
                                             <th>Nilai</th>
 
@@ -34,15 +35,14 @@
                                     </thead>
                                     <tbody>
                                         <?php $i = 1 ?>
-                                        @foreach($user as $u)
-                                        @foreach($u->praktikum as $p)
+                                        @foreach($nilai as $n)
                                         <tr>
                                             <td>{{$i++}}</td>
-                                            <td>{{$p->nama}}</td>
-                                            <td>{{$p->pivot->nama}}</td>
-                                            <td>{{$p->pivot->nilai}}</td>
+                                            <td>{{$n->nama_prak}}</td>
+                                            <td>{{$n->nama_mod}}</td>
+                                            <td>{{$n->nama}}</td>
+                                            <td>{{$n->nilai}}</td>
                                         </tr>
-                                        @endforeach
                                         @endforeach
 
                                     </tbody>
@@ -90,7 +90,7 @@
                                                         </div>
                                                 </form>
                                             </div>
-                                        
+
                                         </div>
                                     </div>
                                 </div>

@@ -17,13 +17,14 @@ class SoalImport implements ToModel, WithStartRow
     {
         return new Soal([
             'id_praktikum' => $row[0],
-            'soal' => $row[1],
-            'a' => $row[2],
-            'b' => $row[3],
-            'c' => $row[4],
-            'd' => $row[5],
-            'e' => $row[6],
-            'knc_jawaban' => $row[7],
+            'id_modul' => $row[1],
+            'soal' => $row[2],
+            'a' => $row[3],
+            'b' => $row[4],
+            'c' => $row[5],
+            'd' => $row[6],
+            'e' => $row[7],
+            'knc_jawaban' => $row[8],
         ]);
     }
     public function startRow(): int

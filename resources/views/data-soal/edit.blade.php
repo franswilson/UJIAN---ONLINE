@@ -13,13 +13,6 @@
                         <div class="panel-body">
                             <form action="/data_soal/{{$data_soal->id}}/update" method="POST" enctype="multipart/form-data">
                                 {{csrf_field()}}
-                                <label for="exampleInputEmail1">Praktikum</label>
-                                <select style="size:200px" name="id_praktikum" class="form-control" id="exampleInputPassword1">
-                                    @foreach ($praktikum as $p)
-                                    <option id="soalID" value="{{$p->id}}">{{$p->nama}}</option>
-
-                                    @endforeach
-                                </select></br>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Soal</label>
                                     <textarea type="text" name="soal" class="form-control" placeholder="Isi Soal" id="exampleInputEmail1" aria-describedby="emailHelp">{{$data_soal->soal}}</textarea>
@@ -59,8 +52,8 @@
                                     <div class=" form-group">
                                         <label for="exampleInputPassword1">Aktivasi</label>
                                         <select name="aktif" class="form-control" id="exampleInputPassword1">
-                                            <option value="Y" @if($data_soal->aktif == 'Y') selected @endif>Y</option>
-                                            <option value="N" @if($data_soal->aktif == 'N') selected @endif>N</option>
+                                            <option value="1" @if($data_soal->aktif == '1') selected @endif>Aktif</option>
+                                            <option value="0" @if($data_soal->aktif == '0') selected @endif>Non Aktif</option>
                                         </select>
                                     </div>
                                     <div class="modal-footer">

@@ -35,6 +35,7 @@ class SubmitJawabController extends Controller
         $jawaban->nama = Auth::user()->name;
         $jawaban->nilai = $nilai;
         $jawaban->praktikum_id = $request->praktikum;
+        $jawaban->id_modul = $request->modul;
 
         $jawaban->save();
         // dd($jawaban);

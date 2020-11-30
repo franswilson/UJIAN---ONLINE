@@ -30,7 +30,7 @@
                                     <p>
                                         <span class="number"><?=$jumlahSoal ?></span>
                                         <span class="title">Soal</span></br>
-                                        <a href="/data_soal">More Info</a>
+                                        <a href="{{ route('data_soal') }}">More Info</a>
                                     </p>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                                     <p>
                                         <span class="number"><?=$jumlahPraktikum ?></span>
                                         <span class="title">Praktikum</span></br>
-                                        <a href="/praktikum">More Info</a>
+                                        <a href="{{ route('praktikum') }}">More Info</a>
                                     </p>
                                 </div>
                             </div>

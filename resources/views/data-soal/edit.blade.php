@@ -57,7 +57,7 @@
                                         </select>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="/data_soal" type="button" class="btn btn-secondary" data-dismiss="modal">Back</a>
+                                        <a href="{{ route('data_soal') }}" type="button" class="btn btn-secondary" data-dismiss="modal">Back</a>
                                         <button type="submit" class="btn btn-primary">update</button>
                                     </div>
 

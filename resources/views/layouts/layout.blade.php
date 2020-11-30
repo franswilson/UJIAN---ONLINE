@@ -56,8 +56,8 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<span>{{strtoupper(Auth()->user()->name)}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="/user/profile"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-								<li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+								<li><a href="{{ route('mahasiswa.profile') }}"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+								<li><a href="{{ route('logout') }}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
 						<!-- <li>
@@ -73,18 +73,18 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="/dashboard" class="{{ (request()->is('dashboard')) ? 'active' : '' }}"> <i class="lnr lnr-home "></i> <span>Dashboard</span></a></li>
+						<li><a href="{{ route('dashboard') }}" class="{{ (request()->is('dashboard')) ? 'active' : '' }}"> <i class="lnr lnr-home "></i> <span>Dashboard</span></a></li>
 						@if(auth()->user()->role == 'admin')
 						<!-- <li><a href="/soal" class="{{ (request()->is('modul')) ? 'active' : '' }}"><i class="lnr lnr-code"></i> <span>Soal</span></a></li> -->
 
-						<li><a href="/nilai" class="{{ (request()->is('nilai')) ? 'active' : '' }}"> <i class="lnr lnr-pencil "></i> <span>Nilai</span></a></li>
+						<li><a href="{{ route('nilai') }}" class="{{ (request()->is('nilai')) ? 'active' : '' }}"> <i class="lnr lnr-pencil "></i> <span>Nilai</span></a></li>
 						<!-- <li><a href="/mahasiswa" class="{{ (request()->is('mahasiswa')) ? 'active' : '' }}"><i class="lnr lnr-users"></i> <span>Mahasiswa</span></a></li> -->
-						<li><a href="/data_soal" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr  lnr-inbox"></i> <span>Manegemen Soal</span></a></li>
-						<li><a href="/praktikum" class="{{ (request()->is('praktikum')) ? 'active' : '' }}"><i class="lnr lnr-inbox"></i> <span>Manegemen praktikum</span></a></li>
-						<li><a href="/modul" class="{{ (request()->is('modul')) ? 'active' : '' }}"><i class="lnr lnr-inbox"></i> <span>Manegemen modul</span></a></li>
+						<li><a href="{{ route('data_soal') }}" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr  lnr-inbox"></i> <span>Manegemen Soal</span></a></li>
+						<li><a href="{{ route('praktikum') }}" class="{{ (request()->is('praktikum')) ? 'active' : '' }}"><i class="lnr lnr-inbox"></i> <span>Manegemen praktikum</span></a></li>
+						<li><a href="{{ route('modul') }}" class="{{ (request()->is('modul')) ? 'active' : '' }}"><i class="lnr lnr-inbox"></i> <span>Manegemen modul</span></a></li>
 						<!-- <li><a href="/data_laporan" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr  lnr-inbox"></i> <span>laporan praktikum</span></a></li> -->
-						<li><a href="/user" class="{{ (request()->is('user')) ? 'active' : '' }}"><i class="lnr lnr-users"></i> <span>Data login</span></a></li>
-						<li><a href="/waktu" class="{{ (request()->is('waktu')) ? 'active' : '' }}"><i class="lnr lnr-clock"></i> <span>Waktu</span></a></li>
+						<li><a href="{{ route('user') }}" class="{{ (request()->is('user')) ? 'active' : '' }}"><i class="lnr lnr-users"></i> <span>Data login</span></a></li>
+						<li><a href="{{ route('waktu') }}" class="{{ (request()->is('waktu')) ? 'active' : '' }}"><i class="lnr lnr-clock"></i> <span>Waktu</span></a></li>
 						@endif
 					</ul>
 				</nav>

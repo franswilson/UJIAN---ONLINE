@@ -36,7 +36,7 @@
                                     </div>
 
                                 <div class=" modal-footer">
-                                    <a href="/user" type="button" class="btn btn-secondary" data-dismiss="modal">Back</a>
+                                    <a href="{{ route('user') }}" type="button" class="btn btn-secondary" data-dismiss="modal">Back</a>
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>

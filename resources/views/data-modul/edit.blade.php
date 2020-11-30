@@ -16,10 +16,10 @@
                                     <label for="exampleInputEmail1">nama modul</label>
                                     <textarea type="text" name="nama" class="form-control" placeholder="nama" id="exampleInputEmail1" aria-describedby="emailHelp">{{$modul->nama}}</textarea>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="exampleInputEmail1">id modul</label>
                                     <textarea type="text" name="id" class="form-control" placeholder="id" id="exampleInputEmail1" aria-describedby="emailHelp">{{$modul->id}}</textarea>
-                                </div>
+                                </div> -->
                                 <div class=" form-group">
                                     <label for="exampleInputPassword1">Aktivasi</label>
                                     <select style="width: 100px" name="aktif" class="form-control" id="exampleInputPassword1">
@@ -28,7 +28,7 @@
                                     </select>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="/modul" type="button" class="btn btn-secondary" data-dismiss="modal">Back</a>
+                                    <a href="{{ route('modul') }}" type="button" class="btn btn-secondary" data-dismiss="modal">Back</a>
                                     <button type="submit" class="btn btn-primary">update</button>
                                 </div>
                             </form>

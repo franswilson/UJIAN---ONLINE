@@ -64,13 +64,13 @@
                                     </thead>
                                     <tbody>
                                         <?php $i = 1 ?>
-                                        @foreach($profile->praktikum as $p)
+                                        @foreach($modul as $p)
                                         <tr>
                                             <td>{{$i++}}</td>
+                                            <td>{{$p->nama_prak}}</td>
+                                            <td>{{$p->nama_mod}}</td>
                                             <td>{{$p->nama}}</td>
-                                            <td>{{$p->pivot->modul}}</td>
-                                            <td>{{$p->pivot->nama}}</td>
-                                            <td>{{$p->pivot->nilai}}</td>
+                                            <td>{{$p->nilai}}</td>
                                         </tr>
                                         @endforeach
 

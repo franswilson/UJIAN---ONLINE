@@ -35,8 +35,12 @@ class UserController extends Controller
         $id = auth()->user()->id;
         $profile  = \App\User::find($id);
         $praktikum = \App\Praktikum::all();
-        // $user = \App\User::find($id);
-        return view('user.profile', ['profile' => $profile]);
+        $modul = DB::table('praktikum_user')
+            ->join('praktikum', 'praktikum.id', '=', 'praktikum_user.praktikum_id')
+            ->join('modul', 'modul.id', '=', 'praktikum_user.id_modul')
+            ->select( 'praktikum.nama as nama_prak', 'modul.nama as nama_mod', 'praktikum_user.nama', 'praktikum_user.nilai'
+            )->get();
+        return view('user.profile', ['profile' => $profile], compact('modul'));
     }
 
     public function create(Request $request)

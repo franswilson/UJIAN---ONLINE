@@ -27,6 +27,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Modul</th>
+                                            <th>Id Modul</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
                                             <!-- <th>aksi</th> -->
@@ -39,6 +40,7 @@
                                         <tr>
                                             <td>{{$i++}}</td>
                                             <td>{{$u->nama}}</td>
+                                            <td>{{$u->id}}</td>
                                             <td>@if($u->aktif == 1)
                                                 <span class="label label-success"> aktif</span>
                                                 @else

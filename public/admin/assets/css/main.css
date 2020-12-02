@@ -635,6 +635,10 @@ fieldset[disabled] .btn {
   margin-left: 50px;
   margin-right: 50px;
  }
+
+ .textsoal {
+   font-size:13px;
+ }
  
 .panel {
   -webkit-border-radius: 3px;

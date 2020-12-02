@@ -76,12 +76,12 @@
 
                             </div>
 
-                            <div class="panel-body">
+                            <div class="panel-body textsoal" style="width:60px" style="font-size:100px">
 
-                                <table style="margin-left:-54px" class="table table-striped table-bordered" id="soal">
+                                <table style="margin-left:-43px; " class="table table-striped table-bordered" id="soal">
                                     <thead>
-                                        <tr>
-                                            <th><input type="checkbox" id="check_all"></th>
+                                        <tr size="1">
+                                            <th ><input type="checkbox" id="check_all"></th>
                                             <th>No </th>
                                             <th>soal</th>
                                             <th>a</th>
@@ -146,7 +146,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="/data_soal/create" method="POST">
+                                                <form style="" action="/data_soal/create" method="POST">
                                                     {{csrf_field()}}
                                                     <label for="exampleInputEmail1">Praktikum</label>
                                                     <select style="size:200px" name="id_praktikum" class="form-control" id="exampleInputPassword1">

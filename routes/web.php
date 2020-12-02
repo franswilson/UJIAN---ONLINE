@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 Route::get('/login', 'AuthController@login')->name('login');
 Route::get('/logout', 'AuthController@logout')->name('logout');
-Route::post('/postlogin', 'AuthController@postlogin')->name('postlogin');
+Route::post('/postlogin', 'AuthController@postlogin')->name('postLogin');
 
 
 
@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 
     //delete all
     // Route::delete('/data_soal', 'Data_soalController@deleteall');
-    Route::delete('/data_soal/{id}', ['as' => 'data_soal.destroy', 'uses' => 'Data_soalController@destroy'])->name('data_soal');
+    Route::delete('/data_soal/{id}', ['as' => 'data_soal.destroy', 'uses' => 'Data_soalController@destroy']);
     Route::delete('/delete-multiple-product', ['as' => 'data_soal.multiple-delete', 'uses' => 'Data_soalController@deleteMultiple']);
 
     //modul
@@ -91,15 +91,15 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/mahasiswa/{id}/delete', 'MahasiswaController@delete')->name('mahasiswa.delete');
 
     //profile mahasiswa
-    Route::get('/mahasiswa/{id}/profile', 'MahasiswaController@profile')->name('mahasiswa.data');
+    Route::get('/mahasiswa/{id}/profile', 'MahasiswaController@profile');
 
     //Export Excel
     Route::post('/nilai/export_excel', 'UserController@export_excel')->name('idPraktikum');
-    Route::get('/nilai/export_excel', 'UserController@export_excel')->name('nilai.export');
+    Route::get('/nilai/export_excel', 'UserController@export_excel');
 
     Route::post('/soal/export_excel', 'Data_soalController@export_excel')->name('idPrak');
-    Route::get('/soal', 'Data_soalController@index')->name('soal');
-    Route::get('/soal/export_excel', 'Data_soalController@export_excel')->name('soal.export');
+    Route::get('/soal', 'Data_soalController@index');
+    Route::get('/soal/export_excel', 'Data_soalController@export_excel');
 
 
     //Import Excel
@@ -114,16 +114,16 @@ Route::group(['middleware' => ['auth', 'checkRole:mahasiswa,admin']], function (
 
     // soal
     Route::post('/soal', 'SoalController@getSoal')->name('idSoal');
-    Route::get('/soal', 'SoalController@getSoal')->name('soal');
+    Route::get('/soal', 'SoalController@getSoal');
 
     // Route::get('/soal', 'SoalController@praktikum');
     // Route::get('/modul', 'NilaiController@modul');
 
-    Route::get('/jawaban', 'SoalController@getjawaban')->name('jawaban');
+    Route::get('/jawaban', 'SoalController@getjawaban');
     Route::post('submit-jawab', 'SubmitJawabController@store')->name('jawab.store');
 
 
     //profile
     Route::get('/user/profile', 'UserController@profile')->name('mahasiswa.profile');
-    Route::get('/soal/{id}/{jawab}', 'SoalController@simpansoal')->name('soal.jawab');
+    Route::get('/soal/{id}/{jawab}', 'SoalController@simpansoal');
 });

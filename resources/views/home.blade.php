@@ -9,7 +9,7 @@
                     <div class="panel">
                         <div class="panel-heading">
                         <center>SILAHKAN UNTUK 
-                        <button><a href="/user/{{Auth()->user()->id}}/profile"><i class="lnr"></i> <span>CEK NILAI</span></a></button></center>
+                        <button><a href="{{ route('mahasiswa.profile') }}"><i class="lnr"></i> <span>CEK NILAI</span></a></button></center>
                         </div>
                     </div>
                 </div>

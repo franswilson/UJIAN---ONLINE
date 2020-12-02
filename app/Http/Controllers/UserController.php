@@ -38,9 +38,9 @@ class UserController extends Controller
         $modul = DB::table('praktikum_user')
             ->join('praktikum', 'praktikum.id', '=', 'praktikum_user.praktikum_id')
             ->join('modul', 'modul.id', '=', 'praktikum_user.id_modul')
-            ->where('praktikum_user.user_id','=',$id)
-            ->select( 'praktikum.nama as nama_prak', 'modul.nama as nama_mod', 'praktikum_user.nama', 'praktikum_user.nilai'
-            )->get();
+            ->where('praktikum_user.user_id','=',$id) 
+            ->select( 'praktikum.nama as nama_prak', 'modul.nama as nama_mod', 'praktikum_user.nama', 'praktikum_user.nilai')
+            ->get();
         return view('user.profile', ['profile' => $profile], compact('modul'));
     }
 

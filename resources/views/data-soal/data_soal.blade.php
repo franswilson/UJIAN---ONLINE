@@ -146,7 +146,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form style="" action="/data_soal/create" method="POST">
+                                                <form action="{{ route('data_soal.create') }}" method="POST">
                                                     {{csrf_field()}}
                                                     <label for="exampleInputEmail1">Praktikum</label>
                                                     <select style="size:200px" name="id_praktikum" class="form-control" id="exampleInputPassword1">

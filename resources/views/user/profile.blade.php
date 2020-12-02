@@ -11,7 +11,7 @@
                         <!-- PROFILE HEADER -->
                         <div class="profile-header">
                             <div class="profile-main">
-                                <img style="weigh:100px; height:100px;" type="image/png" src="{{$profile->foto}}" class="img-circle" alt="Avatar">
+                                <img style="weigh:200px; height:200px;" type="image/png" src="{{$profile->foto}}" class="img-circle" alt="Avatar">
 
                                 <h3 class="name">{{$profile->name}}</h3>
                                 <span class="online-status status-available">AKTIF</span>

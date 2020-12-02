@@ -58,7 +58,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="/mahasiswa/create" method="POST">
+                                                <form action="{{ route('mahasiswa.create') }}" method="POST">
                                                     {{csrf_field()}}
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Nama</label>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 
-require '../vendor/autoload.php';
+//require '../vendor/autoload.php';
 
 use GuzzleHttp\Client;
 

@@ -71,7 +71,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="praktikum/create" method="POST">
+                                                <form action="{{ route('praktikum.create') }}" method="POST">
                                                     {{csrf_field()}}
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Nama Praktikum</label>

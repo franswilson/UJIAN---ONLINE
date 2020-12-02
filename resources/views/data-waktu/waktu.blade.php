@@ -64,7 +64,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="waktu/create" method="POST">
+                                                <form action="{{ route('waktu.create') }}" method="POST">
                                                     {{csrf_field()}}
                                                     <div class="form-group">
                                                         <select style="width: 325px" name="id_praktikum" class="form-control" id="exampleInputPassword1">

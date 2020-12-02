@@ -15,9 +15,9 @@
                         <div class="panel-body-dataLogin">
                             <div class="col-6">
                                 <!-- Button trigger modal -->
-                                <button style="margin-top:25px; margin-left:25px;" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
-                                    Tambah data
-                                </button>
+                                <!--<button style="margin-top:25px; margin-left:25px;" type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">-->
+                                <!--    Tambah data-->
+                                <!--</button>-->
 
                             </div>
                             @if(session('sukses'))
@@ -34,8 +34,8 @@
                                             <th>role</th>
                                             <th>nama</th>
                                             <th>npm</th>
-                                            <th>password</th>
-                                            <th>Aksi</th>
+                                            <!--<th>password</th>-->
+                                            <!--<th>Aksi</th>-->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -47,15 +47,15 @@
                                             <td>{{ $c->role }}</td>
                                             <td>{{ $c->name }}</td>
                                             <td>{{ $c->npm }}</td>
-                                            <td>{{ $c->password }}</td>
-                                            <td>
-                                                <form action="{{ route('user.delete', $c->id)}}" class="d-inline">
+                                            <!--<td>{{ $c->password }}</td>-->
+                                            <!--<td>-->
+                                            <!--    <form action="{{ route('user.delete', $c->id)}}" class="d-inline">-->
 
-                                                    <button class="btn btn-danger btn-sm lnr lnr-trash" type="submit"></button>
-                                                    @csrf
-                                                    <a class="btn btn-primary btn-sm  lnr lnr-pencil" href="{{ route('user.edit', $c->id) }}"></a>
-                                                </form>
-                                            </td>
+                                            <!--        <button class="btn btn-danger btn-sm lnr lnr-trash" type="submit"></button>-->
+                                            <!--        @csrf-->
+                                            <!--        <a class="btn btn-primary btn-sm  lnr lnr-pencil" href="{{ route('user.edit', $c->id) }}"></a>-->
+                                            <!--    </form>-->
+                                            <!--</td>-->
                                         </tr>
                                         @endforeach </tbody>
                                 </table>
@@ -69,7 +69,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="user/create" method="POST">
+                                                <form action="{{ route('user.create') }}" method="POST">
                                                     {{csrf_field()}}
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Nama</label>

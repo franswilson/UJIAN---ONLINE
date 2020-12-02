@@ -10,7 +10,7 @@
                             <h3 class="panel-title">Edit data modul</h3>
                         </div>
                         <div class="panel-body">
-                            <form action="/modul/{{$modul->id}}/update" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('modul.update',$modul->id) }}" method="POST" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">nama modul</label>

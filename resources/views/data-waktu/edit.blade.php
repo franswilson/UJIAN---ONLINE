@@ -20,7 +20,8 @@
                             </form>
                         </div> -->
                         <div class="panel-body">
-                            <form action="/waktu/{{$waktu->id}}/update" method="POST" method="POST" enctype="multipart/form-data">
+                            *Jika <b>Date Time Picker</b> tidak muncul gunakan Browser Chrome, Edge, Opera
+                            <form action="{{ route('waktu.update',$waktu->id) }}" method="POST" method="POST" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <div class="form-group">
                                     <text for="waktu">waktu mulai saat ini = </text>

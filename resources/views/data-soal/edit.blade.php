@@ -11,7 +11,7 @@
                             <h3 class="panel-title">Edit data soal</h3>
                         </div>
                         <div class="panel-body">
-                            <form action="/data_soal/{{$data_soal->id}}/update" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('data_soal.update',$data_soal->id) }}" method="POST" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Soal</label>

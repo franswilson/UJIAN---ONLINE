@@ -10,7 +10,7 @@
                             <h3 class="panel-title">Edit data pretest</h3>
                         </div>
                         <div class="panel-body">
-                            <form action="/praktikum/{{$praktikum->id}}/update" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('praktikum.update',{{$praktikum->id}}) }}" method="POST" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">nama praktikum</label>

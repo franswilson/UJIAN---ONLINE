@@ -11,7 +11,7 @@
                             <h3 class="panel-title">Edit data user</h3>
                         </div>
                         <div class="panel-body">
-                            <form action="/user/{{$user->id}}/update" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('user.update',$user->id) }}" method="POST" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <div class=" form-group">
                                     <label for="exampleInputPassword1">Role</label>

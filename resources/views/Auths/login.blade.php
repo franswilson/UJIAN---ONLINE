@@ -81,7 +81,7 @@ Login Praktikan
 <?php } ?>
 <div class="card card-primary" style="border-top: 2px solid #0081c2;">
 <div class="card-body">
-<form method="POST" action="/postlogin" class="needs-validation" novalidate="">
+<form method="POST" action="{{ route('postLogin') }}" class="needs-validation" novalidate="">
 {{csrf_field()}}
 
 <div class="form-group">

@@ -19,7 +19,7 @@ class SubmitJawabController extends Controller
         Session::forget('soal');
         Session::forget('jawab');
         Session::forget('jawaban');
-        $benar = 10;
+        $benar = 5;
         $nilai = 0;
         if (!empty($request->pilihan)) {
             foreach ($request->pilihan as $i => $pilihan) {

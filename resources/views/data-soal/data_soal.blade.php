@@ -6,11 +6,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel">
-                        <!-- <div class="panel-heading">
-                            <h3 class="panel-title">Data soal</h3>
-                        </div> -->
                         <div class="panel-body">
-                            <div class="col-6">
+                            <div class="col-9">
 
                                 {{-- notifikasi form validasi --}}
                                 @if ($errors->has('file'))
@@ -27,7 +24,6 @@
                                 </div>
                                 @endif
                                 <form id="post-data" method="post" action="{{ route('idPrak') }}">
-
                                     {{ csrf_field() }}
                                     <select style="width:200px; margin-left:27px;margin-top:20px" name="praktikum" class="form-control" id="exampleInputPassword1">
                                         @foreach ($praktikum as $p)
@@ -45,7 +41,7 @@
 
                                 </form>
 
-                                <button style="margin: 5px; margin-left:30px" class="btn btn-danger btn-bg delete-all" data-url="">Delete All</button>
+                                <button style="margin: 5px; margin-left:30px; margin-bottom:20px;" class="btn btn-danger btn-bg delete-all" data-url="">Delete All</button>
 
 
                                 <div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -76,65 +72,67 @@
 
                             </div>
 
-                            <div class="panel-body textsoal" style="width:60px" style="font-size:100px">
+                            <div class="panel-body">
 
-                                <table style="margin-left:-43px; " class="table table-striped table-bordered" id="soal">
-                                    <thead>
-                                        <tr size="1">
-                                            <th ><input type="checkbox" id="check_all"></th>
-                                            <th>No </th>
-                                            <th>soal</th>
-                                            <th>a</th>
-                                            <th>b</th>
-                                            <th>c</th>
-                                            <th>d</th>
-                                            <th>e</th>
-                                            <th>kunci</th>
-                                            <th>gambar</th>
-                                            <th>praktikum</th>
-                                            <th>modul</th>
-                                            <th>status</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1 ?>
-                                        @foreach($data_soal as $c)
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered" id="soal">
+                                        <thead>
+                                            <tr size="1">
+                                                <th ><input type="checkbox" id="check_all"></th>
+                                                <th>No </th>
+                                                <th>soal</th>
+                                                <th>a</th>
+                                                <th>b</th>
+                                                <th>c</th>
+                                                <th>d</th>
+                                                <th>e</th>
+                                                <th>kunci</th>
+                                                <th>gambar</th>
+                                                <th>praktikum</th>
+                                                <th>modul</th>
+                                                <th>status</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i = 1 ?>
+                                            @foreach($data_soal as $c)
 
-                                        <tr id="tr_{{$c->id}}">
-                                            <td><input type="checkbox" class="checkbox" data-id="{{$c->id}}"></td>
-                                            <td>{{$i++}}</td>
-                                            <td>{{ $c->soal }}</td>
-                                            <td>{{ $c->a }}</td>
-                                            <td>{{ $c->b }}</td>
-                                            <td>{{ $c->c }}</td>
-                                            <td>{{ $c->d }}</td>
-                                            <td>{{ $c->e }}</td>
-                                            <td>{{ $c->knc_jawaban }}</td>
-                                            <td>{{ $c->gambar }}</td>
-                                            <td>{{ $c->nama }}</td>
-                                            <td>{{ $c->nama_mod }}</td>
-                                            <td>@if($c->aktif == '1')
-                                                <span class="label label-success"> aktif</span>
-                                                @else
-                                                <span class="label label-warning">non aktif</span>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <form action="{{ route('data_soal.delete', $c->id)}}" class="d-inline">
+                                            <tr id="tr_{{$c->id}}">
+                                                <td><input type="checkbox" class="checkbox" data-id="{{$c->id}}"></td>
+                                                <td>{{$i++}}</td>
+                                                <td>{{ $c->soal }}</td>
+                                                <td>{{ $c->a }}</td>
+                                                <td>{{ $c->b }}</td>
+                                                <td>{{ $c->c }}</td>
+                                                <td>{{ $c->d }}</td>
+                                                <td>{{ $c->e }}</td>
+                                                <td>{{ $c->knc_jawaban }}</td>
+                                                <td>{{ $c->gambar }}</td>
+                                                <td>{{ $c->nama }}</td>
+                                                <td>{{ $c->nama_mod }}</td>
+                                                <td>@if($c->aktif == '1')
+                                                    <span class="label label-success"> aktif</span>
+                                                    @else
+                                                    <span class="label label-warning">non aktif</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('data_soal.delete', $c->id)}}" class="d-inline">
 
-                                                    <button class="btn btn-danger btn-sm lnr lnr-trash" type="submit"></button>
-                                                    @csrf
-                                                    <a class="btn btn-primary btn-sm  lnr lnr-pencil" href="{{ route('data_soal.edit', $c->id) }}"></a>
-                                                </form>
-                                            </td>
+                                                        <button class="btn btn-danger btn-sm lnr lnr-trash" type="submit"></button>
+                                                        @csrf
+                                                        <a class="btn btn-primary btn-sm  lnr lnr-pencil" href="{{ route('data_soal.edit', $c->id) }}"></a>
+                                                    </form>
+                                                </td>
 
-                                        </tr>
+                                            </tr>
 
 
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
 
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -148,17 +146,11 @@
                                             <div class="modal-body">
                                                 <form action="{{ route('data_soal.create') }}" method="POST">
                                                     {{csrf_field()}}
-                                                    <label for="exampleInputEmail1">Praktikum</label>
-                                                    <select style="size:200px" name="id_praktikum" class="form-control" id="exampleInputPassword1">
-                                                        @foreach ($praktikum as $p)
-                                                        <option id="soalID" value="{{$p->id}}">{{$p->nama}}</option>
-                                                        @endforeach
-                                                    </select></br>
 
                                                     <label for="exampleInputEmail1">Modul</label>
                                                     <select style="size:200px" name="id_modul" class="form-control" id="exampleInputPassword1">
                                                         @foreach ($modul as $m)
-                                                        <option id="soalID" value="{{$m->id}}">{{$m->nama}}</option>
+                                                            <option id="soalID" value="{{$m->id}}">{{$m->nama}} - {{$m->namaPraktikum}}</option>
                                                         @endforeach
                                                     </select></br>
 
@@ -192,7 +184,14 @@
 
                                                         <div class="form-group">
                                                             <label for="exampleInputPassword1">Kunci Jawaban</label>
-                                                            <input type="text" placeholder="Kunci jawaban" name="knc_jawaban" class="form-control" id="exampleInputPassword1">
+                                                            <select class="form-control" name="knc_jawaban">
+                                                                <option value="a">A</option>
+                                                                <option value="b">B</option>
+                                                                <option value="c">C</option>
+                                                                <option value="d">D</option>
+                                                                <option value="e">E</option>
+                                                            </select>
+                                                            <!-- <input type="text" placeholder="Kunci jawaban" name="knc_jawaban" class="form-control" id="exampleInputPassword1"> -->
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="exampleInputPassword1">Upload gambar</label>
@@ -213,7 +212,9 @@
 
                                 </div>
 
-                            </div>
+                            </div>                        
+
+
                         </div>
                     </div>
                 </div>

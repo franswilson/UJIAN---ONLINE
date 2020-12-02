@@ -8,6 +8,9 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use App\Exports\NilaiExport;
 use Illuminate\Support\Facades\DB;
+use Auth;
+use Illuminate\Support\Facades\Session;
+
 
 
 class UserController extends Controller
@@ -17,27 +20,35 @@ class UserController extends Controller
         $user = \App\User::all();
         return view('user.index', ['user' => $user]);
     }
+
     public function nilai()
     {
-      $nilai = DB::table('praktikum_user')
-          ->join('praktikum', 'praktikum.id', '=', 'praktikum_user.praktikum_id')
-          ->join('modul', 'modul.id', '=', 'praktikum_user.id_modul')
-          ->select( 'praktikum.nama as nama_prak', 'modul.nama as nama_mod', 'praktikum_user.nama', 'praktikum_user.nilai'
-          )->get();
-      $praktikum = \App\Praktikum::all();
-      return view('nilai.index', ['nilai' => $nilai], compact('praktikum'));
+        $idlab = Auth::user()->npm;
+
+        $nilai = DB::table('praktikum_user')
+        ->join('modul', 'modul.id', '=', 'praktikum_user.id_modul')
+        ->join('praktikum', 'praktikum.id', '=', 'modul.id_praktikum')
+        ->select( 'praktikum.nama as nama_prak', 'modul.nama as nama_mod', 'praktikum_user.nama', 'praktikum_user.nilai')
+        ->where('id_lab',$idlab)
+        ->get();
+
+        $praktikum = \App\Praktikum::where('id_lab',$idlab)->get();
+        return view('nilai.index', ['nilai' => $nilai], compact('praktikum'));
     }
 
 
     public function profile()
     {
-
+        Session::forget('soal');
+        Session::forget('jawab');
+        Session::forget('jawaban');
+        
         $id = auth()->user()->id;
         $profile  = \App\User::find($id);
         $praktikum = \App\Praktikum::all();
         $modul = DB::table('praktikum_user')
-            ->join('praktikum', 'praktikum.id', '=', 'praktikum_user.praktikum_id')
             ->join('modul', 'modul.id', '=', 'praktikum_user.id_modul')
+            ->join('praktikum', 'praktikum.id', '=', 'modul.id_praktikum')
             ->where('praktikum_user.user_id','=',$id) 
             ->select( 'praktikum.nama as nama_prak', 'modul.nama as nama_mod', 'praktikum_user.nama', 'praktikum_user.nilai')
             ->get();

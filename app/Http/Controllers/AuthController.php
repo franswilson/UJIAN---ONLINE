@@ -7,7 +7,7 @@ use Auth;
 use App\User;
 
 //require '../vendor/autoload.php';
-
+use Illuminate\Support\Facades\Session;
 use GuzzleHttp\Client;
 
 
@@ -58,10 +58,10 @@ class AuthController extends Controller
                 return view('Auths.login', compact('message'));
                 // dd(' Usernameatau password salah');
             } else if ($test->users[1] == "admin") {
-                $cek_login = User::where('npm', $test->users[0])->first();
+                $cek_login = User::where('npm', $test->users[2])->first();
                 if ($cek_login == null) {
                     $get_user = User::create([
-                        'email' => $test->users[0],
+                        'npm' => $test->users[2],
                         'name' => $test->users[0],
                         'role' => 'admin',
                     ]);
@@ -100,6 +100,9 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
+        Session::forget('soal');
+        Session::forget('jawab');
+        Session::forget('jawaban');
         return redirect('/login');
     }
 }

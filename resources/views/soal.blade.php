@@ -16,7 +16,6 @@ div class="main">
 
                                 </h3>
                                 <form id="formSoal" name="form1" method="post" action="{{ route('jawab.store') }}">
-                                    <input type="hidden" name="praktikum" value="{{$PrakId}}">
                                     <input type="hidden" name="modul" value="{{$ModId}}">
                             </div>
 
@@ -29,7 +28,7 @@ div class="main">
                             </style>
                             <p id="timer"></p>
 
-                            <table class="panel" width="100%" border="0">
+                            <table class="panel" style="border: none; -webkit-box-shadow:none !important; -moz-box-shadow: none; box-shadow:none;" width="100%" border="0">
 
                                 @php
                                 $angka = 1;

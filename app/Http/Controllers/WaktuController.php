@@ -4,17 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class WaktuController extends Controller
 {
     public function index()
     {
+        $idlab = Auth::user()->npm;
 
-        $waktu = DB::table('waktu')
-            ->join('praktikum', 'praktikum.id', '=', 'waktu.id_praktikum')
-            ->select('waktu.id', 'praktikum.nama', 'waktu.waktu_mulai', 'waktu.waktu_selesai', 'praktikum.aktif')->get();
+        $waktu = DB::table('waktu')        
+            ->join('modul', 'modul.id', '=', 'waktu.id_modul')
+            ->join('praktikum', 'praktikum.id', '=', 'modul.id_praktikum')
+            ->select('waktu.id', 'praktikum.nama', 'waktu.waktu_mulai', 'waktu.waktu_selesai', 'praktikum.aktif','modul.nama as namaModul')
+            ->where('praktikum.id_lab',$idlab)
+            ->get();
 
-        $praktikum = DB::table('praktikum')->get();
+        // $praktikum = DB::table('praktikum')->get();
+
+        $praktikum = \App\Modul::select('modul.*', 'praktikum.nama as namaPraktikum')
+        ->join('praktikum','praktikum.id','modul.id_praktikum')
+        ->where('praktikum.aktif', 1)
+        ->where('praktikum.id_lab', $idlab)
+        ->get();
 
         return view('data-waktu.waktu', compact('waktu', 'praktikum'));
     }

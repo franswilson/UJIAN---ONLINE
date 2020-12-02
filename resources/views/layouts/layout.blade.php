@@ -17,6 +17,8 @@
 
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="{{asset('admin/assets/css/main.css')}}">
+	<link rel="stylesheet" href="{{ asset('admin/assets/vendor/date-time-picker/css.css') }}">
+
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}">
 	<!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet"> -->
@@ -76,15 +78,14 @@
 						<li><a href="{{ route('dashboard') }}" class="{{ (request()->is('dashboard')) ? 'active' : '' }}"> <i class="lnr lnr-home "></i> <span>Dashboard</span></a></li>
 						@if(auth()->user()->role == 'admin')
 						<!-- <li><a href="/soal" class="{{ (request()->is('modul')) ? 'active' : '' }}"><i class="lnr lnr-code"></i> <span>Soal</span></a></li> -->
-
-						<li><a href="{{ route('nilai') }}" class="{{ (request()->is('nilai')) ? 'active' : '' }}"> <i class="lnr lnr-pencil "></i> <span>Nilai</span></a></li>
+						<!-- <li><a href="/data_laporan" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr  lnr-inbox"></i> <span>laporan praktikum</span></a></li> -->
 						<!-- <li><a href="/mahasiswa" class="{{ (request()->is('mahasiswa')) ? 'active' : '' }}"><i class="lnr lnr-users"></i> <span>Mahasiswa</span></a></li> -->
-						<li><a href="{{ route('data_soal') }}" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr  lnr-inbox"></i> <span>Manegemen Soal</span></a></li>
+						<li><a href="{{ route('user') }}" class="{{ (request()->is('user')) ? 'active' : '' }}"><i class="lnr lnr-users"></i> <span>Data login</span></a></li>
 						<li><a href="{{ route('praktikum') }}" class="{{ (request()->is('praktikum')) ? 'active' : '' }}"><i class="lnr lnr-inbox"></i> <span>Manegemen praktikum</span></a></li>
 						<li><a href="{{ route('modul') }}" class="{{ (request()->is('modul')) ? 'active' : '' }}"><i class="lnr lnr-inbox"></i> <span>Manegemen modul</span></a></li>
-						<!-- <li><a href="/data_laporan" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr  lnr-inbox"></i> <span>laporan praktikum</span></a></li> -->
-						<li><a href="{{ route('user') }}" class="{{ (request()->is('user')) ? 'active' : '' }}"><i class="lnr lnr-users"></i> <span>Data login</span></a></li>
+						<li><a href="{{ route('data_soal') }}" class="{{ (request()->is('data_soal')) ? 'active' : '' }}"><i class="lnr  lnr-inbox"></i> <span>Manegemen Soal</span></a></li>
 						<li><a href="{{ route('waktu') }}" class="{{ (request()->is('waktu')) ? 'active' : '' }}"><i class="lnr lnr-clock"></i> <span>Waktu</span></a></li>
+						<li><a href="{{ route('nilai') }}" class="{{ (request()->is('nilai')) ? 'active' : '' }}"> <i class="lnr lnr-pencil "></i> <span>Nilai</span></a></li>
 						@endif
 					</ul>
 				</nav>
@@ -111,8 +112,15 @@
 	<script src="{{asset('admin/assets/scripts/klorofil-common.js')}}"></script>
 
 	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" language="javascript" src="{{ asset('admin/assets/vendor/date-time-picker/js.js') }}"></script>
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+	<script>
+		$("#dtBox").DateTimePicker({
+			dateTimeFormat: "yyyy-MM-dd HH:mm:ss",
+			buttonsToDisplay: ["HeaderCloseButton", "SetButton"],
+		});
+	</script>
 	@yield('footer')
 </body>
 

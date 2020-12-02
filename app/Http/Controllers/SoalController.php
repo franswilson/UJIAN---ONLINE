@@ -4,32 +4,55 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Soal;
+use App\Jawaban;
 use App\Waktu;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Auth;
+
+
 
 class SoalController extends Controller
 {
 
     public function getSoal(Request $request)
     {
-        //return response()->json(['message'=>'OK'],200);
-        date_default_timezone_set("Asia/Bangkok");
-        // \Carbon\Carbon::setLocale('id');
         $timeNow = \Carbon\Carbon::now()->toDateTimeString();
-        // dd($timeNow);
-
-        $PrakId = $request->praktikum;
+        
+        if(is_null($request->modul)){
+            return Redirect()->Back()->with('gagal', 'Gagal Memulai Praktikum');
+        }
+        // $PrakId = $request->praktikum;
         $ModId = $request->modul;
 
-        $cek = Waktu::where('waktu_mulai', '<=', $timeNow)
+        $cek = Waktu::select('waktu.*','modul.*')
+            ->join('modul', 'modul.id', 'waktu.id_modul')
+            ->where('waktu_mulai', '<=', $timeNow)
             ->where('waktu_selesai', '>=', $timeNow)
-            ->where('id_praktikum', '=', $PrakId)->first();
-        //dd($PrakId);
+            ->where('id_modul', '=', $ModId)->first();
 
-        // dd($cek);
+        $arr = Session::get('soal', []);
+        if(empty($arr)){
+            $user_id = Auth::user()->id;
+            $cek1 = Jawaban::where('user_id', $user_id)->where('id_modul',$ModId)->first();
+            if($cek1){
+                return Redirect()->Back()->with('gagal', 'Anda Sudah mengambil kuis ini');
+            }
+
+            if($request->password == null){
+                $password = "";
+            }else{
+                $password = $request->password;
+            }
+
+            if($cek->password != $password){         
+                return Redirect()->Back()->with('gagal', 'Password Salah');
+            }
+        }
+
+
         if ($cek) {
             Session::push('jawab', []);
             Session::push('jawaban', []);
@@ -38,11 +61,11 @@ class SoalController extends Controller
                 // ->join('praktikum','praktikum.id','tbl_soal.id_praktikum')
                 // ->where('tbl_soal.aktif','=','Y')->where('praktikum.pretest','=','Y')
                 // ->select('tbl_soal.*')->inRandomOrder()->paginate(20);
-                $soal = Soal::where('aktif', '=', 1)->where('id_praktikum', '=', $PrakId)->where('id_modul','=',$ModId)->inRandomOrder()->paginate(20);
+                $soal = Soal::where('aktif', '=', 1)->where('id_modul','=',$ModId)->inRandomOrder()->paginate(20);
                 Session::push('soal', $soal);
             }
 
-            return view('soal', compact('cek', 'PrakId', 'ModId'));
+            return view('soal', compact('cek', 'ModId'));
         }
 
         return Redirect()->Back();

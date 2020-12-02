@@ -21,8 +21,8 @@ class NilaiExport implements FromCollection,WithHeadings
     {
         return DB::table('users')
         ->join('praktikum_user','users.id','=','praktikum_user.user_id')
-        ->join('praktikum','praktikum.id','=','praktikum_user.praktikum_id')
         ->join('modul','modul.id','=','praktikum_user.id_modul')
+        ->join('praktikum','praktikum.id','=','modul.id_praktikum')
         ->where('praktikum.id','=',$this->idNilai)
         ->select('users.name', 'users.npm','praktikum_user.nilai','praktikum.nama','modul.nama as modul')->get();
 

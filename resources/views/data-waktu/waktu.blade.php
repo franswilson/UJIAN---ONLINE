@@ -39,10 +39,30 @@
                                         @foreach($waktu as $c)
                                         <tr>
                                             <td>{{$i++}}</td>
-                                            <td>{{$c->nama}}</td>
-                                            <td>{{$c->waktu_mulai}}</td>
-                                            <td>{{$c->waktu_selesai}}</td>
-                                            <td>{{$c->aktif}}</td>
+                                            <td>{{$c->namaModul}} - {{$c->nama}}</td>
+                                            @if(is_null($c->waktu_mulai))
+                                                <td></td>
+                                            @else
+                                                <td>{{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_mulai))->format('d F Y')}} Pukul {{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_mulai))->format('H:i')}} WIB</td>
+                                            @endif
+                                            @if(is_null($c->waktu_selesai))
+                                                <td></td>
+                                            @else
+                                                <td>{{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_selesai))->format('d F Y')}} Pukul {{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_selesai))->format('H:i')}} WIB</td>
+                                            @endif
+                                            @if(is_null($c->waktu_selesai) || is_null($c->waktu_mulai))
+                                                <td></td>
+                                            @else
+                                                @if((\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_mulai))->isPast()) and !(\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_selesai))->isPast()))
+                                                    <td> Sedang Mulai </td>
+                                                @elseif(!(\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_mulai))->isPast()) and !(\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_selesai))->isPast()))
+                                                    <td> Belum Mulai </td>
+                                                @elseif((\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_mulai))->isPast()) and (\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_selesai))->isPast()))
+                                                    <td> Sudah Selesai </td>
+                                                @else
+                                                    <td></td>
+                                                @endif
+                                            @endif
                                             <td>
                                                 <form>
                                                     @csrf
@@ -67,9 +87,9 @@
                                                 <form action="{{ route('waktu.create') }}" method="POST">
                                                     {{csrf_field()}}
                                                     <div class="form-group">
-                                                        <select style="width: 325px" name="id_praktikum" class="form-control" id="exampleInputPassword1">
+                                                        <select name="id_modul" class="form-control" id="exampleInputPassword1">
                                                             @foreach ($praktikum as $p)
-                                                            <option id="soalID" value="{{$p->id}}">{{$p->nama}}</option>
+                                                            <option id="soalID" value="{{$p->id}}">{{$p->nama}} - {{$p->namaPraktikum}}</option>
 
                                                             @endforeach
                                                         </select></br></br>

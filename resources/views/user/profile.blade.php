@@ -48,7 +48,7 @@
                         <!-- TABLE NO PADDING -->
                         <div class="panel">
                             <div class="panel-heading">
-                                <h3 class="panel-title">daftar nilai</h3>
+                                <h3 class="panel-title">Daftar Nilai</h3>
                             </div>
                             <div class="panel-body no-padding">
                                 <table class="table">

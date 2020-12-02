@@ -56,32 +56,32 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-success float-right">Download</button>
+                        <!-- <button type="submit" class="btn btn-success float-right">Download</button> -->
 
                         <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                         <script type="text/javascript" language="javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                         <script type="text/javascript">
                                 window.onload = function () {
 
-                                var chart = new CanvasJS.Chart("chartContainer", {
-                                    animationEnabled: true,
-                                    title:{
-                                        text: "Laporan Data Praktikum"
-                                    },
-                                    axisY: {
-                                        title: "Jumlah Praktikan",
-                                    },
-                                    axisX: {
-                                        title: "Tahun",
-                                    },
-                                    data: [{
-                                        type: "spline",
-                                        markerSize: 5,
-                                        dataPoints: <?php echo json_encode($list, JSON_NUMERIC_CHECK); ?>
-                                    }]
-                                });
+                                // var chart = new CanvasJS.Chart("chartContainer", {
+                                //     animationEnabled: true,
+                                //     title:{
+                                //         text: "Laporan Data Praktikum"
+                                //     },
+                                //     axisY: {
+                                //         title: "Jumlah Praktikan",
+                                //     },
+                                //     axisX: {
+                                //         title: "Tahun",
+                                //     },
+                                //     data: [{
+                                //         type: "spline",
+                                //         markerSize: 5,
+                                //         dataPoints: <?php //echo json_encode($list, JSON_NUMERIC_CHECK); ?>
+                                //     }]
+                                // });
 
-                                chart.render();
+                                // chart.render();
 
                                 }
                                 </script>
@@ -89,7 +89,7 @@
                         @if(auth()->user()->role == 'mahasiswa')
 
                             </div>
-                                <div class="panelbox">
+                                <div class="panelbox" style="padding: 20px; margin:30px;">
                                 <div class="text-center ">
                                 <h1><b>PERATURAN PRETEST :</b></h1><br>
                                 <center><h4>
@@ -119,33 +119,39 @@
                                     @foreach($waktu as $c)
                                     <tr>
                                         <td>{{$i++}}</td>
-                                        <td>{{$c->nama}}</td>
-                                        <td>{{$c->waktu_mulai}}</td>
-                                        <td>{{$c->waktu_selesai}}</td>
+                                        <td>{{$c->nama}} - {{ $c->namaModul }}</td>
+                                        <td>{{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_mulai))->format('d F Y')}} Pukul {{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_mulai))->format('H:i')}} WIB</td>
+                                        <td>{{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_selesai))->format('d F Y')}} Pukul {{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_selesai))->format('H:i')}} WIB</td>
                                     </tr>
                                     @endforeach </tbody>
                             </table>
-                            <div style="margin-left:350px;width: 85%;padding: 5px;"class=" form-group">
-                            <div class="col-md-5">
-                              <form id="post-data" method="post" action="{{ route('idSoal') }}">
-                                {{ csrf_field() }}
-                                <center><label for="exampleInputPassword1">Pilih Praktikum</label>
-                                <select style="width: 320px" name="praktikum" class="form-control" id="exampleInputPassword1">
-                                    @foreach ($praktikum as $p)
-                                    <option id ="soalID" value="{{$p->id}}">{{$p->nama}}</option>
-                                    @endforeach
-                                </select>
-                                <select style="width: 320px" name="modul" class="form-control" id="exampleInputPassword1">
-                                    @foreach ($modul as $m)
-                                    <option id ="soalID" value="{{$m->id}}">{{$m->nama}}</option>
-                                    @endforeach
-                                </select>
-                                <br>
-                                <div class="text-center">
-                                  <button type="submit" class="btn btn-primary btn-lg">START</button>
+                           <div class="row">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4" style="text-align:center;">
+                                    @if(session('gagal'))
+                                        <div class="alert alert-danger" role="alert">
+                                            {{session('gagal')}}
+                                        </div>
+                                    @endif
+                                    <form id="post-data" method="post" action="{{ route('idSoal') }}">
+                                        {{ csrf_field() }}
+                                        <select style="min-width: 320px;margin:0 auto;" name="modul" class="form-control" id="exampleInputPassword1">
+                                            @foreach ($modul as $m)
+                                                @if((\Carbon\Carbon::createFromTimeStamp(strtotime($m->waktu_mulai))->isPast()) and !(\Carbon\Carbon::createFromTimeStamp(strtotime($m->waktu_selesai))->isPast()))
+                                                    <option id ="soalID" value="{{$m->idModul}}"> {{ $m->namaPraktikum }} - {{$m->nama}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        <br>
+                                        <input type="text" class="form-control" placeholder="Masukkan Password jika ada" name="password">
+                                        <br>
+                                        <div class="text-center">
+                                        <button type="submit" class="btn btn-primary btn-lg">START</button>
+                                        </div>
+                                    </form>
                                 </div>
-                              </form>
-                            </div>
+                                <div class="col-md-4"></div>
+                           </div>
                         </div>
 
                         @endif

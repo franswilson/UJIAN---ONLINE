@@ -14,6 +14,7 @@ use App\Modul;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 
 class Data_soalController extends Controller
@@ -21,12 +22,16 @@ class Data_soalController extends Controller
     public function index()
     {
 
-        $praktikum = \App\Praktikum::all();
-        $modul = \App\Modul::all();
+        $idlab = Auth::user()->npm;
+        $praktikum = \App\Praktikum::where('id_lab',$idlab)->orderBy('nama')->get();
+        $modul = \App\Modul::select('modul.*', 'praktikum.nama as namaPraktikum')
+                ->join('praktikum','praktikum.id','modul.id_praktikum')
+                ->where('praktikum.id_lab', $idlab)
+                ->get();
 
         $data_soal = DB::table('tbl_soal')
-            ->join('praktikum', 'praktikum.id', '=', 'tbl_soal.id_praktikum')
             ->join('modul', 'modul.id', '=', 'tbl_soal.id_modul')
+            ->join('praktikum', 'praktikum.id', '=', 'modul.id_praktikum')
             ->select(
                 'tbl_soal.id',
                 'tbl_soal.soal',
@@ -48,7 +53,6 @@ class Data_soalController extends Controller
 
     public function create(Request $request)
     {
-        $praktikum = \App\Praktikum::where('aktif', '=', '1')->get();
         \App\Data_soal::create($request->all());
         return redirect('/data_soal')->with('sukses', 'Data berhasil di input');
     }
@@ -126,6 +130,6 @@ class Data_soalController extends Controller
         Session::flash('sukses', 'Data Soal Berhasil Diimport!');
 
         // alihkan halaman kembali
-        return redirect('/soal');
+        return redirect('/data_soal');
     }
 }

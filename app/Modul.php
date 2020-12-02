@@ -8,6 +8,5 @@ class Modul extends Model
 {
     protected $table = 'modul';
     public $timestamps = false;
-    protected $fillable = ['id', 'nama', 'aktif'];
-
+    protected $fillable = ['id', 'nama', 'aktif', 'id_praktikum', 'password'];
 }

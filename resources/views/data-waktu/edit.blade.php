@@ -29,8 +29,7 @@
                                     <br>
 
                                     <label for="waktu">waktu mulai ujian : </label>
-                                    <input type="datetime-local" id="waktu_mulai" name="waktu_mulai">
-
+                                    <input type="text" data-field="datetime" name="waktu_mulai" readonly>
                                 </div>
 
                                 <br>
@@ -40,7 +39,9 @@
 
                                     <br>
                                     <label for="waktu">waktu selesai ujian : </label>
-                                    <input type="datetime-local" id="waktu_selesai" name="waktu_selesai">
+                                    <input type="text" data-field="datetime" name="waktu_selesai">
+
+                                    <div id="dtBox"></div>
 
                                 </div>
                                 <div class="modal-footer">

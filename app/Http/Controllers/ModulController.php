@@ -11,19 +11,33 @@ use App\Modul;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 
 class ModulController extends Controller
 {
-    public function index()
-    {
-      $modul = \App\Modul::all();
-      return view('data-modul.modul', ['modul' => $modul]);
+    public function index(){
+        $idlab = Auth::user()->npm;
+        $modul = \App\Modul::select('modul.*', 'praktikum.nama as namaPraktikum')
+                ->join('praktikum','praktikum.id','modul.id_praktikum')
+                ->where('praktikum.aktif', 1)
+                ->where('praktikum.id_lab', $idlab)
+                ->get();
+        
+        $praktikum = \App\Praktikum::where('aktif', '=', '1')->where('id_lab',$idlab)->get();
+
+      return view('data-modul.modul', ['modul' => $modul, 'praktikum'=>$praktikum]);
     }
 
     public function create(Request $request)
     {
-        \App\Modul::create($request->all());
+        \App\Modul::create([
+            'nama' => $request->nama,
+            'aktif' => 1,
+            'id_praktikum' => $request->idpraktikum,
+            'password' => ''
+        ]);
+
         return redirect('/modul')->with('sukses', 'Data berhasil di input');
     }
 
@@ -36,9 +50,8 @@ class ModulController extends Controller
 
     public function edit($id)
     {
-        $praktikum = \App\Praktikum::where('aktif', '=', '1')->get();
         $modul = \App\Modul::find($id);
-        return view('data-modul/edit', ['modul' => $modul], compact('praktikum'));
+        return view('data-modul/edit', ['modul' => $modul]);
     }
     public function update(Request $request, $id)
     {

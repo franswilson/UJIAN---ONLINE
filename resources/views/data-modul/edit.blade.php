@@ -16,10 +16,10 @@
                                     <label for="exampleInputEmail1">nama modul</label>
                                     <textarea type="text" name="nama" class="form-control" placeholder="nama" id="exampleInputEmail1" aria-describedby="emailHelp">{{$modul->nama}}</textarea>
                                 </div>
-                                <!-- <div class="form-group">
-                                    <label for="exampleInputEmail1">id modul</label>
-                                    <textarea type="text" name="id" class="form-control" placeholder="id" id="exampleInputEmail1" aria-describedby="emailHelp">{{$modul->id}}</textarea>
-                                </div> -->
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Password Kuis</label>
+                                    <textarea type="text" name="password" class="form-control" placeholder="password kuis" id="exampleInputEmail1" aria-describedby="emailHelp">{{$modul->password}}</textarea>
+                                </div>
                                 <div class=" form-group">
                                     <label for="exampleInputPassword1">Aktivasi</label>
                                     <select style="width: 100px" name="aktif" class="form-control" id="exampleInputPassword1">

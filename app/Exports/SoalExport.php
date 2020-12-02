@@ -20,14 +20,15 @@ class SoalExport implements FromCollection,WithHeadings
     public function collection()
     {
         return DB::table('tbl_soal')
-        ->join('praktikum', 'praktikum.id','=','tbl_soal.id_praktikum')
         ->join('modul', 'modul.id','=','tbl_soal.id_modul')
+        ->join('praktikum', 'praktikum.id','=','modul.id_praktikum')
         ->where('praktikum.id','=',$this->IdPraktikum)
         ->select( 'praktikum.id', 'tbl_soal.id_modul', 'tbl_soal.soal', 'tbl_soal.a', 'tbl_soal.b', 'tbl_soal.c', 'tbl_soal.d', 'tbl_soal.e',
         'tbl_soal.knc_jawaban')->get();
+
     }
     public function headings(): array
     {
-        return ['id praktikum', 'id modul','Soal', 'a', 'b', 'c', 'd', 'e', 'kunci jawaban'];
+        return ['id modul','Soal', 'a', 'b', 'c', 'd', 'e', 'kunci jawaban'];
     }
 }

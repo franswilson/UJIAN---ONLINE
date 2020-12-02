@@ -43,7 +43,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Kunci Jawaban</label>
-                                        <input type="text" placeholder="Kunci jawaban" name="knc_jawaban" class="form-control" id="exampleInputPassword1" value="{{$data_soal->knc_jawaban}}">
+                                        <!-- <input type="text" placeholder="Kunci jawaban" name="knc_jawaban" class="form-control" id="exampleInputPassword1" value="{{$data_soal->knc_jawaban}}"> -->
+                                        <select class="form-control" name="knc_jawaban">
+                                            <option value="a" {{ $data_soal->knc_jawaban == "a" ? 'selected' : '' }}>A</option>
+                                            <option value="b" {{ $data_soal->knc_jawaban == "b" ? 'selected' : '' }}>B</option>
+                                            <option value="c" {{ $data_soal->knc_jawaban == "c" ? 'selected' : '' }}>C</option>
+                                            <option value="d" {{ $data_soal->knc_jawaban == "d" ? 'selected' : '' }}>D</option>
+                                            <option value="e" {{ $data_soal->knc_jawaban == "e" ? 'selected' : '' }}>E</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Uplode gambar</label>

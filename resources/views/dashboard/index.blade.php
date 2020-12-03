@@ -103,8 +103,10 @@
 
                         </div>
 
-                        <div class="panel-body">
+                        <center><div class="panel-body">
+                        
                           <label for="exampleInputPassword1">Waktu Praktikum</label>
+                          <div style="overflow-x:auto;">
                             <table class="table table-striped table-bordered" id="waktu">
                                 <thead>
                                     <tr>
@@ -125,17 +127,18 @@
                                     </tr>
                                     @endforeach </tbody>
                             </table>
-                            <div style="margin-left:350px;width: 85%;padding: 5px;"class=" form-group">
-                            <div class="col-md-5">
-                              <form id="post-data" method="post" action="{{ route('idSoal') }}">
+                            </div>
+                            <div class=" form-group">
+                            <div style="padding-left:0px; padding-right:0px;"class="col-lg-offset-4 col-lg-4 col-md-6 col-sm-12">
+                            <form id="post-data" method="post" action="{{ route('idSoal') }}">
                                 {{ csrf_field() }}
-                                <center><label for="exampleInputPassword1">Pilih Praktikum</label>
-                                <select style="width: 320px" name="praktikum" class="form-control" id="exampleInputPassword1">
+                                <center><label for="exampleInputPassword1">Pilih Praktikum</label></center>
+                                <select style="width: 90%" name="praktikum" class="form-control" id="exampleInputPassword1">
                                     @foreach ($praktikum as $p)
                                     <option id ="soalID" value="{{$p->id}}">{{$p->nama}}</option>
                                     @endforeach
                                 </select>
-                                <select style="width: 320px" name="modul" class="form-control" id="exampleInputPassword1">
+                                <select style="width: 90%" name="modul" class="form-control" id="exampleInputPassword1">
                                     @foreach ($modul as $m)
                                     <option id ="soalID" value="{{$m->id}}">{{$m->nama}}</option>
                                     @endforeach
@@ -146,7 +149,7 @@
                                 </div>
                               </form>
                             </div>
-                        </div>
+                        </div></center>
 
                         @endif
                         </div>

@@ -108,7 +108,6 @@
                             <table class="table table-striped table-bordered" id="waktu">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
                                         <th>Praktikum</th>
                                         <th>waktu mulai</th>
                                         <th>waktu selesai</th>
@@ -117,12 +116,14 @@
                                 <tbody>
                                     <?php $i = 1 ?>
                                     @foreach($waktu as $c)
-                                    <tr>
-                                        <td>{{$i++}}</td>
-                                        <td>{{$c->nama}} - {{ $c->namaModul }}</td>
-                                        <td>{{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_mulai))->format('d F Y')}} Pukul {{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_mulai))->format('H:i')}} WIB</td>
-                                        <td>{{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_selesai))->format('d F Y')}} Pukul {{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_selesai))->format('H:i')}} WIB</td>
-                                    </tr>
+                                        @if(!(\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_selesai))->isPast()))
+                                            <tr>
+                                                <td>{{$i++}}</td>
+                                                <td>{{$c->nama}} - {{ $c->namaModul }}</td>
+                                                <td>{{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_mulai))->format('d F Y')}} Pukul {{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_mulai))->format('H:i')}} WIB</td>
+                                                <td>{{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_selesai))->format('d F Y')}} Pukul {{\Carbon\Carbon::createFromTimeStamp(strtotime($c->waktu_selesai))->format('H:i')}} WIB</td>
+                                            </tr>
+                                        @endif
                                     @endforeach </tbody>
                             </table>
                            <div class="row">

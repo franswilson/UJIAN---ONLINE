@@ -4,7 +4,7 @@
     <div class="main-content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 ">
                     <div class="panel">
                         <!-- <div class="panel-heading">
                             <h3 class="panel-title">Nilai</h3>
@@ -20,8 +20,10 @@
                         <button style="float:right; margin-top:-35px; margin-right:600px;"type="submit" class="btn btn-success float-right">Download</button>
 
                       </form>
-                        <div class="panel-body">
-                            <div class="panel-body">
+                        <div class=" panel-body ">
+                            <div style="padding-left:0px; padding-right:0px;" class="panel-body col-lg-offset-4 col-lg-4 col-md-6 col-sm-12">
+                            <div class="col-lg-offset-4 col-lg-4 col-md-6 col-sm-12">
+                                <div style="overflow-x:auto;">
                                 <table class="table table-striped table-bordered" id="nilai">
                                     <thead>
                                         <tr>
@@ -47,6 +49,8 @@
 
                                     </tbody>
                                 </table>
+                                </div>
+                                </div>
 
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">

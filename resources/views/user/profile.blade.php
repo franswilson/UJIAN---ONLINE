@@ -48,8 +48,12 @@
                         <!-- TABLE NO PADDING -->
                         <div class="panel">
                             <div class="panel-heading">
+                                
                                 <h3 class="panel-title">daftar nilai</h3>
                             </div>
+                            
+                            <div class="col-lg-offset-4 col-lg-4 col-md-6 col-sm-12">
+                            <div style="padding-left:0px; padding-right:0px; overflow-x:auto;">
                             <div class="panel-body no-padding">
                                 <table class="table">
                                     <thead>
@@ -76,6 +80,8 @@
 
                                     </tbody>
                                 </table>
+                            
+                            </div>
                             </div>
 
                             <!-- END TABLE NO PADDING -->

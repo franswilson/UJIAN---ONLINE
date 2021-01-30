@@ -108,6 +108,7 @@
                             <table class="table table-striped table-bordered" id="waktu">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Praktikum</th>
                                         <th>waktu mulai</th>
                                         <th>waktu selesai</th>

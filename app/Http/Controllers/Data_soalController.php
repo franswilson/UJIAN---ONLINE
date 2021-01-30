@@ -46,7 +46,8 @@ class Data_soalController extends Controller
                 'tbl_soal.soal',
                 'praktikum.nama',
                 'modul.nama as nama_mod'
-            )->get();
+            )->where('praktikum.id_lab', $idlab)
+            ->get();
 
         return view('data-soal.data_soal', compact('praktikum', 'data_soal', 'modul'));
     }

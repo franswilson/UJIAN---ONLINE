@@ -184,7 +184,7 @@ html.fullscreen-bg #wrapper {
       display: none; } }
   @media screen and (max-width: 640px) {
     .navbar-default #navbar-menu {
-      margin-top: 50px;
+      margin-top: 0 !important;
       float: right; } }
 
 .navbar-btn {

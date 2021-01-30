@@ -29,14 +29,18 @@ class SubmitJawabController extends Controller
                 }
             };
         }
+        
+        $cek1 = Jawaban::where('user_id', Auth::user()->id)->where('id_modul', $request->modul)->first();
+        if(!$cek1){
+            $jawaban = new Jawaban;
+            $jawaban->user_id = Auth::user()->id;
+            $jawaban->nama = Auth::user()->name;
+            $jawaban->nilai = $nilai;
+            $jawaban->id_modul = $request->modul;
+    
+            $jawaban->save();
+        }
 
-        $jawaban = new Jawaban;
-        $jawaban->user_id = Auth::user()->id;
-        $jawaban->nama = Auth::user()->name;
-        $jawaban->nilai = $nilai;
-        $jawaban->id_modul = $request->modul;
-
-        $jawaban->save();
         // dd($jawaban);
         return redirect()->route('mahasiswa.profile');
 

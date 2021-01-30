@@ -20,10 +20,11 @@ class SoalController extends Controller
     public function getSoal(Request $request)
     {
         $timeNow = \Carbon\Carbon::now()->toDateTimeString();
-        
+
         if(is_null($request->modul)){
             return Redirect()->Back()->with('gagal', 'Gagal Memulai Praktikum');
         }
+        
         // $PrakId = $request->praktikum;
         $ModId = $request->modul;
 
@@ -32,6 +33,7 @@ class SoalController extends Controller
             ->where('waktu_mulai', '<=', $timeNow)
             ->where('waktu_selesai', '>=', $timeNow)
             ->where('id_modul', '=', $ModId)->first();
+            
 
         $arr = Session::get('soal', []);
         if(empty($arr)){
@@ -61,7 +63,7 @@ class SoalController extends Controller
                 // ->join('praktikum','praktikum.id','tbl_soal.id_praktikum')
                 // ->where('tbl_soal.aktif','=','Y')->where('praktikum.pretest','=','Y')
                 // ->select('tbl_soal.*')->inRandomOrder()->paginate(20);
-                $soal = Soal::where('aktif', '=', 1)->where('id_modul','=',$ModId)->inRandomOrder()->paginate(20);
+                $soal = Soal::where('aktif', '=', 1)->where('id_modul','=',$ModId)->inRandomOrder()->paginate(50);
                 Session::push('soal', $soal);
             }
 

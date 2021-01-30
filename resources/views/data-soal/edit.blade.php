@@ -15,31 +15,34 @@
                                 {{csrf_field()}}
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Soal</label>
-                                    <textarea type="text" name="soal" class="form-control" placeholder="Isi Soal" id="exampleInputEmail1" aria-describedby="emailHelp">{{$data_soal->soal}}</textarea>
+                                    <textarea type="text" name="soal" class="form-control" placeholder="Isi Soal" id="exampleInputEmail1" aria-describedby="emailHelp" rows="5">{{$data_soal->soal}}</textarea>
 
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">A</label>
-                                    <input type="text" name="a" class="form-control" placeholder="jawaban A" id="exampleInputEmail1" value="{{$data_soal->a}}" aria-describedby="emailHelp">
-
+                                    <textarea type="text" name="a" class="form-control" placeholder="jawaban A" rows="5">{{$data_soal->a}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">B</label>
-                                    <input name="b" type="text" class="form-control" id="exampleInputPassword1 " placeholder="jawaban B" value="{{$data_soal->b}}">
+                                    <textarea type="text" name="b" class="form-control" placeholder="jawaban B" rows="5">{{$data_soal->b}}</textarea>
+                                    <!--<input name="b" type="text" class="form-control" id="exampleInputPassword1 " placeholder="jawaban B" value="{{$data_soal->b}}">-->
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">C</label>
-                                    <input type="text" placeholder="Jawban c" name="c" class="form-control" id="exampleInputPassword1" value="{{$data_soal->c}}">
+                                    <!--<input type="text" placeholder="Jawban c" name="c" class="form-control" id="exampleInputPassword1" value="{{$data_soal->c}}">-->
+                                    <textarea type="text" name="c" class="form-control" placeholder="jawaban C" rows="5">{{$data_soal->c}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">D</label>
-                                        <input type="text" placeholder="Jawaban d" name="d" class="form-control" id="exampleInputPassword1" value="{{$data_soal->d}}">
+                                        <textarea type="text" name="d" class="form-control" placeholder="jawaban D" rows="5">{{$data_soal->d}}</textarea>
+                                        <!--<input type="text" placeholder="Jawaban d" name="d" class="form-control" id="exampleInputPassword1" value="{{$data_soal->d}}">-->
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">E</label>
-                                        <input type="text" placeholder="Jawaban e" name="e" class="form-control" id="exampleInputPassword1" value="{{$data_soal->e}}">
+                                        <textarea type="text" name="e" class="form-control" placeholder="jawaban E" rows="5">{{$data_soal->e}}</textarea>
+                                        <!--<input type="text" placeholder="Jawaban e" name="e" class="form-control" id="exampleInputPassword1" value="{{$data_soal->e}}">-->
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Kunci Jawaban</label>

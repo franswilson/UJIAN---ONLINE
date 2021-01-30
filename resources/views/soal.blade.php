@@ -41,11 +41,11 @@ div class="main">
 
                                 @csrf
                                 <tr>
-                                    <td width="17">
+                                    <td width="17" style="vertical-align: top;">
                                         <font color="#000000">{{$angka}}</font>
                                     </td>
                                     <td width="430">
-                                        <font color="#000000">{{$s->soal}}</font>
+                                        <font color="#000000">{!! $s->soal !!}</font>
                                     </td>
                                 </tr>
                                 @if($s->gambar)
@@ -71,7 +71,7 @@ div class="main">
                                             }
                                             @endphp
                                             >
-                                            {{$s->a}}</font>
+                                            {!! $s->a !!}</font>
                                     </td>
                                 </tr>
                                 <tr>
@@ -91,7 +91,7 @@ div class="main">
                                             }
                                             @endphp
                                             >
-                                            {{$s->b}}</font>
+                                            {!! $s->b !!}</font>
                                     </td>
                                 </tr>
                                 <tr>
@@ -111,7 +111,7 @@ div class="main">
                                             }
                                             @endphp
                                             >
-                                            {{$s->c}}</font>
+                                            {!! $s->c !!}</font>
                                     </td>
                                 </tr>
                                 <tr>
@@ -132,7 +132,7 @@ div class="main">
                                             }
                                             @endphp
                                             >
-                                            {{$s->d}}</font>
+                                            {!! $s->d !!}</font>
                                     </td>
 
                                 </tr>
@@ -154,7 +154,7 @@ div class="main">
                                             }
                                             @endphp
                                             >
-                                            {{$s->e}}</font>
+                                            {!! $s->e !!}</font>
                                             <br><br>
                                     </td>
 
@@ -213,6 +213,11 @@ div class="main">
             });
 
         });
+        
+        
+        // $('#tombolSubmit').click(function(){
+        //     $('#tombolSubmit').attr("disabled", true);
+        // });
 
     });
 </script>
@@ -240,6 +245,7 @@ div class="main">
             clearInterval(hitungmundur);
             timer.innerHTML = 'waktu telah habis';
             $('#tombolSubmit').click();
+            // $('#tombolSubmit').attr("disabled", true);
         }
     }, 1000);
 

@@ -103,8 +103,10 @@
 
                         </div>
 
-                        <div class="panel-body">
+                        <center><div class="panel-body">
+                        
                           <label for="exampleInputPassword1">Waktu Praktikum</label>
+                          <div style="overflow-x:auto;">
                             <table class="table table-striped table-bordered" id="waktu">
                                 <thead>
                                     <tr>
@@ -152,8 +154,8 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="col-md-4"></div>
-                           </div>
+                              </form>
+                            </div>
                         </div>
 
                         @endif

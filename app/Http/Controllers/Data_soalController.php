@@ -23,7 +23,9 @@ class Data_soalController extends Controller
     {
 
         $idlab = Auth::user()->npm;
-        $praktikum = \App\Praktikum::where('id_lab',$idlab)->orderBy('nama')->get();
+        $praktikum = \App\Praktikum::where('id_lab',$idlab)
+        ->where('aktif','=','1')
+        ->orderBy('nama')->get();
         $modul = \App\Modul::select('modul.*', 'praktikum.nama as namaPraktikum')
                 ->join('praktikum','praktikum.id','modul.id_praktikum')
                 ->where('praktikum.id_lab', $idlab)
